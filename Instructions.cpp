@@ -15,5 +15,10 @@ class Instructions{
         // Destructor
         ~Instructions(){
         }
+        
+        //Metodo DADDI
+        void DADDI(Processor * proc, int rx, int ry, int n){
+             proc->state->registers[rx] = proc->state->registers[ry] + n;
+        }      
 };
 #endif
