@@ -3,7 +3,7 @@
 #include "Memory.cpp"
 class Bus{
     private:
-        Memory mem;
+        Memory* mem;
     public:
         // Constructor
         Bus(Memory* m){
