@@ -3,10 +3,10 @@
 #include "Memory.cpp"
 class Bus{
     private:
-        Memory* mem;
+        unsigned* mem;
     public:
         // Constructor
-        Bus(Memory* m){
+        Bus(unsigned* m){
             mem=m;
         }
         // Destructor

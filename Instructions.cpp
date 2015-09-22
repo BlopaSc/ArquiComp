@@ -1,16 +1,11 @@
 #ifndef INSTRUCTIONS_CPP
 #define INSTRUCTIONS_CPP
-// Clase encargada de las instrucciones MIPS
-
 #include "State.cpp"
-
+// Clase encargada de las instrucciones MIPS
 class Instructions{
-    private:
-        //
     public:
         // Constructor
         Instructions(){
-            
         }
         // Destructor
         ~Instructions(){

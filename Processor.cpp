@@ -1,29 +1,32 @@
 #ifndef PROCESSOR_CPP
 #define PROCESSOR_CPP
-
 #include "State.cpp"
 #include "Instructions.cpp"
+#include "Cache.cpp"
 // Clase que emula un procesador
 class Processor{
     private:
         long long cycles;
         unsigned char flags;
     public:
-           friend class State;
-           friend class Instructions;
            State* state;
            Instructions* instr;
+           Cache *cacheData,*cacheInstr;
         // Constructor
-        Processor(){
+        Processor(Bus *instrBus,Bus *dataBus){
             cycles=0;
             flags=0x0;
             state = new State();
             instr = new Instructions();
+            cacheInstr = new Cache(instrBus,0x4);
+            cacheData = new Cache(dataBus,0x1);
         }
         // Destructor
         ~Processor(){
             delete state;
             delete instr;
+            delete cacheData;
+            delete cacheInstr;
         }
         // Retorna si el procesador se encuentra en un estado de fin
         inline unsigned char getFin(){return flags&0x1;}

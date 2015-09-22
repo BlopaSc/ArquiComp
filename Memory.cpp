@@ -1,28 +1,22 @@
 #ifndef MEMORY_CPP
 #define MEMORY_CPP
+#define WORDS_PER_BLOCK 4
+#define BLOCKS_INSTR 40
+#define BLOCKS_DATA 88
 // Clase encargada de la memoria del sistema
 class Memory{
-    private:
-        // Tamaño de la memoria, puntero a memoria
-        unsigned wordsPerBlock,blocks,words;
-        unsigned* ram;
     public:
+        // Punteros a memoria
+        unsigned *ramInstructions,*ramData;
         // Constructor
-        Memory(unsigned wpb,unsigned b){
-            wordsPerBlock = wpb;
-            blocks = b;
-            words = wpb*b;
-            if(words){
-                ram = new unsigned[words];
-            }else{
-                ram = 0;
-            }
+        Memory(){
+            ramInstructions = new unsigned[(BLOCKS_INSTR<<2)*WORDS_PER_BLOCK];
+            ramData = new unsigned[BLOCKS_DATA*WORDS_PER_BLOCK];
         }
         // Destructor
         ~Memory(){
-            if(ram){
-                delete[] ram;
-            }
+            delete[] ramInstructions;
+            delete[] ramData;
         }
 };
 #endif
