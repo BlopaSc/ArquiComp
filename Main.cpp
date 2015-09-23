@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
+#include "ThreadQueue.cpp"
 #include "Processor.cpp"
 #include "Bus.cpp"
 #include "Memory.cpp"
@@ -11,6 +12,7 @@
 pthread_barrier_t  synchroBarrier;
 Memory *mainMemory;
 Bus *instrBus, *dataBus;
+ThreadQueue *threadManager;
 
 void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
@@ -29,15 +31,8 @@ void *threadProcessor(void *paramPtr){
       delete proc;
 }
 
-int main(){
-    mainMemory = new Memory();
-    instrBus = new Bus(mainMemory->ramInstructions);
-    dataBus = new Bus(mainMemory->ramData);
-    pthread_t *thread = new pthread_t[NUM_PROCS];
-    
-    pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
-    printf("Hilo root ejecutandose\n");
-    
+void run(){
+    printf("Emulacion iniciando\n");
     // BEGIN MULTITHREAD
     for(int i=0;i<NUM_PROCS;i++){
         data.idThread=i;
@@ -47,8 +42,20 @@ int main(){
     for(int i=0;i<NUM_PROCS;i++){
         pthread_join(thread[i],NULL);
     }
-
     printf("Emulacion finalizada\n");
+}
+
+int main(){
+    mainMemory = new Memory();
+    instrBus = new Bus(mainMemory->ramInstructions);
+    dataBus = new Bus(mainMemory->ramData);
+    threadManager = new ThreadQueue();
+    pthread_t *thread = new pthread_t[NUM_PROCS];
+    
+    pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
+    printf("Hilo root ejecutandose\n");
+    
+    run();
     
     delete[] thread;
     delete dataBus;
