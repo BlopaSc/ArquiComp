@@ -13,6 +13,7 @@ pthread_barrier_t  synchroBarrier;
 Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
+pthread_t *thread;
 
 void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
@@ -35,7 +36,6 @@ void run(){
     printf("Emulacion iniciando\n");
     // BEGIN MULTITHREAD
     for(int i=0;i<NUM_PROCS;i++){
-        data.idThread=i;
         pthread_create(&thread[i],NULL,threadProcessor,(void*)i);
     }
     // END MULTITHREAD
@@ -50,7 +50,7 @@ int main(){
     instrBus = new Bus(mainMemory->ramInstructions);
     dataBus = new Bus(mainMemory->ramData);
     threadManager = new ThreadQueue();
-    pthread_t *thread = new pthread_t[NUM_PROCS];
+    thread = new pthread_t[NUM_PROCS];
     
     pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
     printf("Hilo root ejecutandose\n");
