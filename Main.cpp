@@ -15,6 +15,7 @@ Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
 pthread_t *thread;
+pthread_mutex_t lockQueue;
 int instructionsProcessed;
 
 
@@ -26,7 +27,7 @@ void *threadProcessor(void *paramPtr){
 
       while(threadManager->getSize()){
          if((!(proc->getCycle()%QUANTUM) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
-              // Agregar lock
+              pthread_mutex_lock(&lockQueue);
               if(proc->getState()){
                    if(proc->getFin()){
                        // Es porque acabo hilillo
@@ -38,7 +39,7 @@ void *threadProcessor(void *paramPtr){
                    }
               }
               proc->setState(threadManager->getNext());
-              // Quitar lock
+              pthread_mutex_unlock(&lockQueue);
          }
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
@@ -103,6 +104,9 @@ int main(){
     dataBus = new Bus(mainMemory->ramData);
     threadManager = new ThreadQueue();
     thread = new pthread_t[NUM_PROCS];
+    if (pthread_mutex_init(&lockQueue, NULL)){
+        printf("\nAlgo salio mal creando el mutex del queue\n");
+    }
     instructionsProcessed = 0;
     
     loadFile((char *)"1.txt");

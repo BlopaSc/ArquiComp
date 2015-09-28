@@ -12,8 +12,7 @@ class Bus{
         Bus(unsigned* m){
             mem=m;
             if (pthread_mutex_init(&lock, NULL)){
-                printf("\nAlgo salio mal creando el mutex\n");
-                return -1;
+                printf("\nAlgo salio mal creando el mutex del bus\n");
             }
         }
         // Destructor
