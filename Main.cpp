@@ -24,13 +24,25 @@ void *threadProcessor(void *paramPtr){
 
       printf("Procesador Noº%i\n",idThread);
 
-      /*while(!proc->getFin()){
-        proc->execute();
-        
-        // FALTA MUCHO CODIGO
-        
-        pthread_barrier_wait (&synchroBarrier);
-      }*/
+      while(threadManager->getSize()){
+         if((!(proc->getCycle()%QUANTUM) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
+              // Agregar lock
+              if(proc->getState()){
+                   if(proc->getFin()){
+                       // Es porque acabo hilillo
+                       threadManager->remove(proc->getState());
+                       proc->finishState();
+                   }else{
+                       // Excedio QUANTUM
+                       threadManager->returnThread(proc->getState());
+                   }
+              }
+              proc->setState(threadManager->getNext());
+              // Quitar lock
+         }
+         proc->execute();   
+         pthread_barrier_wait (&synchroBarrier);
+      }
       
       delete proc;
 }

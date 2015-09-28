@@ -52,17 +52,17 @@ class ThreadQueue{
         // Retorna el siguiente hilo disponible al procesador
         State* getNext(){
             QueueNode *tmp = current;
-            State *returnState;
-            while(tmp->taken && tmp->next!=current){
-                tmp = tmp->next;
-            }
-            if(tmp->taken){
-                returnState = 0;
-            }else{
-                current = tmp;
-                current->taken=true;
-                current = current->next;
-                returnState = current->prev->state;
+            State *returnState=0;
+            if(current){
+                while(tmp->taken && tmp->next!=current){
+                    tmp = tmp->next;
+                }
+                if(!tmp->taken){
+                    current = tmp;
+                    current->taken=true;
+                    current = current->next;
+                    returnState = current->prev->state;
+                }
             }
             return returnState;
         }
@@ -79,6 +79,7 @@ class ThreadQueue{
         // Se utiliza para remover un hilo finalizado de la lista
         void remove(State *state){
             QueueNode *tmp = current;
+            if(current){
             do{
                 tmp = tmp->next;
             }while(tmp!=current && tmp->state!=state);
@@ -94,6 +95,7 @@ class ThreadQueue{
                 if(!size){
                     current=0;
                 }
+            }
             }
         }
 };

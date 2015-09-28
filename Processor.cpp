@@ -33,6 +33,7 @@ class Processor{
         inline long long getCycle(){return cycles;}
         // Retorna el estado actual del procesador para almacenarlo
         inline State* getState(){return state;}
+        inline void setState(State* s){state=s;}
         //Switch de las instrucciones MIPS
         void ejecutarMIPS(int codigo, int p1,int p2, int p3){
              switch(codigo){
@@ -63,6 +64,9 @@ class Processor{
                case 2:
                     instr->JR(state,p1);
                     break;
+               case 63:
+                    flags|=0x1;
+                    break;
              }
         }
         
@@ -71,8 +75,15 @@ class Processor{
         void execute(){
              if(state){
                        // Si se tiene cargado un estado ejecuta
+                       cycles++;
              }
-        }  
+        }
+        
+        // Es llamado cuando un hilo ha acabado y debe ser eliminado y las banderas reiniciadas
+        void finishState(){
+             delete state;
+             flags=0x0;
+        }
         
 };
 #endif
