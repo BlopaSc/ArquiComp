@@ -50,10 +50,19 @@ void run(){
 
 void loadFile(char * filename){
     FILE *ptrFile;
+    State *newState;
     int codigo,p1,p2,p3;
+    bool startState=true;
     printf("Opening file: %s\n",filename);
     ptrFile = fopen(filename,"r");
     while(fscanf(ptrFile,"%i %i %i %i\n",&codigo,&p1,&p2,&p3) != EOF){
+	if(startState){
+            startState=false;
+            newState = new State();
+            newState->pc = instructionsProcessed;
+            threadManager->add(newState);
+	        printf("Position in memory: %i -- Thread noº: %i\n",newState->pc,threadManager->getSize());
+        }
         printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
         mainMemory->ramInstructions[instructionsProcessed]=codigo;
         instructionsProcessed++;

@@ -6,10 +6,12 @@ class QueueNode{
     public:
         QueueNode *next,*prev;
         State *state;
+        bool taken;
         QueueNode(QueueNode *n,QueueNode *p,State *s){
             next=n;
             prev=p;
             state=s;
+            taken=false;
         }
         ~QueueNode(){
             if(next){
@@ -33,6 +35,7 @@ class ThreadQueue{
             }
         }
         inline unsigned getSize(){return size;}
+        // Agrega un nuevo hilo al manejador de hilos
         void add(State *state){
             if(current){
                 current = new QueueNode(current,current->prev,state);
@@ -45,10 +48,30 @@ class ThreadQueue{
             }
             size++;
         }
+        // Todas estas funciones necesitan usarse en seccion critica
+        // Retorna el siguiente hilo disponible al procesador
         State* getNext(){
+            QueueNode *tmp = current;
+            while(tmp->taken && tmp->next!=current){
+                tmp = tmp->next;
+            }
+            current = tmp;
+            current->taken=true;
             current = current->next;
             return current->prev->state;
         }
+        // Marca un hilo como disponible cuando se libera para tomar otro y este no ha acabado
+        void returnThread(State *state){
+            QueueNode *tmp = current;
+            while(tmp->next!=current && tmp->state!=state){
+                tmp = tmp->next;
+            }
+            if(tmp->state==state){
+                tmp->taken=false;
+            }
+            
+        }
+        // Se utiliza para remover un hilo finalizado de la lista
         void remove(State *state){
             QueueNode *tmp = current;
             do{
