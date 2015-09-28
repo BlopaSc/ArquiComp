@@ -52,13 +52,19 @@ class ThreadQueue{
         // Retorna el siguiente hilo disponible al procesador
         State* getNext(){
             QueueNode *tmp = current;
+            State *returnState;
             while(tmp->taken && tmp->next!=current){
                 tmp = tmp->next;
             }
-            current = tmp;
-            current->taken=true;
-            current = current->next;
-            return current->prev->state;
+            if(tmp->taken){
+                returnState = 0;
+            }else{
+                current = tmp;
+                current->taken=true;
+                current = current->next;
+                returnState = current->prev->state;
+            }
+            return returnState;
         }
         // Marca un hilo como disponible cuando se libera para tomar otro y este no ha acabado
         void returnThread(State *state){
@@ -69,7 +75,6 @@ class ThreadQueue{
             if(tmp->state==state){
                 tmp->taken=false;
             }
-            
         }
         // Se utiliza para remover un hilo finalizado de la lista
         void remove(State *state){
@@ -114,7 +119,12 @@ int main(){
     printf("\n");
     for(int j=0;j<11;j++){
         test = hilos->getNext();
-        printf("PC: %i\n",test->pc);
+        hilos->returnThread(test);
+        if(test){
+            printf("PC: %i\n",test->pc);
+        }else{
+            printf("State 0\n");
+        }
     }
     printf("\n");
     for(int i=0;i<5;i++){
