@@ -16,14 +16,13 @@ class Processor{
         Processor(Bus *instrBus,Bus *dataBus){
             cycles=0;
             flags=0x0;
-            state = new State();
+            state = 0;
             instr = new Instructions();
             cacheInstr = new Cache(instrBus,0x4);
             cacheData = new Cache(dataBus,0x1);
         }
         // Destructor
         ~Processor(){
-            delete state;
             delete instr;
             delete cacheData;
             delete cacheInstr;
@@ -70,6 +69,9 @@ class Processor{
         
         // Es la señal que ocasiona la ejecucion de un nuevo ciclo de reloj
         void execute(){
+             if(state){
+                       // Si se tiene cargado un estado ejecuta
+             }
         }  
         
 };
