@@ -33,17 +33,18 @@ class Cache{
         // CHECK THIS CODE DUDE, 100% LIKELY IT HAS A BUG
         
         // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
-        unsigned* getData(unsigned pos){
-             unsigned tagNumber = pos/(WORDS_PER_BLOCK*multi);
-             if(tagNumber!=tag[tagNumber%BLOCKS_PER_CACHE]){
-                   // Llamado al bus, we got a miss
-                   // IMPLEMENTAR LLAMADO
-                   missCounter++;
-             }else{
-                   hitCounter++;
-             }
-             return &cache[(pos%WORDS_PER_BLOCK)+((tagNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)];
+    unsigned* getData(unsigned pos){
+        unsigned tagNumber = pos/(WORDS_PER_BLOCK*multi);
+        if(tagNumber!=tag[tagNumber%BLOCKS_PER_CACHE]){
+            pthread_mutex_lock(&(bus->lock));
+            // IMPLEMENTAR LLAMADO
+            pthread_mutex_unlock(&(bus->lock));
+            missCounter++;
+        }else{
+            hitCounter++;
         }
+        return &cache[(pos%WORDS_PER_BLOCK)+((tagNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)];
+    }
         
 };
 #endif
