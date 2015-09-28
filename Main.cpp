@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <pthread.h>
-#include <fstream>
 #include "ThreadQueue.cpp"
 #include "Processor.cpp"
 #include "Bus.cpp"
@@ -50,21 +49,22 @@ void run(){
 }
 
 void loadFile(char * filename){
-     printf("Opening file: %s \n",filename);
-     ifstream infile(filename);
-     int codigo,p1,p2,p3;
-     while (infile >> codigo >> p1 >> p2 >> p3)
-     {
-      printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
-      mainMemory->ramInstructions[instructionsProcessed]=codigo;
-      instructionsProcessed++;
-      mainMemory->ramInstructions[instructionsProcessed]=p1;
-      instructionsProcessed++;
-      mainMemory->ramInstructions[instructionsProcessed]=p2;
-      instructionsProcessed++;
-      mainMemory->ramInstructions[instructionsProcessed]=p3;
-      instructionsProcessed++;
-     }    
+    FILE *ptrFile;
+    int codigo,p1,p2,p3;
+    printf("Opening file: %s\n",filename);
+    ptrFile = fopen(filename,"r");
+    while(fscanf(ptrFile,"%i %i %i %i\n",&codigo,&p1,&p2,&p3) != EOF){
+        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
+        mainMemory->ramInstructions[instructionsProcessed]=codigo;
+        instructionsProcessed++;
+        mainMemory->ramInstructions[instructionsProcessed]=p1;
+        instructionsProcessed++;
+        mainMemory->ramInstructions[instructionsProcessed]=p2;
+        instructionsProcessed++;
+        mainMemory->ramInstructions[instructionsProcessed]=p3;
+        instructionsProcessed++;
+    }
+    fclose(ptrFile);
 }
 
 void displayMemory(){
