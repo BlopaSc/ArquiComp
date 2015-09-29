@@ -23,7 +23,7 @@ void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
       int idThread = (int)paramPtr;
 
-      printf("Procesador Noº%i\n",idThread);
+      printf("Procesador NoÂº%i\n",idThread);
 
       while(threadManager->getSize()){
          if((!(proc->getCycle()%QUANTUM) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
@@ -68,25 +68,27 @@ void loadFile(char * filename){
     bool startState=true;
     printf("Opening file: %s\n",filename);
     ptrFile = fopen(filename,"r");
-    while(fscanf(ptrFile,"%i %i %i %i\n",&codigo,&p1,&p2,&p3) != EOF){
-	if(startState){
-            startState=false;
-            newState = new State();
-            newState->pc = instructionsProcessed;
-            threadManager->add(newState);
-	        printf("Position in memory: %i -- Thread noº: %i\n",newState->pc,threadManager->getSize());
-        }
-        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
-        mainMemory->ramInstructions[instructionsProcessed]=codigo;
-        instructionsProcessed++;
-        mainMemory->ramInstructions[instructionsProcessed]=p1;
-        instructionsProcessed++;
-        mainMemory->ramInstructions[instructionsProcessed]=p2;
-        instructionsProcessed++;
-        mainMemory->ramInstructions[instructionsProcessed]=p3;
-        instructionsProcessed++;
+    if(ptrFile!=NULL){
+	    while(fscanf(ptrFile,"%i %i %i %i\n",&codigo,&p1,&p2,&p3) != EOF){
+		if(startState){
+	            startState=false;
+	            newState = new State();
+	            newState->pc = instructionsProcessed;
+	            threadManager->add(newState);
+		        printf("Position in memory: %i -- Thread noÂº: %i\n",newState->pc,threadManager->getSize());
+	        }
+	        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
+	        mainMemory->ramInstructions[instructionsProcessed]=codigo;
+	        instructionsProcessed++;
+	        mainMemory->ramInstructions[instructionsProcessed]=p1;
+	        instructionsProcessed++;
+	        mainMemory->ramInstructions[instructionsProcessed]=p2;
+	        instructionsProcessed++;
+	        mainMemory->ramInstructions[instructionsProcessed]=p3;
+	        instructionsProcessed++;
+	    }
+	    fclose(ptrFile);
     }
-    fclose(ptrFile);
 }
 
 void displayMemory(){
