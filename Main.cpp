@@ -1,32 +1,31 @@
 #include <stdio.h>
 #include <pthread.h>
+
+// Definicion editable
+#define NUM_PROCS 2
+
+pthread_barrier_t  synchroBarrier;
+pthread_t *thread;
+pthread_mutex_t lockQueue;
+
 #include "ThreadQueue.cpp"
 #include "Processor.cpp"
 #include "Bus.cpp"
 #include "Memory.cpp"
 
-// Definiciones editables
-#define NUM_PROCS 2
-#define QUANTUM 16
-
-using namespace std;
-pthread_barrier_t  synchroBarrier;
 Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
-pthread_t *thread;
-pthread_mutex_t lockQueue;
-int instructionsProcessed;
-
+int instructionsProcessed,quantum,m,b;
 
 void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
       int idThread = (int)paramPtr;
-
-      printf("Procesador Noº%i\n",idThread);
-
+      printf("Procesador No.%i\n",idThread);
+      // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
-         if((!(proc->getCycle()%QUANTUM) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
+         // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
+         if((!(proc->getCycle()%quantum) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
               pthread_mutex_lock(&lockQueue);
               if(proc->getState()){
                    if(proc->getFin()){
@@ -44,7 +43,6 @@ void *threadProcessor(void *paramPtr){
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
       }
-      
       delete proc;
 }
 
@@ -110,6 +108,10 @@ int main(){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
     instructionsProcessed = 0;
+    
+    quantum=30;
+    m=1;
+    b=1;
     
     loadFile((char *)"1.txt");
     loadFile((char *)"2.txt");
