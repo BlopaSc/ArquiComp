@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 
 // Definicion editable
@@ -98,7 +99,7 @@ void displayMemory(){
 }
 
 
-int main(){
+int main(int argc,char *argv[]){
     mainMemory = new Memory();
     instrBus = new Bus(mainMemory->ramInstructions);
     dataBus = new Bus(mainMemory->ramData);
@@ -109,12 +110,22 @@ int main(){
     }
     instructionsProcessed = 0;
     
-    quantum=30;
-    m=1;
-    b=1;
-    
-    loadFile((char *)"1.txt");
-    loadFile((char *)"2.txt");
+    if(argc == 1){
+        // Default: crear codigo de cargado manual
+        quantum=30;
+        m=1;
+        b=1;
+        loadFile((char *)"1.txt");
+        loadFile((char *)"2.txt");
+    }else{
+        // Cargar de argumentos
+        quantum = atoi(argv[1]);
+        m = atoi(argv[2]);
+        b = atoi(argv[3]);
+        for(int i=4;i<argc;i++){
+            loadFile(argv[i]);
+        }
+    }
     displayMemory();
     
     
