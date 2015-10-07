@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package arquicomp;
-import java.io.*;
-import java.nio.file.*;
-import javax.swing.JOptionPane;
-
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
@@ -180,7 +179,14 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             //meter los parametros que hagan falta
-            Process process = new ProcessBuilder("C:\\PathToExe\\MyExe.exe","param1","param2").start();
+            Process process = new ProcessBuilder("C:\\Users\\Blopa\\Desktop\\Test.exe","param1","param2").start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String output="",line=null;
+            process.waitFor();
+            while((line=reader.readLine()) != null){
+                output+=line+"\n";
+            }
+            javax.swing.JOptionPane.showMessageDialog(null, output, "Processors results", javax.swing.JOptionPane.INFORMATION_MESSAGE, null);
         } 
         catch(Exception e){                                         
         
