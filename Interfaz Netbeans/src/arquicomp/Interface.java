@@ -179,7 +179,10 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             //meter los parametros que hagan falta
-            Process process = new ProcessBuilder("C:\\Users\\Blopa\\Desktop\\Test.exe","param1","param2").start();
+            // Meta todos los params en un solo string[] para mandarselo a process
+            String params[] = new String[]{"C:\\Users\\Blopa\\Desktop\\Test.exe","param1","param2"};
+            
+            Process process = new ProcessBuilder(params).start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String output="",line=null;
             process.waitFor();
