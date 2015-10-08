@@ -7,7 +7,6 @@ package arquicomp;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import javax.swing.JOptionPane;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
@@ -225,13 +224,14 @@ public class Interface extends javax.swing.JFrame {
             if(Integer.parseInt(quantum) > 0 && Integer.parseInt(m)>0 && Integer.parseInt(b)>0){
             
                 jLabel4.setText("");
-                String params[] = new String[jTable1.getRowCount()+4];
-                params[0]=modoLento;
-                params[1]=quantum;
-                params[2]=m;
-                params[3]=b;
-                for(int i=4;i<params.length;i++){
-                    params[i]=(String)jTable1.getModel().getValueAt(i-4, 1);
+                String params[] = new String[jTable1.getRowCount()+5];
+                params[0]="C:/Users/b16195/Desktop/Test.exe";
+                params[1]=modoLento;
+                params[2]=quantum;
+                params[3]=m;
+                params[4]=b;
+                for(int i=5;i<params.length;i++){
+                    params[i]=(String)jTable1.getModel().getValueAt(i-5, 1);
                 }
                 Process process = new ProcessBuilder(params).start();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
