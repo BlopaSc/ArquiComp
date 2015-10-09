@@ -143,11 +143,11 @@ int main(int argc,char *argv[]){
         
     }else{
         // Cargar de argumentos
-        //modoLento=argv[1][0]=='t';
-        quantum = atoi(argv[1]);
-        m = atoi(argv[2]);
-        b = atoi(argv[3]);
-        for(int i=4;i<argc;i++){
+        modoLento = argv[1][0]=='t';
+        quantum = atoi(argv[2]);
+        m = atoi(argv[3]);
+        b = atoi(argv[4]);
+        for(int i=5;i<argc;i++){
             loadFile(argv[i]);
         }
     }
