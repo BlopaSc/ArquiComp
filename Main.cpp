@@ -18,6 +18,7 @@ Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
 int instructionsProcessed,quantum,m,b;
+bool modoLento;
 
 void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
@@ -69,12 +70,12 @@ void loadFile(char * filename){
     ptrFile = fopen(filename,"r");
     if(ptrFile!=NULL){
 	    while(fscanf(ptrFile,"%i %i %i %i\n",&codigo,&p1,&p2,&p3) != EOF){
-		if(startState){
+		    if(startState){
 	            startState=false;
 	            newState = new State();
 	            newState->pc = instructionsProcessed;
 	            threadManager->add(newState);
-		        printf("Position in memory: %i -- Thread noº: %i\n",newState->pc,threadManager->getSize());
+		        printf("Position in memory: %i -- Thread no: %i\n",newState->pc,threadManager->getSize());
 	        }
 	        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
 	        mainMemory->ramInstructions[instructionsProcessed]=codigo;
@@ -111,14 +112,38 @@ int main(int argc,char *argv[]){
     instructionsProcessed = 0;
     
     if(argc == 1){
+        char* input = new char[0x10000];
         // Default: crear codigo de cargado manual
+        /*modoLento = false;
         quantum=30;
         m=1;
         b=1;
         loadFile((char *)"1.txt");
         loadFile((char *)"2.txt");
+        */
+        
+        printf("Desea activar el modo lento? (s/n): ");
+        scanf("%s",input);
+        modoLento = input[0]=='s';
+        printf("De que tamano desea el quantum?: ");
+        scanf("%i",quantum);
+        printf("De que tamano desea el m?: ");
+        scanf("%i",m);
+        printf("De que tamano desea el b?: ");
+        scanf("%i",b);
+        printf("Escriba los nombres de los archivos a ejecutar, para finalizar introduzca solo 'e':\n");
+        do{
+            scanf("%s",input);
+            if(input[0]!='e' && input[1]!='\0'){
+                loadFile(input);
+            }
+        }while(input[0]!='e' && input[1]!='\0');
+        
+        delete[] input;
+        
     }else{
         // Cargar de argumentos
+        //modoLento=argv[1][0]=='t';
         quantum = atoi(argv[1]);
         m = atoi(argv[2]);
         b = atoi(argv[3]);
