@@ -24,6 +24,11 @@ void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
       int idThread = (int)paramPtr;
       printf("Procesador No.%i\n",idThread);
+      pthread_mutex_lock(&lockQueue);
+      if(idThread<threadManager->getSize()){
+            proc->setState(threadManager->getNext());
+      }
+      pthread_mutex_unlock(&lockQueue);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
          // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
@@ -43,12 +48,14 @@ void *threadProcessor(void *paramPtr){
               proc->setState(threadManager->getNext());
               pthread_mutex_unlock(&lockQueue);
          }
+	 if(!idThread){printf("Ciclo\n");}
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
          if(modoLento){
             // FALTA AGREGAR MODO LENTO    
          }
       }
+      printf("Fin Processor No.%i\n",idThread);
       delete proc;
 }
 
@@ -130,12 +137,12 @@ int main(int argc,char *argv[]){
         scanf("%s",input);
         modoLento = input[0]=='s';
         printf("De que tamano desea el quantum?: ");
-        scanf("%i",quantum);
+        scanf("%i",&quantum);
         printf("De que tamano desea el m?: ");
-        scanf("%i",m);
+        scanf("%i",&m);
         printf("De que tamano desea el b?: ");
-        scanf("%i",b);
-        printf("Escriba los nombres de los archivos a ejecutar, para finalizar introduzca solo 'e':\n");
+        scanf("%i",&b);
+        printf("Escriba los nombres de los archivos a ejecutar\nPara finalizar introduzca solo 'e':\n");
         do{
             scanf("%s",input);
             if(input[0]!='e' && input[1]!='\0'){

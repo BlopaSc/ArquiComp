@@ -15,7 +15,7 @@ class Processor{
            Cache *cacheData,*cacheInstr;
         // Constructor
         Processor(Bus *instrBus,Bus *dataBus){
-            cycles=0;
+            cycles=1;
             flags=0x0;
             state = 0;
             instr = new Instructions();
@@ -27,6 +27,9 @@ class Processor{
             delete instr;
             delete cacheData;
             delete cacheInstr;
+            if(state){
+                delete state;
+            }
         }
         // Retorna si el procesador se encuentra en un estado de fin
         inline unsigned char getFin(){return flags&0x1;}
@@ -88,6 +91,7 @@ class Processor{
         // Es llamado cuando un hilo ha acabado y debe ser eliminado y las banderas reiniciadas
         void finishState(){
              delete state;
+             state=0;
              flags=0x0;
         }
         
