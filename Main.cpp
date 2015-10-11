@@ -32,6 +32,7 @@ void *threadProcessor(void *paramPtr){
               if(proc->getState()){
                    if(proc->getFin()){
                        // Es porque acabo hilillo
+                       proc->getState()->printState();
                        threadManager->remove(proc->getState());
                        proc->finishState();
                    }else{
@@ -44,6 +45,9 @@ void *threadProcessor(void *paramPtr){
          }
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
+         if(modoLento){
+            // FALTA AGREGAR MODO LENTO    
+         }
       }
       delete proc;
 }
