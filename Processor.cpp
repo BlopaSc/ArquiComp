@@ -8,6 +8,7 @@ class Processor{
     private:
         long long cycles;
         unsigned char flags;
+        unsigned* instruction;
     public:
            State* state;
            Instructions* instr;
@@ -75,6 +76,11 @@ class Processor{
         void execute(){
              if(state){
                        // Si se tiene cargado un estado ejecuta
+                       // SOLICITAR PC AL CACHE DE INSTRUCCIONES
+                       instruction = cacheInstr->getData(state->pc);
+                       // EJECUTAR INSTRUCCION
+                       ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
+                       state->pc += 0x4;
                        cycles++;
              }
         }

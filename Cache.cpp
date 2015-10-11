@@ -50,7 +50,7 @@ class Cache{
                   // WAIT
                   pthread_mutex_unlock(&(bus->lock));
                   missCounter++;
-                  tag[block%BLOCKS_PER_CACHE]=blockNumber;
+                  tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
             }else{
                   hitCounter++;
             }
