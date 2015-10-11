@@ -16,7 +16,7 @@ class Cache{
         
     public: 
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
-        Cache(Bus* b,unsigned multiplier,pthread_barrier_t synchroBarrier){
+        Cache(Bus* b,unsigned multiplier){
             multi = multiplier;
             tag = new unsigned[BLOCKS_PER_CACHE];
             cache = new unsigned[BLOCKS_PER_CACHE*WORDS_PER_BLOCK*multiplier];

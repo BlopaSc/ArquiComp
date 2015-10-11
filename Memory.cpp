@@ -17,7 +17,7 @@ class Memory{
             for(int i=0;i<size;i++){ramInstructions[i] = DEFAULT_MEMORY_START;}
             // Crea la ram de datos
             size = BLOCKS_DATA*WORDS_PER_BLOCK;
-            ramData = new unsigned[];
+            ramData = new unsigned[size];
             for(int i=0;i<size;i++){ramData[i] = DEFAULT_MEMORY_START;}
         }
         // Destructor
