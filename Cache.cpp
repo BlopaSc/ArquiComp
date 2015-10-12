@@ -9,7 +9,7 @@ class Cache{
         Bus* bus;
         // Guarda los tags de los caches y la data del cache
         unsigned* tag;
-        unsigned* cache;
+        unsigned** cache;
         // Contadores con fines estadisticos
         unsigned hitCounter,missCounter,multi;
         // Barrera de sincronizacion utilizada por los procesadores
@@ -19,7 +19,10 @@ class Cache{
         Cache(Bus* b,unsigned multiplier){
             multi = multiplier;
             tag = new unsigned[BLOCKS_PER_CACHE];
-            cache = new unsigned[BLOCKS_PER_CACHE*WORDS_PER_BLOCK*multiplier];
+            cache = new unsigned*[BLOCKS_PER_CACHE];
+            for(int i=0;i<BLOCKS_PER_CACHE;i++){
+                cache[i]=new unsigned[WORDS_PER_BLOCK*multiplier];
+            }
             bus = b;
             hitCounter=0;
             missCounter=0;
@@ -30,11 +33,11 @@ class Cache{
         // Destructor
         ~Cache(){
             delete[] tag;
+            for(int i=0;i<BLOCKS_PER_CACHE;i++){
+                delete[] cache[i];
+            }
             delete[] cache;
         }
-        
-        // CHECK THIS CODE DUDE, 100% LIKELY IT HAS A BUG
-        
         // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
         unsigned* getData(unsigned pos){
             // Calcula su numero de bloque
@@ -43,9 +46,9 @@ class Cache{
             if(blockNumber!=tag[blockNumber%BLOCKS_PER_CACHE]){
                   // SI EL MUTEX ESTA OCUPADO, ENBUCLAR AQUI ---> IMPORTANTISILIMO PRIORITY LVL 1 <---
                   pthread_mutex_lock(&(bus->lock));
-                  transfer = bus->getData(pos);
+                  transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                   for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
-                       cache[(pos%WORDS_PER_BLOCK)+((blockNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)+copy] = transfer[copy];
+                       cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
                   }
                   // AGREGAR WAIT
                   pthread_mutex_unlock(&(bus->lock));
@@ -54,7 +57,7 @@ class Cache{
             }else{
                   hitCounter++;
             }
-            return &cache[(pos%(WORDS_PER_BLOCK*multi))+((blockNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)];
+            return &cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
         }
 };
 #endif

@@ -9,6 +9,7 @@ class State{
         int * registers;
         int pc;
         int rl;
+        int id;
         // Constructor
         State(){
             registers = new int[REGISTER_COUNT];
@@ -22,7 +23,7 @@ class State{
         }
         // Print del estado
         void printState(){
-            printf("Registers: ");
+            printf("Process %i: ",id);
             for(int i=0;i<REGISTER_COUNT;i++){
                 if(registers[i]){
                     printf("R%i = %i, ",i,registers[i]);

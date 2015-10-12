@@ -91,6 +91,7 @@ void loadFile(char * filename){
 	            newState = new State();
 	            newState->pc = instructionsProcessed;
 	            threadManager->add(newState);
+	            newState->id = threadManager->getSize();
 		        printf("Position in memory: %i -- Thread no: %i\n",newState->pc,threadManager->getSize());
 	        }
 	        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
@@ -132,8 +133,6 @@ int main(int argc,char *argv[]){
     }
     instructionsProcessed = 0;
     verbose=false;
-    // VERBOSE FOR TESTS:
-    verbose=true;
     
     if(argc == 1){
         char* input = new char[0x10000];
