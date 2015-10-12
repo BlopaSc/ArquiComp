@@ -80,8 +80,8 @@ class Processor{
              if(state){
                        // Si se tiene cargado un estado ejecuta
                        instruction = cacheInstr->getData(state->pc);
+                       printf("PC: %i, Instruction: %i %i %i %i ",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
-                       printf("PC: %i, Instruction: %i %i %i %i",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
                        char c[2];
                        scanf("%c",c);
                        state->pc += 0x4;
