@@ -45,16 +45,16 @@ class Processor{
                     instr->DADDI(state,p2,p1,p3);
                     break;
                case 32:
-                    instr->DADD(state,p2,p3,p1);
+                    instr->DADD(state,p3,p1,p2);
                     break;
                case 34:
-                    instr->DSUB(state,p2,p3,p1);
+                    instr->DSUB(state,p3,p1,p2);
                     break;
                case 12:
-                    instr->DMUL(state,p2,p3,p1);
+                    instr->DMUL(state,p3,p1,p2);
                     break;
                case 14:
-                    instr->DDIV(state,p2,p3,p1);
+                    instr->DDIV(state,p3,p1,p2);
                     break;
                case 4:
                     instr->BEQZ(state,p1,p3);
@@ -80,7 +80,7 @@ class Processor{
              if(state){
                        // Si se tiene cargado un estado ejecuta
                        instruction = cacheInstr->getData(state->pc);
-                       printf("PC: %i, Instruction: %i %i %i %i ",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
+                       printf("PC: %i, Instruction: %i %i %i %i | ",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
                        char c[2];
                        scanf("%c",c);

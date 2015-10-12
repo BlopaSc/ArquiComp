@@ -18,31 +18,31 @@ class Instructions{
         //Metodo DADDI
         void DADDI(State * state, int rx, int ry, int n){
              state->registers[rx] = state->registers[ry] + n;
-             if(verbose){printf("R%i = R%i+%i",rx,ry,n);}
+             if(verbose){printf("R%i = R%i+%i = %i",rx,ry,n,state->registers[rx]);}
         }
         
         //Metodo DADD
         void DADD(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] + state->registers[rz];
-             if(verbose){printf("R%i = R%i+R%i",rx,ry,rz);}
+             if(verbose){printf("R%i = R%i+R%i = %i",rx,ry,rz,state->registers[rx]);}
         }
         
         //DSUB
         void DSUB(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] - state->registers[rz];
-             if(verbose){printf("R%i = R%i-R%i",rx,ry,rz);}
+             if(verbose){printf("R%i = R%i-R%i = %i",rx,ry,rz,state->registers[rx]);}
         }
         
         //DMUL
         void DMUL(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] * state->registers[rz];
-             if(verbose){printf("R%i = R%i*R%i",rx,ry,rz);}
+             if(verbose){printf("R%i = R%i*R%i = %i",rx,ry,rz,state->registers[rx]);}
         }
         
         //DDIV
         void DDIV(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] / state->registers[rz];
-             if(verbose){printf("R%i = R%i/R%i",rx,ry,rz);}
+             if(verbose){printf("R%i = R%i/R%i = %i",rx,ry,rz,state->registers[rx]);}
         }
         
         //BEQZ
