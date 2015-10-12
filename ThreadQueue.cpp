@@ -23,9 +23,11 @@ class ThreadQueue{
     private:
         QueueNode *current;
         unsigned size;
+        unsigned leftUntaken;
     public:
         ThreadQueue(){
             size=0;
+            leftUntaken=0;
             current=0;
         }
         ~ThreadQueue(){
@@ -35,6 +37,7 @@ class ThreadQueue{
             }
         }
         inline unsigned getSize(){return size;}
+        inline unsigned getLeftUntaken(){return leftUntaken;}
         // Agrega un nuevo hilo al manejador de hilos
         void add(State *state){
             if(current){
@@ -47,6 +50,7 @@ class ThreadQueue{
                 current->prev = current;
             }
             size++;
+            leftUntaken++;
         }
         // Todas estas funciones necesitan usarse en seccion critica
         // Retorna el siguiente hilo disponible al procesador
@@ -60,6 +64,7 @@ class ThreadQueue{
                 if(!tmp->taken){
                     current = tmp;
                     current->taken=true;
+                    leftUntaken--;
                     current = current->next;
                     returnState = current->prev->state;
                 }
@@ -74,28 +79,32 @@ class ThreadQueue{
             }
             if(tmp->state==state){
                 tmp->taken=false;
+                leftUntaken++;
             }
         }
         // Se utiliza para remover un hilo finalizado de la lista
         void remove(State *state){
             QueueNode *tmp = current;
             if(current){
-            do{
-                tmp = tmp->next;
-            }while(tmp!=current && tmp->state!=state);
-            if(tmp->state==state){
-                if(tmp==current){
-                    current = tmp->next;
+                do{
+                    tmp = tmp->next;
+                }while(tmp!=current && tmp->state!=state);
+                if(tmp->state==state){
+                    if(tmp==current){
+                        current = tmp->next;
+                    }
+                    tmp->prev->next = tmp->next;
+                    tmp->next->prev = tmp->prev;
+                    tmp->next=0;
+                    if(!tmp->taken){
+                        leftUntaken--;
+                    }
+                    delete tmp;
+                    size--;
+                    if(!size){
+                        current=0;
+                    }
                 }
-                tmp->prev->next = tmp->next;
-                tmp->next->prev = tmp->prev;
-                tmp->next=0;
-                delete tmp;
-                size--;
-                if(!size){
-                    current=0;
-                }
-            }
             }
         }
 };

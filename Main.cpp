@@ -32,23 +32,24 @@ void *threadProcessor(void *paramPtr){
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
          // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
-         if((!(proc->getCycle()%quantum) || proc->getFin()) && threadManager->getSize()>=NUM_PROCS){
-              pthread_mutex_lock(&lockQueue);
-              if(proc->getState()){
-                   if(proc->getFin()){
-                       // Es porque acabo hilillo
-                       proc->getState()->printState();
-                       threadManager->remove(proc->getState());
-                       proc->finishState();
-                   }else{
-                       // Excedio QUANTUM
-                       threadManager->returnThread(proc->getState());
-                   }
-              }
-              proc->setState(threadManager->getNext());
-              pthread_mutex_unlock(&lockQueue);
+         if(proc->getFin()){
+             // Acabo hilo
+             proc->getState()->printState();
+             threadManager->remove(proc->getState());
+             proc->finishState();
+             if(threadManager->getLeftUntaken()){
+                    pthread_mutex_lock(&lockQueue);
+                    proc->setState(threadManager->getNext());
+                    pthread_mutex_unlock(&lockQueue);
+             }
+         }else{
+                if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
+                    pthread_mutex_lock(&lockQueue);
+                    threadManager->returnThread(proc->getState());
+                    proc->setState(threadManager->getNext());
+                    pthread_mutex_unlock(&lockQueue);
+                }
          }
-	 if(!idThread){printf("Ciclo\n");}
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
          if(modoLento){
@@ -162,6 +163,7 @@ int main(int argc,char *argv[]){
             loadFile(argv[i]);
         }
     }
+    quantum++;
     displayMemory();
     
     

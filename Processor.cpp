@@ -79,10 +79,11 @@ class Processor{
         void execute(){
              if(state){
                        // Si se tiene cargado un estado ejecuta
-                       // SOLICITAR PC AL CACHE DE INSTRUCCIONES
                        instruction = cacheInstr->getData(state->pc);
-                       // EJECUTAR INSTRUCCION
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
+                       printf("PC: %i, Instruction: %i %i %i %i",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
+                       char c[2];
+                       scanf("%c",c);
                        state->pc += 0x4;
                        cycles++;
              }
@@ -90,6 +91,7 @@ class Processor{
         
         // Es llamado cuando un hilo ha acabado y debe ser eliminado y las banderas reiniciadas
         void finishState(){
+             cycles=1;
              delete state;
              state=0;
              flags=0x0;

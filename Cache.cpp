@@ -44,17 +44,17 @@ class Cache{
                   // SI EL MUTEX ESTA OCUPADO, ENBUCLAR AQUI ---> IMPORTANTISILIMO PRIORITY LVL 1 <---
                   pthread_mutex_lock(&(bus->lock));
                   transfer = bus->getData(pos);
-                  for(copy=0;copy<multi;copy++){
+                  for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
                        cache[(pos%WORDS_PER_BLOCK)+((blockNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)+copy] = transfer[copy];
                   }
-                  // WAIT
+                  // AGREGAR WAIT
                   pthread_mutex_unlock(&(bus->lock));
                   missCounter++;
                   tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
             }else{
                   hitCounter++;
             }
-            return &cache[(pos%WORDS_PER_BLOCK)+((blockNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)];
+            return &cache[(pos%(WORDS_PER_BLOCK*multi))+((blockNumber%BLOCKS_PER_CACHE)*WORDS_PER_BLOCK)];
         }
 };
 #endif
