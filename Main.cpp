@@ -18,7 +18,7 @@ Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
 int instructionsProcessed,quantum,m,b;
-bool modoLento;
+bool modoLento,verbose;
 
 void *threadProcessor(void *paramPtr){
       Processor* proc = new Processor(instrBus,dataBus);
@@ -53,8 +53,12 @@ void *threadProcessor(void *paramPtr){
          proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
          if(modoLento){
-            // FALTA AGREGAR MODO LENTO    
-         }
+            // FALTA MEJORAR MODO LENTO
+            if(!idThread){
+                char c[2];
+                scanf("%c",c);
+            }
+         }else{if(verbose && !idThread){printf("\n");}}
       }
       printf("Fin Processor No.%i\n",idThread);
       delete proc;
@@ -106,7 +110,12 @@ void loadFile(char * filename){
 void displayMemory(){
      printf("Despliegue de memoria: \n");
      for(int i=0;i<instructionsProcessed;i++){
-         printf("%d ",mainMemory->ramInstructions[i]);            
+         printf("%d ",mainMemory->ramInstructions[i]);
+         if((i&0xF) == 15){
+            printf("\n");
+         }else{
+            if((i&0x3) == 3){printf("\t");}
+         }
      }
      printf("\n");
 }
@@ -122,18 +131,12 @@ int main(int argc,char *argv[]){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
     instructionsProcessed = 0;
+    verbose=false;
+    // VERBOSE FOR TESTS:
+    verbose=true;
     
     if(argc == 1){
         char* input = new char[0x10000];
-        // Default: crear codigo de cargado manual
-        /*modoLento = false;
-        quantum=30;
-        m=1;
-        b=1;
-        loadFile((char *)"1.txt");
-        loadFile((char *)"2.txt");
-        */
-        
         printf("Desea activar el modo lento? (s/n): ");
         scanf("%s",input);
         modoLento = input[0]=='s';
@@ -150,9 +153,7 @@ int main(int argc,char *argv[]){
                 loadFile(input);
             }
         }while(input[0]!='e' && input[1]!='\0');
-        
         delete[] input;
-        
     }else{
         // Cargar de argumentos
         modoLento = argv[1][0]=='t';

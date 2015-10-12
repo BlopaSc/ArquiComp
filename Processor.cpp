@@ -3,6 +3,7 @@
 #include "State.cpp"
 #include "Instructions.cpp"
 #include "Cache.cpp"
+extern bool verbose;
 // Clase que emula un procesador
 class Processor{
     private:
@@ -80,11 +81,9 @@ class Processor{
              if(state){
                        // Si se tiene cargado un estado ejecuta
                        instruction = cacheInstr->getData(state->pc);
-                       printf("PC: %i, Instruction: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);
-                       ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
-                       char c[2];
-                       scanf("%c",c);
+                       if(verbose){printf("PC: %i, Instruction: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                        state->pc += 0x4;
+                       ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
                        cycles++;
              }
         }

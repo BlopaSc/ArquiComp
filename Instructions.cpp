@@ -2,14 +2,12 @@
 #define INSTRUCTIONS_CPP
 #include "State.cpp"
 #include <stdio.h>
+extern bool verbose;
 // Clase encargada de las instrucciones MIPS
 class Instructions{
-    private:
-        bool verbose;
     public:
         // Constructor
         Instructions(){
-            verbose=true;
         }
         // Destructor
         ~Instructions(){
@@ -48,7 +46,7 @@ class Instructions{
         //BEQZ
         void BEQZ(State * state, int rx, int etiq){
              if(!state->registers[rx]){
-                  state->pc=etiq;
+                  state->pc+=0x4*etiq;
              }
              if(verbose){printf("if R%i = 0 JMP %i",rx,etiq);}
         }
@@ -56,7 +54,7 @@ class Instructions{
         //BNEZ
         void BNEZ(State * state, int rx, int etiq){
              if(state->registers[rx]){
-                  state->pc=etiq;
+                  state->pc+=0x4*etiq;
              }
              if(verbose){printf("if R%i != 0 JMP %i",rx,etiq);}
         }
