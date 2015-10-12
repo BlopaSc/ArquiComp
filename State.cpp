@@ -1,7 +1,6 @@
 #ifndef STATE_CPP
 #define STATE_CPP
 #include <stdio.h>
-#include <stdlib.h>
 #define REGISTER_COUNT 32
 // Clase encargada de llevar los registros y el estado del pipeline del procesador 
 class State{
@@ -12,13 +11,14 @@ class State{
         int rl;
         // Constructor
         State(){
-            registers = (int *) calloc (REGISTER_COUNT*sizeof(int),0);
+            registers = new int[REGISTER_COUNT];
+	        for(int i=0;i<REGISTER_COUNT;i++){registers[i]=0;}
             pc=0;
             rl=0;
         }
         // Destructor
         ~State(){
-            free(registers);
+            delete[] registers;
         }
         // Print del estado
         void printState(){
