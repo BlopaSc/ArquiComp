@@ -16,9 +16,7 @@ pthread_mutex_t lockQueue;
 
 /*
 
-FALTA: 
-1. agregar delay en el miss
-2. agregar algo que imprima resultado final de todo al terminal una vez que finalizan todos los procesos
+FALTA: agregar delay en el miss
 
 */
 
@@ -29,6 +27,7 @@ Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
 int instructionsProcessed,quantum,m,b,clockCounter;
 bool modoLento,verbose;
+State** results;
 
 void *threadProcessor(void *paramPtr){
       int idThread = (int)paramPtr;
@@ -43,24 +42,25 @@ void *threadProcessor(void *paramPtr){
       pthread_barrier_wait (&synchroBarrier);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
+         pthread_barrier_wait (&synchroBarrier);
          // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
          if(proc->getFin()){
              // Acabo hilo
-             proc->getState()->printState();
+             pthread_mutex_lock(&lockQueue);
+             results[proc->getState()->id-1] = proc->getState();
              threadManager->remove(proc->getState());
              proc->finishState();
              if(threadManager->getLeftUntaken()){
-                    pthread_mutex_lock(&lockQueue);
                     proc->setState(threadManager->getNext());
-                    pthread_mutex_unlock(&lockQueue);
              }
+             pthread_mutex_unlock(&lockQueue);
          }else{
+                pthread_mutex_lock(&lockQueue);
                 if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
-                    pthread_mutex_lock(&lockQueue);
                     threadManager->returnThread(proc->getState());
                     proc->setState(threadManager->getNext());
-                    pthread_mutex_unlock(&lockQueue);
                 }
+                pthread_mutex_unlock(&lockQueue);
          }
          if(modoLento){
             if(!idThread){
@@ -72,7 +72,6 @@ void *threadProcessor(void *paramPtr){
          pthread_barrier_wait (&synchroBarrier);
          proc->execute();
          if(!idThread){clockCounter++;}
-         pthread_barrier_wait (&synchroBarrier);
       }
       printf("Fin Processor No.%i\n",idThread);
       delete proc;
@@ -108,7 +107,7 @@ void loadFile(char * filename){
 	            newState->id = threadManager->getSize();
 		        printf("Position in memory: %i -- Thread no: %i\n",newState->pc,threadManager->getSize());
 	        }
-	        printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);
+	        if(verbose){printf("Read: %d %d %d %d \n",codigo, p1, p2, p3);}
 	        mainMemory->ramInstructions[instructionsProcessed]=codigo;
 	        instructionsProcessed++;
 	        mainMemory->ramInstructions[instructionsProcessed]=p1;
@@ -154,6 +153,7 @@ int main(int argc,char *argv[]){
         printf("Desea activar el modo lento? (s/n): ");
         scanf("%s",input);
         modoLento = input[0]=='s';
+        verbose = modoLento;
         printf("De que tamano desea el quantum?: ");
         scanf("%i",&quantum);
         printf("De que tamano desea el m?: ");
@@ -171,6 +171,7 @@ int main(int argc,char *argv[]){
     }else{
         // Cargar de argumentos
         modoLento = argv[1][0]=='t';
+        verbose = modoLento;
         quantum = atoi(argv[2]);
         m = atoi(argv[3]);
         b = atoi(argv[4]);
@@ -180,13 +181,21 @@ int main(int argc,char *argv[]){
     }
     quantum++;
     displayMemory();
-    verbose = modoLento;
+    int resultSize=threadManager->getSize();
+    results = new State*[resultSize];
     
     pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
     printf("Hilo root ejecutandose\n");
     
     run();
     
+    printf("Resultados de los hilos:\n");
+    for(int i=0;i<resultSize;i++){
+        results[i]->printState();
+        delete results[i];
+    }
+    
+    delete[] results;
     delete[] thread;
     delete dataBus;
     delete instrBus;

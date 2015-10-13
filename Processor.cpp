@@ -70,7 +70,7 @@ class Processor{
                     instr->JR(state,p1);
                     break;
                case 63:
-                    printf("\n");
+                    if(verbose){printf("\n");}
                     flags|=0x1;
                     break;
              }
@@ -95,7 +95,6 @@ class Processor{
         // Es llamado cuando un hilo ha acabado y debe ser eliminado y las banderas reiniciadas
         void finishState(){
              cycles=1;
-             delete state;
              state=0;
              flags=0x0;
         }
