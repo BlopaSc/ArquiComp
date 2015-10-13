@@ -84,10 +84,11 @@ class Processor{
                        instruction = cacheInstr->getData(state->pc);
                        if(verbose){printf("PC: %i, Instr: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                        state->pc += 0x4;
+                       state->counter++;
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
                        cycles++;
              }else{
-                    printf("No-op\n");
+                    if(verbose){printf("No-op\n");}
              }
         }
         

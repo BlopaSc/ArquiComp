@@ -17,9 +17,8 @@ pthread_mutex_t lockQueue;
 /*
 
 FALTA: 
-1. contador de ciclos de cada hilo
-2. agregar delay en el miss
-3. agregar algo que imprima resultado final de todo al terminal
+1. agregar delay en el miss
+2. agregar algo que imprima resultado final de todo al terminal una vez que finalizan todos los procesos
 
 */
 
@@ -44,13 +43,6 @@ void *threadProcessor(void *paramPtr){
       pthread_barrier_wait (&synchroBarrier);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
-        if(modoLento){
-            if(!idThread){
-                printf("Ciclo -- %i",clockCounter);
-                char c[2];
-                scanf("%c",c);
-            }
-         }
          // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
          if(proc->getFin()){
              // Acabo hilo
@@ -69,6 +61,13 @@ void *threadProcessor(void *paramPtr){
                     proc->setState(threadManager->getNext());
                     pthread_mutex_unlock(&lockQueue);
                 }
+         }
+         if(modoLento){
+            if(!idThread){
+                printf("Ciclo -- %i",clockCounter);
+                char c[2];
+                scanf("%c",c);
+            }
          }
          pthread_barrier_wait (&synchroBarrier);
          proc->execute();

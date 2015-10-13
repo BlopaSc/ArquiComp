@@ -6,6 +6,7 @@
 class State{
     public:
         // Registros
+        unsigned counter;
         int * registers;
         int pc;
         int rl;
@@ -16,6 +17,7 @@ class State{
 	        for(int i=0;i<REGISTER_COUNT;i++){registers[i]=0;}
             pc=0;
             rl=0;
+            counter=0;
         }
         // Destructor
         ~State(){
@@ -23,7 +25,7 @@ class State{
         }
         // Print del estado
         void printState(){
-            printf("Process %i: ",id);
+            printf("Process %i - %u cycles: ",id,counter);
             for(int i=0;i<REGISTER_COUNT;i++){
                 if(registers[i]){
                     printf("R%i = %i, ",i,registers[i]);
