@@ -225,7 +225,7 @@ public class Interface extends javax.swing.JFrame {
             
                 jLabel4.setText("");
                 String params[] = new String[jTable1.getRowCount()+5];
-                params[0]="C:/Users/b16195/Desktop/Test.exe";
+                params[0]="Main.exe";
                 params[1]=modoLento;
                 params[2]=quantum;
                 params[3]=m;
