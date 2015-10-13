@@ -14,23 +14,43 @@ pthread_mutex_t lockQueue;
 #include "Bus.cpp"
 #include "Memory.cpp"
 
+/*
+
+FALTA: 
+1. contador de ciclos de cada hilo
+2. agregar delay en el miss
+3. agregar algo que imprima resultado final de todo al terminal
+
+*/
+
+
+
 Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
-int instructionsProcessed,quantum,m,b;
+int instructionsProcessed,quantum,m,b,clockCounter;
 bool modoLento,verbose;
 
 void *threadProcessor(void *paramPtr){
-      Processor* proc = new Processor(instrBus,dataBus);
       int idThread = (int)paramPtr;
+      Processor* proc = new Processor(instrBus,dataBus);
       printf("Procesador No.%i\n",idThread);
       pthread_mutex_lock(&lockQueue);
       if(idThread<threadManager->getSize()){
             proc->setState(threadManager->getNext());
       }
       pthread_mutex_unlock(&lockQueue);
+      // Se sincroniza para empezar
+      pthread_barrier_wait (&synchroBarrier);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
+        if(modoLento){
+            if(!idThread){
+                printf("Ciclo -- %i",clockCounter);
+                char c[2];
+                scanf("%c",c);
+            }
+         }
          // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
          if(proc->getFin()){
              // Acabo hilo
@@ -50,15 +70,10 @@ void *threadProcessor(void *paramPtr){
                     pthread_mutex_unlock(&lockQueue);
                 }
          }
-         proc->execute();   
          pthread_barrier_wait (&synchroBarrier);
-         if(modoLento){
-            // FALTA MEJORAR MODO LENTO
-            if(!idThread){
-                char c[2];
-                scanf("%c",c);
-            }
-         }else{if(verbose && !idThread){printf("\n");}}
+         proc->execute();
+         if(!idThread){clockCounter++;}
+         pthread_barrier_wait (&synchroBarrier);
       }
       printf("Fin Processor No.%i\n",idThread);
       delete proc;
@@ -132,6 +147,7 @@ int main(int argc,char *argv[]){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
     instructionsProcessed = 0;
+    clockCounter=0;
     verbose=false;
     
     if(argc == 1){
@@ -165,7 +181,7 @@ int main(int argc,char *argv[]){
     }
     quantum++;
     displayMemory();
-    
+    verbose = modoLento;
     
     pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
     printf("Hilo root ejecutandose\n");

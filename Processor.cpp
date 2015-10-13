@@ -70,6 +70,7 @@ class Processor{
                     instr->JR(state,p1);
                     break;
                case 63:
+                    printf("\n");
                     flags|=0x1;
                     break;
              }
@@ -81,10 +82,12 @@ class Processor{
              if(state){
                        // Si se tiene cargado un estado ejecuta
                        instruction = cacheInstr->getData(state->pc);
-                       if(verbose){printf("PC: %i, Instruction: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                       if(verbose){printf("PC: %i, Instr: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                        state->pc += 0x4;
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
                        cycles++;
+             }else{
+                    printf("No-op\n");
              }
         }
         
