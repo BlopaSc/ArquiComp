@@ -3,6 +3,13 @@
 #include "Bus.cpp"
 #define BLOCKS_PER_CACHE 8
 extern pthread_barrier_t synchroBarrier;
+extern pthread_mutex_t lockDeadlock;
+extern int m;
+extern int b;
+extern int clockCounter;
+extern bool busTaken;
+extern bool verbose;
+extern bool modoLento;
 class Cache{
     private:
         // Almacena el bus con el que se comunicara
@@ -12,11 +19,10 @@ class Cache{
         unsigned** cache;
         // Contadores con fines estadisticos
         unsigned hitCounter,missCounter,multi;
-        // Barrera de sincronizacion utilizada por los procesadores
-        
+        int idProcessor;
     public: 
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
-        Cache(Bus* b,unsigned multiplier){
+        Cache(Bus* b,unsigned multiplier,int id){
             multi = multiplier;
             tag = new unsigned[BLOCKS_PER_CACHE];
             cache = new unsigned*[BLOCKS_PER_CACHE];
@@ -26,6 +32,7 @@ class Cache{
             bus = b;
             hitCounter=0;
             missCounter=0;
+            idProcessor = id;
             // Inicializa los tags en -1 para obligarlo a cargar las instrucciones correctas
             for(int i=0;i<BLOCKS_PER_CACHE;i++){tag[i]=-1;}
             
@@ -43,14 +50,41 @@ class Cache{
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             unsigned *transfer,copy;
+            int wait;
             if(blockNumber!=tag[blockNumber%BLOCKS_PER_CACHE]){
-                  // SI EL MUTEX ESTA OCUPADO, ENBUCLAR AQUI ---> IMPORTANTISILIMO PRIORITY LVL 1 <---
+                  pthread_mutex_lock(&lockDeadlock);
+                  while(busTaken){
+                        if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
+                        pthread_barrier_wait (&synchroBarrier);
+                        if(!idProcessor){clockCounter++;}
+                        if(modoLento && !idProcessor){
+                            printf("Ciclo -- %i",clockCounter);
+                            char c[2];
+                            scanf("%c",c);
+                        }
+                        pthread_barrier_wait (&synchroBarrier);
+                  }
                   pthread_mutex_lock(&(bus->lock));
+                  busTaken=true;
+                  pthread_mutex_unlock(&lockDeadlock);
                   transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                   for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
                        cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
                   }
-                  // AGREGAR WAIT
+                  // Wait
+                  wait = WORDS_PER_BLOCK*(b+m+b);
+                  for(copy=0;copy<wait;copy++){
+                        if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
+                        pthread_barrier_wait (&synchroBarrier);
+                        if(!idProcessor){clockCounter++;}
+                        if(modoLento && !idProcessor){
+                            printf("Ciclo -- %i",clockCounter);
+                            char c[2];
+                            scanf("%c",c);
+                        }
+                        pthread_barrier_wait (&synchroBarrier);
+                  }
+                  busTaken=false;
                   pthread_mutex_unlock(&(bus->lock));
                   missCounter++;
                   tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;

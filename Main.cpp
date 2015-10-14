@@ -8,30 +8,24 @@
 pthread_barrier_t  synchroBarrier;
 pthread_t *thread;
 pthread_mutex_t lockQueue;
+pthread_mutex_t lockDeadlock;
+int instructionsProcessed,quantum,m,b,clockCounter;
+bool modoLento,verbose,busTaken;
 
 #include "ThreadQueue.cpp"
 #include "Processor.cpp"
 #include "Bus.cpp"
 #include "Memory.cpp"
 
-/*
-
-FALTA: agregar delay en el miss
-
-*/
-
-
-
 Memory *mainMemory;
 Bus *instrBus, *dataBus;
 ThreadQueue *threadManager;
-int instructionsProcessed,quantum,m,b,clockCounter;
-bool modoLento,verbose;
 State** results;
+
 
 void *threadProcessor(void *paramPtr){
       int idThread = (int)paramPtr;
-      Processor* proc = new Processor(instrBus,dataBus);
+      Processor* proc = new Processor(instrBus,dataBus,idThread);
       printf("Procesador No.%i\n",idThread);
       pthread_mutex_lock(&lockQueue);
       if(idThread<threadManager->getSize()){
@@ -62,6 +56,7 @@ void *threadProcessor(void *paramPtr){
                 }
                 pthread_mutex_unlock(&lockQueue);
          }
+         if(!idThread){clockCounter++;}
          if(modoLento){
             if(!idThread){
                 printf("Ciclo -- %i",clockCounter);
@@ -71,7 +66,6 @@ void *threadProcessor(void *paramPtr){
          }
          pthread_barrier_wait (&synchroBarrier);
          proc->execute();
-         if(!idThread){clockCounter++;}
       }
       printf("Fin Processor No.%i\n",idThread);
       delete proc;
@@ -144,9 +138,13 @@ int main(int argc,char *argv[]){
     if (pthread_mutex_init(&lockQueue, NULL)){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
+    if (pthread_mutex_init(&lockDeadlock, NULL)){
+        printf("\nAlgo salio mal creando el mutex para evitar el deadlock\n");
+    }
     instructionsProcessed = 0;
     clockCounter=0;
     verbose=false;
+    busTaken=false;
     
     if(argc == 1){
         char* input = new char[0x10000];

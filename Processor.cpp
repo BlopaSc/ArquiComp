@@ -10,18 +10,20 @@ class Processor{
         long long cycles;
         unsigned char flags;
         unsigned* instruction;
+        int idProcessor;
     public:
            State* state;
            Instructions* instr;
            Cache *cacheData,*cacheInstr;
         // Constructor
-        Processor(Bus *instrBus,Bus *dataBus){
+        Processor(Bus *instrBus,Bus *dataBus,int id){
             cycles=1;
             flags=0x0;
             state = 0;
             instr = new Instructions();
-            cacheInstr = new Cache(instrBus,0x4);
-            cacheData = new Cache(dataBus,0x1);
+            cacheInstr = new Cache(instrBus,0x4,id);
+            cacheData = new Cache(dataBus,0x1,id);
+            idProcessor=id;
         }
         // Destructor
         ~Processor(){
@@ -82,7 +84,7 @@ class Processor{
              if(state){
                        // Si se tiene cargado un estado ejecuta
                        instruction = cacheInstr->getData(state->pc);
-                       if(verbose){printf("PC: %i, Instr: %i %i %i %i \t",state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                       if(verbose){printf("Proc %i, PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                        state->pc += 0x4;
                        state->counter++;
                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
