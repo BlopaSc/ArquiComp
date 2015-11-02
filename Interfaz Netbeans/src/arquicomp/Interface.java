@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -35,23 +36,24 @@ public class Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        tableArchivos = new javax.swing.JTable();
+        btnEliminarArchivos = new javax.swing.JButton();
+        btnAgregarArchivo = new javax.swing.JButton();
+        btnEjecutarHilos = new javax.swing.JButton();
+        lblQuantum = new javax.swing.JLabel();
+        lblM = new javax.swing.JLabel();
+        lblB = new javax.swing.JLabel();
+        txtQuantum = new javax.swing.JTextField();
+        txtM = new javax.swing.JTextField();
+        txtB = new javax.swing.JTextField();
+        radioModoRapido = new javax.swing.JRadioButton();
+        radioModoLento = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableArchivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -67,54 +69,54 @@ public class Interface extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableArchivos);
 
-        jButton1.setLabel("Eliminar archivos seleccionados");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarArchivos.setLabel("Eliminar archivos seleccionados");
+        btnEliminarArchivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEliminarArchivosActionPerformed(evt);
             }
         });
 
-        jButton2.setLabel("Agregar archivo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarArchivo.setLabel("Agregar archivo");
+        btnAgregarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAgregarArchivoActionPerformed(evt);
             }
         });
 
-        jButton3.setLabel("Ejecutar hilos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEjecutarHilos.setLabel("Ejecutar hilos");
+        btnEjecutarHilos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEjecutarHilosActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Quantum:");
+        lblQuantum.setText("Quantum:");
 
-        jLabel2.setText("m:");
+        lblM.setText("m:");
 
-        jLabel3.setText("b:");
+        lblB.setText("b:");
 
-        jTextField1.setText("30");
+        txtQuantum.setText("30");
 
-        jTextField2.setText("1");
+        txtM.setText("1");
 
-        jTextField3.setText("1");
+        txtB.setText("1");
 
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Modo rápido");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        radioModoRapido.setSelected(true);
+        radioModoRapido.setText("Modo rápido");
+        radioModoRapido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radioModoRapidoActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Modo lento");
-        jRadioButton2.setName(""); // NOI18N
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        radioModoLento.setText("Modo lento");
+        radioModoLento.setName(""); // NOI18N
+        radioModoLento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radioModoLentoActionPerformed(evt);
             }
         });
 
@@ -130,32 +132,32 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btnEjecutarHilos)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton2)
+                            .addComponent(btnAgregarArchivo)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1))
+                            .addComponent(btnEliminarArchivos))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
+                            .addComponent(lblQuantum)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRadioButton1)
+                                    .addComponent(radioModoRapido)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton2))
+                                    .addComponent(radioModoLento))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtQuantum, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(53, 53, 53)
-                                    .addComponent(jLabel2)
+                                    .addComponent(lblM)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtM, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3)))
+                                    .addComponent(lblB)))
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(63, 63, 63))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
@@ -167,24 +169,24 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnAgregarArchivo)
+                    .addComponent(btnEliminarArchivos))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(radioModoRapido)
+                    .addComponent(radioModoLento))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblQuantum)
+                    .addComponent(lblM)
+                    .addComponent(lblB)
+                    .addComponent(txtQuantum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jButton3)
+                .addComponent(btnEjecutarHilos)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
@@ -193,45 +195,49 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        JFileChooser chooser= new JFileChooser();
-        int choice = chooser.showOpenDialog(chooser);
-        if (choice != JFileChooser.APPROVE_OPTION) return;
-        File chosenFile = chooser.getSelectedFile();
-	
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.addRow(new Object[]{chosenFile.getName(), chosenFile.getPath(), false});
+    private void btnAgregarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarArchivoActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tableArchivos.getModel();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+        JFileChooser chooser= new JFileChooser();
+        chooser.setMultiSelectionEnabled(true);
+        int choice = chooser.showOpenDialog(null);
+        
+        if (choice == JFileChooser.APPROVE_OPTION){
+            File[] selectedFiles = chooser.getSelectedFiles();
+            for(int i=0;i<selectedFiles.length;i++){
+                File chosenFile = selectedFiles[i];
+                model.addRow(new Object[]{chosenFile.getName(), chosenFile.getPath(), false});
+            }
+        }
+    }//GEN-LAST:event_btnAgregarArchivoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
+    private void btnEliminarArchivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarArchivosActionPerformed
+        DefaultTableModel model=(DefaultTableModel)tableArchivos.getModel();
         for(int i = 0; i<model.getRowCount(); i++) {
             if((boolean)model.getValueAt(i, 2)){
                 model.removeRow(i);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEliminarArchivosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEjecutarHilosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjecutarHilosActionPerformed
         // TODO add your handling code here:
-        String modoLento = "" + jRadioButton2.isSelected();
-        String quantum=jTextField1.getText();
-        String m = jTextField2.getText();
-        String b = jTextField3.getText();
+        String modoLento = "" + radioModoLento.isSelected();
+        String quantum=txtQuantum.getText();
+        String m = txtM.getText();
+        String b = txtB.getText();
         try{
             if(Integer.parseInt(quantum) > 0 && Integer.parseInt(m)>0 && Integer.parseInt(b)>0){
             
                 jLabel4.setText("");
-                String params[] = new String[jTable1.getRowCount()+5];
+                String params[] = new String[tableArchivos.getRowCount()+5];
                 params[0]="Main.exe";
                 params[1]=modoLento;
                 params[2]=quantum;
                 params[3]=m;
                 params[4]=b;
                 for(int i=5;i<params.length;i++){
-                    params[i]=(String)jTable1.getModel().getValueAt(i-5, 1);
+                    params[i]=(String)tableArchivos.getModel().getValueAt(i-5, 1);
                 }
                 Process process = new ProcessBuilder(params).start();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -240,7 +246,10 @@ public class Interface extends javax.swing.JFrame {
                 while((line=reader.readLine()) != null){
                     output+=line+"\n";
                 }
-                javax.swing.JOptionPane.showMessageDialog(null, output, "Processors results", javax.swing.JOptionPane.INFORMATION_MESSAGE, null);
+                //javax.swing.JOptionPane.showMessageDialog(null, output, "Processors results", javax.swing.JOptionPane.INFORMATION_MESSAGE, null);
+                Results logWindow = new Results();
+                logWindow.setVisible(true);
+                logWindow.setLog(output);
             }
             else{
             jLabel4.setText("Asegúrese que todos los parámetros que ingresó son mayores a 0.");
@@ -254,17 +263,25 @@ public class Interface extends javax.swing.JFrame {
         }
         
    
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEjecutarHilosActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radioModoRapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioModoRapidoActionPerformed
         // TODO add your handling code here:
-        jRadioButton2.setSelected(false);
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        if(!radioModoLento.isSelected()){
+            radioModoRapido.setSelected(true);
+        }
+        radioModoLento.setSelected(false);
+    }//GEN-LAST:event_radioModoRapidoActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        jRadioButton1.setSelected(false);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void radioModoLentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioModoLentoActionPerformed
+        if(!radioModoRapido.isSelected()){
+            radioModoLento.setSelected(true);
+        }
+        radioModoRapido.setSelected(false);
+    }//GEN-LAST:event_radioModoLentoActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -301,19 +318,19 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnAgregarArchivo;
+    private javax.swing.JButton btnEjecutarHilos;
+    private javax.swing.JButton btnEliminarArchivos;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblB;
+    private javax.swing.JLabel lblM;
+    private javax.swing.JLabel lblQuantum;
+    private javax.swing.JRadioButton radioModoLento;
+    private javax.swing.JRadioButton radioModoRapido;
+    private javax.swing.JTable tableArchivos;
+    private javax.swing.JTextField txtB;
+    private javax.swing.JTextField txtM;
+    private javax.swing.JTextField txtQuantum;
     // End of variables declaration//GEN-END:variables
 }
