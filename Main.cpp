@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-// Definicion editable
 #define NUM_PROCS 2
 
 pthread_barrier_t  synchroBarrier;

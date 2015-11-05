@@ -25,6 +25,11 @@ class Bus{
         unsigned* getData(unsigned pos){
             return &mem[pos];
         }
-        
+        // Escribe la data en memoria
+        unsigned *writeData(unsigned* data,unsigned pos,unsigned size){
+            for(unsigned i=0;i<size;i++){
+                mem[pos+i]=data[i];
+            }
+        }
 };
 #endif

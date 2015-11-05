@@ -16,15 +16,19 @@ class Cache{
         Bus* bus;
         // Guarda los tags de los caches y la data del cache
         unsigned* tag;
+        char* status;
         unsigned** cache;
         // Contadores con fines estadisticos
         unsigned hitCounter,missCounter,multi;
         int idProcessor;
     public: 
+        // Lock del cache
+        pthread_mutex_t cacheLock;
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
         Cache(Bus* b,unsigned multiplier,int id){
             multi = multiplier;
             tag = new unsigned[BLOCKS_PER_CACHE];
+            status = new char[BLOCKS_PER_CACHE];
             cache = new unsigned*[BLOCKS_PER_CACHE];
             for(int i=0;i<BLOCKS_PER_CACHE;i++){
                 cache[i]=new unsigned[WORDS_PER_BLOCK*multiplier];
@@ -34,12 +38,15 @@ class Cache{
             missCounter=0;
             idProcessor = id;
             // Inicializa los tags en -1 para obligarlo a cargar las instrucciones correctas
-            for(int i=0;i<BLOCKS_PER_CACHE;i++){tag[i]=-1;}
-            
+            for(int i=0;i<BLOCKS_PER_CACHE;i++){tag[i]=-1; status[i]='I';}
+            if (pthread_mutex_init(&cacheLock, NULL)){
+                printf("\nAlgo salio mal creando el mutex del cache\n");
+            }
         }
         // Destructor
         ~Cache(){
             delete[] tag;
+            delete[] status;
             for(int i=0;i<BLOCKS_PER_CACHE;i++){
                 delete[] cache[i];
             }
@@ -52,6 +59,7 @@ class Cache{
             unsigned *transfer,copy;
             int wait;
             if(blockNumber!=tag[blockNumber%BLOCKS_PER_CACHE]){
+                  // Seguro que evita deadlock en agarre de bus
                   pthread_mutex_lock(&lockDeadlock);
                   while(busTaken){
                         if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
@@ -65,13 +73,15 @@ class Cache{
                         pthread_barrier_wait (&synchroBarrier);
                   }
                   pthread_mutex_lock(&(bus->lock));
+                  // Toma el bus solo si esta desocupado
                   busTaken=true;
                   pthread_mutex_unlock(&lockDeadlock);
+                  // Tranfiere datos
                   transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                   for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
                        cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
                   }
-                  // Wait
+                  // Espera
                   wait = WORDS_PER_BLOCK*(b+m+b);
                   for(copy=0;copy<wait;copy++){
                         if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
@@ -85,9 +95,10 @@ class Cache{
                         pthread_barrier_wait (&synchroBarrier);
                   }
                   busTaken=false;
-                  pthread_mutex_unlock(&(bus->lock));
                   missCounter++;
                   tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                  // Libera el bus
+                  pthread_mutex_unlock(&(bus->lock));
             }else{
                   hitCounter++;
             }
