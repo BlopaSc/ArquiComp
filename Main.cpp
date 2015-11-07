@@ -25,59 +25,66 @@ State** results;
 void *threadProcessor(void *paramPtr){
       int idThread = (int)paramPtr;
       Processor* proc = new Processor(instrBus,dataBus,idThread);
-      printf("Procesador No.%i\n",idThread);
-      pthread_mutex_lock(&lockQueue);
-      if(idThread<threadManager->getSize()){
-            proc->setState(threadManager->getNext());
+      if(idThread){
+          printf("Procesador No.%i\n",idThread);
+          pthread_mutex_lock(&lockQueue);
+          if(idThread<=threadManager->getSize()){
+              proc->setState(threadManager->getNext());
+          }
+          pthread_mutex_unlock(&lockQueue);
       }
-      pthread_mutex_unlock(&lockQueue);
       // Se sincroniza para empezar
       pthread_barrier_wait (&synchroBarrier);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
          pthread_barrier_wait (&synchroBarrier);
-         // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
-         if(proc->getFin()){
-             // Acabo hilo
-             pthread_mutex_lock(&lockQueue);
-             results[proc->getState()->id-1] = proc->getState();
-             threadManager->remove(proc->getState());
-             proc->finishState();
-             if(threadManager->getLeftUntaken()){
-                    proc->setState(threadManager->getNext());
+         if(idThread){
+             // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
+             if(proc->getFin()){
+                 // Acabo hilo
+                 pthread_mutex_lock(&lockQueue);
+                 results[proc->getState()->id-1] = proc->getState();
+                 threadManager->remove(proc->getState());
+                 proc->finishState();
+                 if(threadManager->getLeftUntaken()){
+                        proc->setState(threadManager->getNext());
+                 }
+                 pthread_mutex_unlock(&lockQueue);
+             }else{
+                    pthread_mutex_lock(&lockQueue);
+                    if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
+                        threadManager->returnThread(proc->getState());
+                        proc->setState(threadManager->getNext());
+                    }
+                    pthread_mutex_unlock(&lockQueue);
              }
-             pthread_mutex_unlock(&lockQueue);
          }else{
-                pthread_mutex_lock(&lockQueue);
-                if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
-                    threadManager->returnThread(proc->getState());
-                    proc->setState(threadManager->getNext());
-                }
-                pthread_mutex_unlock(&lockQueue);
-         }
-         if(!idThread){clockCounter++;}
-         if(modoLento){
-            if(!idThread){
+             clockCounter++;
+             if(modoLento){
                 printf("Ciclo -- %i",clockCounter);
                 char c[2];
                 scanf("%c",c);
-            }
+             }
          }
          pthread_barrier_wait (&synchroBarrier);
-         proc->execute();
+         if(idThread){proc->execute();}
       }
-      printf("Fin Processor No.%i\n",idThread);
+      if(idThread){
+          printf("Fin Processor No.%i\n",idThread);
+      }else{
+            printf("Ciclos realizados: %i\n",clockCounter);
+      }
       delete proc;
 }
 
 void run(){
     printf("Emulacion iniciando\n");
     // BEGIN MULTITHREAD
-    for(int i=0;i<NUM_PROCS;i++){
+    for(int i=0;i<NUM_PROCS+1;i++){
         pthread_create(&thread[i],NULL,threadProcessor,(void*)i);
     }
     // END MULTITHREAD
-    for(int i=0;i<NUM_PROCS;i++){
+    for(int i=0;i<NUM_PROCS+1;i++){
         pthread_join(thread[i],NULL);
     }
     printf("Emulacion finalizada\n");
@@ -133,7 +140,7 @@ int main(int argc,char *argv[]){
     instrBus = new Bus(mainMemory->ramInstructions);
     dataBus = new Bus(mainMemory->ramData);
     threadManager = new ThreadQueue();
-    thread = new pthread_t[NUM_PROCS];
+    thread = new pthread_t[NUM_PROCS+1];
     if (pthread_mutex_init(&lockQueue, NULL)){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
@@ -181,7 +188,7 @@ int main(int argc,char *argv[]){
     int resultSize=threadManager->getSize();
     results = new State*[resultSize];
     
-    pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS);
+    pthread_barrier_init (&synchroBarrier, NULL, NUM_PROCS+1);
     printf("Hilo root ejecutandose\n");
     
     run();

@@ -64,12 +64,6 @@ class Cache{
                   while(busTaken){
                         if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
                         pthread_barrier_wait (&synchroBarrier);
-                        if(!idProcessor){clockCounter++;}
-                        if(modoLento && !idProcessor){
-                            printf("Ciclo -- %i",clockCounter);
-                            char c[2];
-                            scanf("%c",c);
-                        }
                         pthread_barrier_wait (&synchroBarrier);
                   }
                   pthread_mutex_lock(&(bus->lock));
@@ -86,12 +80,6 @@ class Cache{
                   for(copy=0;copy<wait;copy++){
                         if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
                         pthread_barrier_wait (&synchroBarrier);
-                        if(!idProcessor){clockCounter++;}
-                        if(modoLento && !idProcessor){
-                            printf("Ciclo -- %i",clockCounter);
-                            char c[2];
-                            scanf("%c",c);
-                        }
                         pthread_barrier_wait (&synchroBarrier);
                   }
                   busTaken=false;
