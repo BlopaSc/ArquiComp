@@ -1,0 +1,74 @@
+LW
+
+si el bloque esta C
+	Implica que no ha sido modificado.
+	Puede que alguien mas lo tenga (sin haberlo modificado), o puede que solo yo lo tenga
+	Solo se lee y listo
+	Es necesario bloquear la caché propia para que nadie más la agarre, y se desbloquea a final de ciclo
+
+
+sino, si el bloque esta en M
+	Solo yo lo tengo. Puede que alguien mas lo tenga, pero esta invalidado, y eso corresponde a un miss.
+	Solo se lee y listo
+
+sino, es porque esta en I, o no lo tengo del todo (da igual)
+	Se tiene que pedir el bus
+	(Si no se logra obtener el bus, desbloqueo mi caché y termino el ciclo)
+	
+	Primero, hay que revisar si lo que esta en el bloque donde deberia estar el bloque, esta M
+	si esta modificado, hay que mandarlo a escribir (bloqueo mi caché, uso el bus para ir a memoria a escribirlo, y vuelvo)
+	
+	es necesario preguntarle a la otra caché a ver como lo tiene
+	Se bloquea el caché ajeno
+
+	si lo tiene modificado
+		se manda a escribir a memoria el bloque
+		luego se copia de la caché ajena a la propia
+		Luego se libera el caché del otro
+		Me devuelvo y libero el bus
+	sino
+		Se libera el caché del otro
+		Se usa el bus para traer el bloque de memoria
+		Se libera el bus
+	
+
+
+	
+SW
+
+si el bloque esta C
+	Es necesario ir a invalidar el bloque del otro caché
+	Pido el bus (Si no se logra obtener el bus, se queda esperando)
+	Bloqueo la otra caché
+	Cambio el bloque del otro de C a I
+	Desbloqueo la otra caché
+	Me devuelvo y libero el bus
+	Cambio el bloque en mi caché a M
+
+sino, si esta en M
+	Solo yo tengo (valido; puede que alguien mas lo tenga, pero estaria invalidado, lo cual es un miss)
+	Simplemente escribo
+
+sino, es porque esta en I, o no lo tengo del todo (da igual, es un miss)
+	Es necesario ir a revisar el bloque del otro caché
+	Pido el bus (Si no se logra obtener el bus, se queda esperando)
+	Bloqueo la otra caché
+	Reviso el bloque
+	si esta C
+		lo pongo en I
+		libero la caché
+		me devuelvo
+		libero el bus
+		modifico el bloque y lo pongo en M
+	si esta en M
+		primero lo tengo que ir a escribir a memoria
+		luego, ya cuando volvi, lo dejo en invalidado (previendo que lo voy a escribir yo)
+		me devuelvo a mi propia caché
+		modifico el bloque
+	si esta en I
+		Nadie lo tiene, asi que hay que ir a traerlo de memoria
+		Ya cuando lo traje a mi propia caché, lo modifico
+
+		
+
+	
