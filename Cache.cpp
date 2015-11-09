@@ -22,8 +22,10 @@ class Cache{
         unsigned hitCounter,missCounter,multi;
         int idProcessor;
     public: 
-        // Lock del cache
+        // Locks del cache
         pthread_mutex_t cacheLock;
+        pthread_mutex_t noDeadLock; // Mutex que sirve para evitar deadlock en cache
+        bool cacheTaken;
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
         Cache(Bus* b,unsigned multiplier,int id){
             multi = multiplier;
@@ -42,6 +44,10 @@ class Cache{
             if (pthread_mutex_init(&cacheLock, NULL)){
                 printf("\nAlgo salio mal creando el mutex del cache\n");
             }
+            if (pthread_mutex_init(&noDeadLock, NULL)){
+                printf("\nAlgo salio mal creando el deadlock-mutex del cache\n");
+            }
+            cacheTaken=false;
         }
         // Destructor
         ~Cache(){

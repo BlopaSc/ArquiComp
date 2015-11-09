@@ -75,6 +75,30 @@ class Processor{
                     if(verbose){printf("\n");}
                     flags|=0x1;
                     break;
+               case 35: // LW
+                    pthread_mutex_lock(&(cacheData->noDeadLock));
+                    if(cacheData->cacheTaken){
+                        pthread_mutex_unlock(&(cacheData->noDeadLock));
+                    }else{
+                        cacheData->cacheTaken=true;
+                        pthread_mutex_lock(&(cacheData->cacheLock));
+                        pthread_mutex_unlock(&(cacheData->noDeadLock));
+                        bool success;
+                        // bool success = TRAIGA DATOS
+                        if(!sucess){state->pc -= 0x4; state->counter--;}
+                        pthread_mutex_unlock(&(cacheData->cacheLock));
+                    }
+                    
+                    break;
+               case 43: // SW
+                    
+                    break;
+               case 50: // LL
+                    
+                    break;
+               case 51: // SC
+                    
+                    break;
              }
         }
         
