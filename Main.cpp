@@ -60,8 +60,10 @@ void *threadProcessor(void *paramPtr){
              }
          }else{
              clockCounter++;
+             if(verbose){
+                 printf("Ciclo -- %i",clockCounter);
+             }
              if(modoLento){
-                printf("Ciclo -- %i",clockCounter);
                 char c[2];
                 scanf("%c",c);
              }
@@ -72,7 +74,7 @@ void *threadProcessor(void *paramPtr){
       if(idThread){
           printf("Fin Processor No.%i\n",idThread);
       }else{
-            printf("Ciclos realizados: %i\n",clockCounter);
+          printf("Ciclos realizados: %i\n",clockCounter);
       }
       delete proc;
 }
@@ -175,7 +177,11 @@ int main(int argc,char *argv[]){
     }else{
         // Cargar de argumentos
         modoLento = argv[1][0]=='t';
-        verbose = modoLento;
+        if(argv[1][1]!='\0'){
+           verbose = argv[1][1]=='r';
+        }else{
+           verbose = modoLento;
+        }
         quantum = atoi(argv[2]);
         m = atoi(argv[3]);
         b = atoi(argv[4]);
