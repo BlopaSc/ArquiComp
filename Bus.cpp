@@ -10,12 +10,18 @@ class Bus{
         unsigned* mem;
     public:
         pthread_mutex_t lock;
+        pthread_mutex_t lockDeadlock;
+        bool busTaken;
         // Constructor
         Bus(unsigned* m){
             mem=m;
             if (pthread_mutex_init(&lock, NULL)){
                 printf("\nAlgo salio mal creando el mutex del bus\n");
             }
+            if (pthread_mutex_init(&lockDeadlock, NULL)){
+                printf("\nAlgo salio mal creando el mutex para evitar el deadlock en bus\n");
+            }
+            busTaken=false;
         }
         // Destructor
         ~Bus(){

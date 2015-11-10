@@ -3,13 +3,9 @@
 #include "Bus.cpp"
 #define BLOCKS_PER_CACHE 8
 extern pthread_barrier_t synchroBarrier;
-extern pthread_mutex_t lockDeadlock;
 extern int m;
 extern int b;
-extern int clockCounter;
-extern bool busTaken;
 extern bool verbose;
-extern bool modoLento;
 class Cache{
     private:
         // Almacena el bus con el que se comunicara
@@ -59,23 +55,23 @@ class Cache{
             delete[] cache;
         }
         // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
-        unsigned* getData(unsigned pos){
+        unsigned* getInstruction(unsigned pos){
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             unsigned *transfer,copy;
             int wait;
             if(blockNumber!=tag[blockNumber%BLOCKS_PER_CACHE]){
                   // Seguro que evita deadlock en agarre de bus
-                  pthread_mutex_lock(&lockDeadlock);
-                  while(busTaken){
+                  pthread_mutex_lock(&(bus->lockDeadlock));
+                  while(bus->busTaken){
                         if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
                         pthread_barrier_wait (&synchroBarrier);
                         pthread_barrier_wait (&synchroBarrier);
                   }
                   pthread_mutex_lock(&(bus->lock));
                   // Toma el bus solo si esta desocupado
-                  busTaken=true;
-                  pthread_mutex_unlock(&lockDeadlock);
+                  bus->busTaken=true;
+                  pthread_mutex_unlock(&(bus->lockDeadlock));
                   // Tranfiere datos
                   transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                   for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
@@ -88,7 +84,7 @@ class Cache{
                         pthread_barrier_wait (&synchroBarrier);
                         pthread_barrier_wait (&synchroBarrier);
                   }
-                  busTaken=false;
+                  bus->busTaken=false;
                   missCounter++;
                   tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
                   // Libera el bus
@@ -97,6 +93,11 @@ class Cache{
                   hitCounter++;
             }
             return &cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
+        }
+        bool getData(unsigned &data){
+            bool success = false;
+            
+            return success;
         }
 };
 #endif

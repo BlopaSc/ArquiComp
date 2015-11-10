@@ -78,14 +78,17 @@ class Processor{
                case 35: // LW
                     pthread_mutex_lock(&(cacheData->noDeadLock));
                     if(cacheData->cacheTaken){
+                        state->pc -= 0x4;
+                        state->counter--;
                         pthread_mutex_unlock(&(cacheData->noDeadLock));
                     }else{
                         cacheData->cacheTaken=true;
                         pthread_mutex_lock(&(cacheData->cacheLock));
                         pthread_mutex_unlock(&(cacheData->noDeadLock));
-                        bool success;
-                        // bool success = TRAIGA DATOS
-                        if(!sucess){state->pc -= 0x4; state->counter--;}
+                        unsigned data;
+                        bool success = cacheData->getData(data);
+                        if(!success){state->pc -= 0x4; state->counter--;}
+                        cacheData->cacheTaken=false;
                         pthread_mutex_unlock(&(cacheData->cacheLock));
                     }
                     
@@ -107,7 +110,7 @@ class Processor{
         void execute(){
              if(state){
                        // Si se tiene cargado un estado ejecuta
-                       instruction = cacheInstr->getData(state->pc);
+                       instruction = cacheInstr->getInstruction(state->pc);
                        if(verbose){printf("Proc %i, PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                        state->pc += 0x4;
                        state->counter++;

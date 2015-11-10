@@ -7,9 +7,8 @@
 pthread_barrier_t  synchroBarrier;
 pthread_t *thread;
 pthread_mutex_t lockQueue;
-pthread_mutex_t lockDeadlock;
 int instructionsProcessed,quantum,m,b,clockCounter;
-bool modoLento,verbose,busTaken;
+bool modoLento,verbose;
 
 #include "ThreadQueue.cpp"
 #include "Processor.cpp"
@@ -146,13 +145,9 @@ int main(int argc,char *argv[]){
     if (pthread_mutex_init(&lockQueue, NULL)){
         printf("\nAlgo salio mal creando el mutex del queue\n");
     }
-    if (pthread_mutex_init(&lockDeadlock, NULL)){
-        printf("\nAlgo salio mal creando el mutex para evitar el deadlock\n");
-    }
     instructionsProcessed = 0;
     clockCounter=0;
     verbose=false;
-    busTaken=false;
     
     if(argc == 1){
         char* input = new char[0x10000];
