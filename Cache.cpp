@@ -54,13 +54,15 @@ class Cache{
             }
             delete[] cache;
         }
-        // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
+        // Revisa si la instruccion se encuentra disponible, de no ser asi la trae de memoria y la devuelve
         unsigned* getInstruction(unsigned pos){
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             unsigned *transfer,copy;
             int wait;
-            if(blockNumber!=tag[blockNumber%BLOCKS_PER_CACHE]){
+            if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+                hitCounter++;
+            }else{
                   // Seguro que evita deadlock en agarre de bus
                   pthread_mutex_lock(&(bus->lockDeadlock));
                   while(bus->busTaken){
@@ -87,16 +89,62 @@ class Cache{
                   bus->busTaken=false;
                   missCounter++;
                   tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                  status[blockNumber%BLOCKS_PER_CACHE]='C';
                   // Libera el bus
                   pthread_mutex_unlock(&(bus->lock));
-            }else{
-                  hitCounter++;
             }
             return &cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
         }
-        bool getData(unsigned &data){
+        // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
+        bool getData(int *data,int pos){
             bool success = false;
-            
+            // Calcula su numero de bloque
+            unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
+            unsigned *transfer,copy;
+            int wait;
+            if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+                hitCounter++;
+                *data = cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
+                success=true;
+            }else{
+                // Seguro que evita deadlock en agarre de bus
+                pthread_mutex_lock(&(bus->lockDeadlock));
+                if(bus->busTaken){
+                    if(verbose){printf("Load failed, busy bus\n");}
+                    pthread_mutex_unlock(&(bus->lockDeadlock));
+                }else{
+                    pthread_mutex_lock(&(bus->lock));
+                    bus->busTaken=true;
+                    pthread_mutex_unlock(&(bus->lockDeadlock));
+                    // Tranfiere datos
+                    transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                    for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                        cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
+                    }
+                    // Espera
+                    wait = WORDS_PER_BLOCK*(b+m+b);
+                    for(copy=0;copy<wait;copy++){
+                        if(verbose){
+                            if(copy){
+                                printf("Proc %i: Getting data to cache\n",idProcessor);
+                            }else{
+                                printf("Getting data to cache\n",idProcessor);
+                            }
+                        }
+                        pthread_barrier_wait (&synchroBarrier);
+                        pthread_barrier_wait (&synchroBarrier);
+                    }
+                    
+                    bus->busTaken=false;
+                    missCounter++;
+                    tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                    status[blockNumber%BLOCKS_PER_CACHE]='C';
+                    // Libera el bus
+                    pthread_mutex_unlock(&(bus->lock));
+                    *data = cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
+                    success=true;
+                }
+            }
             return success;
         }
 };

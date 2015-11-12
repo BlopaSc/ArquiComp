@@ -78,20 +78,23 @@ class Processor{
                case 35: // LW
                     pthread_mutex_lock(&(cacheData->noDeadLock));
                     if(cacheData->cacheTaken){
+                        if(verbose){printf("Load failed, busy cache\n",idProcessor);}
+                        pthread_mutex_unlock(&(cacheData->noDeadLock));
                         state->pc -= 0x4;
                         state->counter--;
-                        pthread_mutex_unlock(&(cacheData->noDeadLock));
                     }else{
                         cacheData->cacheTaken=true;
                         pthread_mutex_lock(&(cacheData->cacheLock));
                         pthread_mutex_unlock(&(cacheData->noDeadLock));
-                        unsigned data;
-                        bool success = cacheData->getData(data);
-                        if(!success){state->pc -= 0x4; state->counter--;}
+                        bool success = cacheData->getData(&state->registers[p2],(state->registers[p1]+p3));
+                        if(success){
+                            if(verbose){printf("R%i <- M(%i+R%i) = %i\n",p2,p3,p1);}
+                        }else{
+                            state->pc -= 0x4; state->counter--;
+                        }
                         cacheData->cacheTaken=false;
                         pthread_mutex_unlock(&(cacheData->cacheLock));
                     }
-                    
                     break;
                case 43: // SW
                     
