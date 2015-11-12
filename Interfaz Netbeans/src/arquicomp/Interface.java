@@ -6,7 +6,9 @@
 package arquicomp;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +24,9 @@ public class Interface extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
+    
+    String output="";
+    
     public Interface() {
         initComponents();
     }
@@ -222,7 +227,11 @@ public class Interface extends javax.swing.JFrame {
 
     private void btnEjecutarHilosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjecutarHilosActionPerformed
         // TODO add your handling code here:
-        String modoLento = "" + radioModoLento.isSelected();
+        String modoLento="false";
+        if(radioModoLento.isSelected()){
+            modoLento="frlse";
+        }
+        
         String quantum=txtQuantum.getText();
         String m = txtM.getText();
         String b = txtB.getText();
@@ -239,17 +248,26 @@ public class Interface extends javax.swing.JFrame {
                 for(int i=5;i<params.length;i++){
                     params[i]=(String)tableArchivos.getModel().getValueAt(i-5, 1);
                 }
+                for(int i=0;i<params.length;i++){
+                    System.out.println(params[i]);
+                }
                 Process process = new ProcessBuilder(params).start();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String output="",line=null;
-                process.waitFor();
+                String line=null;
+                //process.waitFor();
                 while((line=reader.readLine()) != null){
                     output+=line+"\n";
                 }
+                File file = new File("log.txt");
+                file.delete();
+                file = new File("log.txt");
+                FileWriter fw = new FileWriter(file);
+            	PrintWriter pw = new PrintWriter(fw);
+                pw.write(output + "\n" + "\r\n");
+	    	pw.close();
                 //javax.swing.JOptionPane.showMessageDialog(null, output, "Processors results", javax.swing.JOptionPane.INFORMATION_MESSAGE, null);
-                Results logWindow = new Results();
-                logWindow.setVisible(true);
-                logWindow.setLog(output);
+                new Results().setVisible(true);
+                
             }
             else{
             jLabel4.setText("Asegúrese que todos los parámetros que ingresó son mayores a 0.");

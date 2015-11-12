@@ -5,6 +5,13 @@
  */
 package arquicomp;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author B25201
@@ -14,8 +21,14 @@ public class Results extends javax.swing.JFrame {
     /**
      * Creates new form Results
      */
+    
+    String [] ciclos;
+    int ciclo;
+    
+    
     public Results() {
         initComponents();
+        setLog();
     }
 
     /**
@@ -30,6 +43,7 @@ public class Results extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtboxLog = new javax.swing.JTextArea();
         btnCerrar = new javax.swing.JButton();
+        btnSiguienteCiclo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -45,18 +59,29 @@ public class Results extends javax.swing.JFrame {
             }
         });
 
+        btnSiguienteCiclo.setText("Siguiente ciclo");
+        btnSiguienteCiclo.setEnabled(false);
+        btnSiguienteCiclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteCicloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(btnCerrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSiguienteCiclo)))
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCerrar)
-                .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +89,9 @@ public class Results extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCerrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCerrar)
+                    .addComponent(btnSiguienteCiclo))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -75,8 +102,37 @@ public class Results extends javax.swing.JFrame {
        super.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    public void setLog(String log){
-        txtboxLog.setText(log);
+    private void btnSiguienteCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCicloActionPerformed
+        ciclo++;
+        txtboxLog.setText(ciclos[ciclo]);
+    }//GEN-LAST:event_btnSiguienteCicloActionPerformed
+
+    public void setLog(){
+        String fileName = "log.txt";
+        String tmp = "";
+        String line = "";
+
+        try {
+            File log = new File (fileName);
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            while((tmp = bufferedReader.readLine()) != null) {
+                line += tmp + "\n";
+            }
+            bufferedReader.close(); 
+            ciclos = line.split("\n");
+            int i=0;
+            while(!ciclos[i].contains("Ciclo --")){
+                i++;
+            }
+            ciclo=i;
+            txtboxLog.setText(ciclos[i]);
+            btnSiguienteCiclo.setEnabled(true);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
         txtboxLog.setCaretPosition(0);
     }
     
@@ -118,6 +174,7 @@ public class Results extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnSiguienteCiclo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtboxLog;
     // End of variables declaration//GEN-END:variables
