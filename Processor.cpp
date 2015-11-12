@@ -109,7 +109,7 @@ class Processor{
                         if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
                     }
              }else{
-                    if(verbose){printf("No-op\n");}
+                    if(verbose){printf("Proc %i: No-op\n",idProcessor);}
              }
         }
         
