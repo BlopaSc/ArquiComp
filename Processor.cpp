@@ -11,6 +11,7 @@ class Processor{
         unsigned char flags;
         unsigned* instruction;
         int idProcessor;
+        bool success;
     public:
            State* state;
            Instructions* instr;
@@ -24,6 +25,7 @@ class Processor{
             cacheInstr = new Cache(instrBus,0x4,id);
             cacheData = new Cache(dataBus,0x1,id);
             idProcessor=id;
+            instruction = new unsigned[4];
         }
         // Destructor
         ~Processor(){
@@ -33,6 +35,7 @@ class Processor{
             if(state){
                 delete state;
             }
+            delete[] instruction;
         }
         // Retorna si el procesador se encuentra en un estado de fin
         inline unsigned char getFin(){return flags&0x1;}
@@ -94,13 +97,17 @@ class Processor{
         // Es la señal que ocasiona la ejecucion de un nuevo ciclo de reloj
         void execute(){
              if(state){
-                       // Si se tiene cargado un estado ejecuta
-                       instruction = cacheInstr->getInstruction(state->pc);
-                       if(verbose){printf("Proc %i, PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
-                       state->pc += 0x4;
-                       state->counter++;
-                       ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
-                       cycles++;
+                    // Si se tiene cargado un estado ejecuta
+                    success = cacheInstr->getData(instruction,state->pc);
+                    if(success){
+                        if(verbose){printf("Proc %i, PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                        state->pc += 0x4;
+                        state->counter++;
+                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
+                        cycles++;
+                    }else{
+                        if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
+                    }
              }else{
                     if(verbose){printf("No-op\n");}
              }

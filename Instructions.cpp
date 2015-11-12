@@ -89,6 +89,7 @@ class Instructions{
                 if(success){
                     if(verbose){printf("R%i <- M(%i+R%i) = %i\n",rx,n,ry,state->registers[rx]);}
                 }else{
+                    if(verbose){printf("Load failed, busy bus\n");}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
