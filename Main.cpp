@@ -61,6 +61,7 @@ void *threadProcessor(void *paramPtr){
              clockCounter++;
              if(verbose){
                  printf("Ciclo -- %i",clockCounter);
+                 if(!modoLento){printf("\n");}
              }
              if(modoLento){
                 char c[2];

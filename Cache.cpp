@@ -17,6 +17,22 @@ class Cache{
         // Contadores con fines estadisticos
         unsigned hitCounter,missCounter,multi;
         int idProcessor;
+        // Se encarga de realizar un writeback de un bloque
+        void writeback(unsigned block){
+            int wait = WORDS_PER_BLOCK*(b+m+b);
+            for(int copy = 0;copy<wait;copy++){
+                if(verbose){
+                    if(copy){
+                        printf("Proc %i: Saving data to memory\n",idProcessor);
+                    }else{
+                        printf("Saving data to memory\n");
+                    }
+                }
+                pthread_barrier_wait (&synchroBarrier);
+                pthread_barrier_wait (&synchroBarrier);
+            }
+            bus->writeData(cache[block%BLOCKS_PER_CACHE],block*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
+        }
     public: 
         // Locks del cache
         pthread_mutex_t cacheLock;
@@ -76,6 +92,10 @@ class Cache{
                     pthread_mutex_lock(&(bus->lock));
                     bus->busTaken=true;
                     pthread_mutex_unlock(&(bus->lockDeadlock));
+                    // Si el valor de los datos previos ha sido modificado, los guarda
+                    if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
+                        writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
+                    }
                     // Tranfiere datos
                     transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                     for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
@@ -110,14 +130,17 @@ class Cache{
             return success;
         }
         // Se encarga de almacenar un dato en una posicion de memoria
-        bool saveData(int *data,int pos){
+        bool saveData(int data,int pos){
             bool success=false;
-            // FALTA IMPLEMENTAR
+            // Calcula su numero de bloque
+            unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
+            if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+                cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi)] = data;
+                status[blockNumber%BLOCKS_PER_CACHE]='M';
+                // COMUNICAR CON BUS INVALIDAR OTROS
+                success = true;
+            }
             return success;
-        }
-        // Se encarga de realizar un writeback de un bloque
-        void writeback(unsigned block){
-            // FALTA IMPLEMENTAR
         }
         
         /* DEPRECATED :: AHORA TODO SE HACE DESDE GETDATA

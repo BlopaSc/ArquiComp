@@ -82,8 +82,8 @@ class Instructions{
                 state->pc -= 0x4;
                 state->counter--;
             }else{
-                cacheData->cacheTaken=true;
                 pthread_mutex_lock(&(cacheData->cacheLock));
+                cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
                 if(success){
@@ -100,20 +100,28 @@ class Instructions{
         // SW
         void SW(State * state,Cache * cacheData,int rx,int n,int ry){
             pthread_mutex_lock(&(cacheData->noDeadLock));
+            int data;
             if(cacheData->cacheTaken){
                 if(verbose){printf("Load failed, busy cache\n");}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
             }else{
-                cacheData->cacheTaken=true;
                 pthread_mutex_lock(&(cacheData->cacheLock));
+                cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
-                // GUARDAR
-                bool success ;//= cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                // Revisa si el bloque esta en memoria o lo carga si no lo esta
+                bool success = cacheData->getData(&data,(state->registers[ry]+n));
                 if(success){
-                    if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
+                    success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n));
+                    if(success){
+                        if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
+                    }else{
+                        if(verbose){printf("Save failed, wadafak\n");}
+                        state->pc -= 0x4; state->counter--;
+                    }
                 }else{
+                    if(verbose){printf("Save failed, busy bus\n");}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
