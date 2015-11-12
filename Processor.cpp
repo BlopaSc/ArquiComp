@@ -75,29 +75,11 @@ class Processor{
                     if(verbose){printf("\n");}
                     flags|=0x1;
                     break;
-               case 35: // LW
-                    pthread_mutex_lock(&(cacheData->noDeadLock));
-                    if(cacheData->cacheTaken){
-                        if(verbose){printf("Load failed, busy cache\n",idProcessor);}
-                        pthread_mutex_unlock(&(cacheData->noDeadLock));
-                        state->pc -= 0x4;
-                        state->counter--;
-                    }else{
-                        cacheData->cacheTaken=true;
-                        pthread_mutex_lock(&(cacheData->cacheLock));
-                        pthread_mutex_unlock(&(cacheData->noDeadLock));
-                        bool success = cacheData->getData(&state->registers[p2],(state->registers[p1]+p3));
-                        if(success){
-                            if(verbose){printf("R%i <- M(%i+R%i) = %i\n",p2,p3,p1);}
-                        }else{
-                            state->pc -= 0x4; state->counter--;
-                        }
-                        cacheData->cacheTaken=false;
-                        pthread_mutex_unlock(&(cacheData->cacheLock));
-                    }
+               case 35:
+                    instr->LW(state,cacheData,p2,p3,p1);
                     break;
-               case 43: // SW
-                    
+               case 43:
+                    instr->SW(state,cacheData,p2,p3,p1);
                     break;
                case 50: // LL
                     

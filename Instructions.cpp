@@ -1,6 +1,7 @@
 #ifndef INSTRUCTIONS_CPP
 #define INSTRUCTIONS_CPP
 #include "State.cpp"
+#include "Cache.cpp"
 #include <stdio.h>
 extern bool verbose;
 // Clase encargada de las instrucciones MIPS
@@ -66,12 +67,57 @@ class Instructions{
              if(verbose){printf("R31 = PC ; PC += %i\n",n);}
         }
         
-        
         //JR
         void JR(State * state, int rx){
              state->pc=state->registers[rx];
              if(verbose){printf("JMP R%i\n",rx);}
         }
         
+        // LW
+        void LW(State * state,Cache * cacheData,int rx,int n,int ry){
+            pthread_mutex_lock(&(cacheData->noDeadLock));
+            if(cacheData->cacheTaken){
+                if(verbose){printf("Load failed, busy cache\n");}
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                state->pc -= 0x4;
+                state->counter--;
+            }else{
+                cacheData->cacheTaken=true;
+                pthread_mutex_lock(&(cacheData->cacheLock));
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                if(success){
+                    if(verbose){printf("R%i <- M(%i+R%i) = %i\n",rx,n,ry,state->registers[rx]);}
+                }else{
+                    state->pc -= 0x4; state->counter--;
+                }
+                cacheData->cacheTaken=false;
+                pthread_mutex_unlock(&(cacheData->cacheLock));
+            }
+        }
+        
+        // SW
+        void SW(State * state,Cache * cacheData,int rx,int n,int ry){
+            pthread_mutex_lock(&(cacheData->noDeadLock));
+            if(cacheData->cacheTaken){
+                if(verbose){printf("Load failed, busy cache\n");}
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                state->pc -= 0x4;
+                state->counter--;
+            }else{
+                cacheData->cacheTaken=true;
+                pthread_mutex_lock(&(cacheData->cacheLock));
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                // GUARDAR
+                bool success ;//= cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                if(success){
+                    if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
+                }else{
+                    state->pc -= 0x4; state->counter--;
+                }
+                cacheData->cacheTaken=false;
+                pthread_mutex_unlock(&(cacheData->cacheLock));
+            }
+        }
 };
 #endif

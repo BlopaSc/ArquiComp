@@ -74,6 +74,9 @@ class Cache{
                   // Toma el bus solo si esta desocupado
                   bus->busTaken=true;
                   pthread_mutex_unlock(&(bus->lockDeadlock));
+                  if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
+                        writeback(blockNumber);
+                  }
                   // Tranfiere datos
                   transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                   for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
@@ -146,6 +149,16 @@ class Cache{
                 }
             }
             return success;
+        }
+        // Se encarga de almacenar un dato en una posicion de memoria
+        bool saveData(int *data,int pos){
+            bool success=false;
+            // FALTA IMPLEMENTAR
+            return success;
+        }
+        // Se encarga de realizar un writeback de un bloque
+        void writeback(unsigned block){
+            // FALTA IMPLEMENTAR
         }
 };
 #endif
