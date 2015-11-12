@@ -144,7 +144,9 @@ class Cache{
                     status[blockNumber%BLOCKS_PER_CACHE]='C';
                     // Libera el bus
                     pthread_mutex_unlock(&(bus->lock));
-                    *data = cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
+                    for(copy=0;copy<multi;copy++){
+                        data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
+                    }
                     success=true;
                 }
             }
