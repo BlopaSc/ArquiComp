@@ -32,6 +32,7 @@ class Cache{
                 pthread_barrier_wait (&synchroBarrier);
             }
             bus->writeData(cache[block%BLOCKS_PER_CACHE],block*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
+            status[block%BLOCKS_PER_CACHE]='C';
         }
     public: 
         // Locks del cache
@@ -147,7 +148,9 @@ class Cache{
         }
         // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
         void invalidateBlock(unsigned blockNumber){
-            // FALTA IMPLEMENTAR
+            if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
+                status[blockNumber%BLOCKS_PER_CACHE]='I';
+            }
         }
         
         /* DEPRECATED :: AHORA TODO SE HACE DESDE GETDATA
