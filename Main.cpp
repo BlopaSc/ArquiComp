@@ -139,8 +139,8 @@ void displayMemory(){
 
 int main(int argc,char *argv[]){
     mainMemory = new Memory();
-    instrBus = new Bus(mainMemory->ramInstructions);
-    dataBus = new Bus(mainMemory->ramData);
+    instrBus = new Bus(mainMemory->ramInstructions,NUM_PROCS);
+    dataBus = new Bus(mainMemory->ramData,NUM_PROCS);
     threadManager = new ThreadQueue();
     thread = new pthread_t[NUM_PROCS+1];
     if (pthread_mutex_init(&lockQueue, NULL)){

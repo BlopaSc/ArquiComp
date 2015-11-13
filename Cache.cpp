@@ -96,6 +96,9 @@ class Cache{
                     if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
+                    
+                    // FALTA AGREGAR CONSULTAR SI ESTA 'M' EN OTRO CACHE
+                    
                     // Tranfiere datos
                     transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                     for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
@@ -137,10 +140,14 @@ class Cache{
             if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
                 cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)] = data;
                 status[blockNumber%BLOCKS_PER_CACHE]='M';
-                // COMUNICAR CON BUS INVALIDAR OTROS
+                bus->invalidateBlock(blockNumber,idProcessor);
                 success = true;
             }
             return success;
+        }
+        // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
+        void invalidateBlock(unsigned blockNumber){
+            // FALTA IMPLEMENTAR
         }
         
         /* DEPRECATED :: AHORA TODO SE HACE DESDE GETDATA

@@ -23,7 +23,9 @@ class Processor{
             state = 0;
             instr = new Instructions();
             cacheInstr = new Cache(instrBus,0x4,id);
+            instrBus->setCacheLink(cacheInstr,idProcessor);
             cacheData = new Cache(dataBus,0x1,id);
+            dataBus->setCacheLink(cacheData,idProcessor);
             idProcessor=id;
             instruction = new unsigned[4];
         }
