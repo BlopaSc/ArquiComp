@@ -135,7 +135,7 @@ class Cache{
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
-                cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi)] = data;
+                cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)] = data;
                 status[blockNumber%BLOCKS_PER_CACHE]='M';
                 // COMUNICAR CON BUS INVALIDAR OTROS
                 success = true;
