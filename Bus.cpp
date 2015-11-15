@@ -53,9 +53,34 @@ class Bus{
             idProcessor--;
             for(int i=0;i<numProcs;i++){
                 if(i!=idProcessor){
-                    //cache[i]->invalidateBlock(blockNumber);
+                    cache[i]->invalidateBlock(blockNumber);
                 }
             }
         }
+        // Consulta si alguno de los caches contiene el bloque solicitado como modificado
+        bool checkModified(unsigned blockNumber,int &idTargetProcessor){
+            bool isModified=false;
+            for(idTargetProcessor=0;idTargetProcessor<numProcs && !isModified;idTargetProcessor++){
+                isModified = cache[idTargetProcessor]->checkModified(blockNumber);
+            }
+            return isModified;
+        }
+        // Solicita un writeback
+        bool requestWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){
+            bool success=false;
+            pthread_mutex_lock(&(cache[idProcessor]->noDeadLock));
+            if(cache[idProcessor]->cacheTaken){
+                if(verbose){printf("Load failed, busy cache\n");}
+                pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
+            }else{
+                pthread_mutex_lock(&(cache[idProcessor]->cacheLock));
+                cache[idProcessor]->cacheTaken=true;
+                pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
+                cache[idProcessor]->requestWriteback(blockNumber,idProcessorCaller);
+                cache[idProcessor]->cacheTaken=false;
+                pthread_mutex_unlock(&(cache[idProcessor]->cacheLock));
+            }
+            return success;
+        } 
 };
 #endif

@@ -39,6 +39,8 @@ void *threadProcessor(void *paramPtr){
       while(threadManager->getSize()){
          pthread_barrier_wait (&synchroBarrier);
          if(idThread){
+             // Revisa si se enviaron señales de invalidacion al final del ciclo pasado
+             proc->signalInvalidate();
              // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
              if(proc->getFin()){
                  // Acabo hilo

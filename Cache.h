@@ -11,7 +11,7 @@ class Cache{
         unsigned** cache;
         // Contadores con fines estadisticos
         unsigned hitCounter,missCounter,multi;
-        int idProcessor;
+        int idProcessor,blockInvalidate;
         // Se encarga de realizar un writeback de un bloque
         void writeback(unsigned block);
     public: 
@@ -29,5 +29,11 @@ class Cache{
         bool saveData(int data,int pos);
         // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
         void invalidateBlock(unsigned blockNumber);
+        // Se encarga de enviar cualquier señal de invalidacion que haga falta
+        void signalInvalidate();
+        // Recibe solicitud para ver si bloque esta modificado
+        bool checkModified(unsigned blockNumber);
+        // Recibe una solicitud de writeback
+        void requestWriteback(unsigned blockNumber,int idCaller);
 };
 #endif

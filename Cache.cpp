@@ -36,7 +36,8 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
             bus = b;
             hitCounter=0;
             missCounter=0;
-            idProcessor = id;
+            idProcessor=id;
+            blockInvalidate=-1;
             // Inicializa los tags en -1 para obligarlo a cargar las instrucciones correctas
             for(int i=0;i<BLOCKS_PER_CACHE;i++){tag[i]=-1; status[i]='I';}
             if (pthread_mutex_init(&cacheLock, NULL)){
@@ -58,7 +59,9 @@ Cache::~Cache(){
 }
 // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
 bool Cache::getData(int *data,int pos){
+            int idProcMod;
             bool success = false;
+            bool isModified;
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             unsigned *transfer,copy;
@@ -82,38 +85,47 @@ bool Cache::getData(int *data,int pos){
                     if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
-                    
-                    // FALTA AGREGAR CONSULTAR SI ESTA 'M' EN OTRO CACHE
-                    
-                    // Tranfiere datos
-                    transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
-                    for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
-                        cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
-                    }
-                    // Espera
-                    wait = WORDS_PER_BLOCK*(b+m+b);
-                    for(copy=0;copy<wait;copy++){
-                        if(verbose){
-                            if(copy){
-                                printf("Proc %i: Getting data to cache\n",idProcessor);
-                            }else{
-                                printf("Proc %i: Getting data to cache\n",idProcessor);
+                    // Revisa si se encuentra modificado en algun otro lugar
+                    if(bus->checkModified(blockNumber,idProcMod)){
+                        // Solicita writeback
+                        success = bus->requestWriteback(blockNumber,idProcMod,idProcessor);
+                        if(success){
+                            // Tranfiere datos
+                            transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                            for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                                cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
                             }
                         }
-                        pthread_barrier_wait (&synchroBarrier);
-                        pthread_barrier_wait (&synchroBarrier);
+                    }else{
+                        // Sino, tranfiere datos desde memoria
+                        transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                        for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                            cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
+                        }
+                        // Espera
+                        wait = WORDS_PER_BLOCK*(b+m+b);
+                        for(copy=0;copy<wait;copy++){
+                            if(verbose){
+                                if(copy){
+                                    printf("Proc %i: Getting data to cache\n",idProcessor);
+                                }else{
+                                    printf("Proc %i: Getting data to cache\n",idProcessor);
+                                }
+                            }
+                            pthread_barrier_wait (&synchroBarrier);
+                            pthread_barrier_wait (&synchroBarrier);
+                        }
+                        bus->busTaken=false;
+                        missCounter++;
+                        tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                        status[blockNumber%BLOCKS_PER_CACHE]='C';
+                        // Libera el bus
+                        pthread_mutex_unlock(&(bus->lock));
+                        for(copy=0;copy<multi;copy++){
+                            data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
+                        }
+                        success=true;
                     }
-                    
-                    bus->busTaken=false;
-                    missCounter++;
-                    tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
-                    status[blockNumber%BLOCKS_PER_CACHE]='C';
-                    // Libera el bus
-                    pthread_mutex_unlock(&(bus->lock));
-                    for(copy=0;copy<multi;copy++){
-                        data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
-                    }
-                    success=true;
                 }
             }
             return success;
@@ -122,11 +134,11 @@ bool Cache::getData(int *data,int pos){
 bool Cache::saveData(int data,int pos){
             bool success=false;
             // Calcula su numero de bloque
-            unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
+            int blockNumber = pos/(WORDS_PER_BLOCK*multi);
             if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
                 cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)] = data;
                 status[blockNumber%BLOCKS_PER_CACHE]='M';
-                bus->invalidateBlock(blockNumber,idProcessor);
+                blockInvalidate=blockNumber;
                 success = true;
             }
             return success;
@@ -136,6 +148,36 @@ void Cache::invalidateBlock(unsigned blockNumber){
             if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
                 status[blockNumber%BLOCKS_PER_CACHE]='I';
             }
+}
+// Se encarga de enviar cualquier señal de invalidacion que haga falta
+void Cache::signalInvalidate(){
+            if(blockInvalidate!=-1){
+                bus->invalidateBlock(blockInvalidate,idProcessor);
+                blockInvalidate=-1;
+            }
+}
+// Recibe solicitud para ver si bloque esta modificado
+bool Cache::checkModified(unsigned blockNumber){
+    return (tag[blockNumber%BLOCKS_PER_CACHE]==blockNumber)&&(status[blockNumber%BLOCKS_PER_CACHE]=='M');
+}
+// Recibe una solicitud de writeback
+void Cache::requestWriteback(unsigned blockNumber,int idCaller){
+    if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
+        int wait = WORDS_PER_BLOCK*(b+m+b);
+        for(int copy = 0;copy<wait;copy++){
+            if(verbose){
+                if(copy){
+                    printf("Proc %i: Saving data to memory\n",idCaller);
+                }else{
+                    printf("Saving data to memory\n");
+                }
+            }
+            pthread_barrier_wait (&synchroBarrier);
+            pthread_barrier_wait (&synchroBarrier);
+        }
+        bus->writeData(cache[blockNumber%BLOCKS_PER_CACHE],blockNumber*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
+        status[blockNumber%BLOCKS_PER_CACHE]='C';
+    }
 }
 #endif
 

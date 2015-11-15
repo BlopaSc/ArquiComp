@@ -122,6 +122,10 @@ class Processor{
              state=0;
              flags=0x0;
         }
-        
+        // Revisa si hay que invalidar algo al finalizar el ciclo
+        void signalInvalidate(){
+            cacheInstr->signalInvalidate();
+            cacheData->signalInvalidate();
+        }
 };
 #endif
