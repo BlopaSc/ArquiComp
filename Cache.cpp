@@ -1,24 +1,14 @@
 #ifndef CACHE_CPP
 #define CACHE_CPP
+#include "Cache.h"
 #include "Bus.cpp"
 #define BLOCKS_PER_CACHE 8
 extern pthread_barrier_t synchroBarrier;
 extern int m;
 extern int b;
 extern bool verbose;
-class Cache{
-    private:
-        // Almacena el bus con el que se comunicara
-        Bus* bus;
-        // Guarda los tags de los caches y la data del cache
-        unsigned* tag;
-        char* status;
-        unsigned** cache;
-        // Contadores con fines estadisticos
-        unsigned hitCounter,missCounter,multi;
-        int idProcessor;
-        // Se encarga de realizar un writeback de un bloque
-        void writeback(unsigned block){
+// Se encarga de realizar un writeback de un bloque
+void Cache::writeback(unsigned block){
             int wait = WORDS_PER_BLOCK*(b+m+b);
             for(int copy = 0;copy<wait;copy++){
                 if(verbose){
@@ -33,14 +23,9 @@ class Cache{
             }
             bus->writeData(cache[block%BLOCKS_PER_CACHE],block*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
             status[block%BLOCKS_PER_CACHE]='C';
-        }
-    public: 
-        // Locks del cache
-        pthread_mutex_t cacheLock;
-        pthread_mutex_t noDeadLock; // Mutex que sirve para evitar deadlock en cache
-        bool cacheTaken;
-        // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
-        Cache(Bus* b,unsigned multiplier,int id){
+}
+// Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
+Cache::Cache(Bus* b,unsigned multiplier,int id){
             multi = multiplier;
             tag = new unsigned[BLOCKS_PER_CACHE];
             status = new char[BLOCKS_PER_CACHE];
@@ -61,18 +46,18 @@ class Cache{
                 printf("\nAlgo salio mal creando el deadlock-mutex del cache\n");
             }
             cacheTaken=false;
-        }
-        // Destructor
-        ~Cache(){
+}
+// Destructor
+Cache::~Cache(){
             delete[] tag;
             delete[] status;
             for(int i=0;i<BLOCKS_PER_CACHE;i++){
                 delete[] cache[i];
             }
             delete[] cache;
-        }
-        // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
-        bool getData(int *data,int pos){
+}
+// Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
+bool Cache::getData(int *data,int pos){
             bool success = false;
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
@@ -132,9 +117,9 @@ class Cache{
                 }
             }
             return success;
-        }
-        // Se encarga de almacenar un dato en una posicion de memoria
-        bool saveData(int data,int pos){
+}
+// Se encarga de almacenar un dato en una posicion de memoria
+bool Cache::saveData(int data,int pos){
             bool success=false;
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
@@ -145,14 +130,15 @@ class Cache{
                 success = true;
             }
             return success;
-        }
-        // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
-        void invalidateBlock(unsigned blockNumber){
+}
+// Se encarga de invalidar un bloque cuando recibe la notificacion del bus
+void Cache::invalidateBlock(unsigned blockNumber){
             if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
                 status[blockNumber%BLOCKS_PER_CACHE]='I';
             }
-        }
-        
+}
+#endif
+
         /* DEPRECATED :: AHORA TODO SE HACE DESDE GETDATA
         // Revisa si la instruccion se encuentra disponible, de no ser asi la trae de memoria y la devuelve
         unsigned* getInstruction(unsigned pos){
@@ -198,6 +184,3 @@ class Cache{
             }
             return &cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)];
         }*/
-        
-};
-#endif

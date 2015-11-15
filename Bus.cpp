@@ -1,10 +1,9 @@
 #ifndef BUS_CPP
 #define BUS_CPP
 #include "Memory.cpp"
+#include "Cache.h"
 #include <pthread.h>
 #include <stdio.h>
-// Mencion a clase cache que sera utilizada
-class Cache;
 // Clase intermediaria utilizada por los diferentes caches para extraer informacion de la memoria
 // Contiene un lock ya que solo puede ser utilizada por un cache a la vez
 class Bus{

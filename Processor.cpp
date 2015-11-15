@@ -4,6 +4,7 @@
 #include "Instructions.cpp"
 #include "Cache.cpp"
 extern bool verbose;
+extern pthread_barrier_t synchroBarrier;
 // Clase que emula un procesador
 class Processor{
     private:
@@ -21,12 +22,12 @@ class Processor{
             cycles=1;
             flags=0x0;
             state = 0;
+            idProcessor=id;
             instr = new Instructions();
             cacheInstr = new Cache(instrBus,0x4,id);
             instrBus->setCacheLink(cacheInstr,idProcessor);
             cacheData = new Cache(dataBus,0x1,id);
             dataBus->setCacheLink(cacheData,idProcessor);
-            idProcessor=id;
             instruction = new unsigned[4];
         }
         // Destructor

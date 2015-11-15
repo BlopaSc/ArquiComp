@@ -23,8 +23,9 @@ State** results;
 
 void *threadProcessor(void *paramPtr){
       int idThread = (int)paramPtr;
-      Processor* proc = new Processor(instrBus,dataBus,idThread);
+      Processor* proc;
       if(idThread){
+          proc = new Processor(instrBus,dataBus,idThread);
           printf("Procesador No.%i\n",idThread);
           pthread_mutex_lock(&lockQueue);
           if(idThread<=threadManager->getSize()){
@@ -73,10 +74,10 @@ void *threadProcessor(void *paramPtr){
       }
       if(idThread){
           printf("Fin Processor No.%i\n",idThread);
+          delete proc;
       }else{
           printf("Ciclos realizados: %i\n",clockCounter);
       }
-      delete proc;
 }
 
 void run(){
