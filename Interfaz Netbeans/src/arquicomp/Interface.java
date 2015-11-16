@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package arquicomp;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -57,6 +61,11 @@ public class Interface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         tableArchivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -231,7 +240,7 @@ public class Interface extends javax.swing.JFrame {
         if(radioModoLento.isSelected()){
             modoLento="frlse";
         }
-        
+        output = "";
         String quantum=txtQuantum.getText();
         String m = txtM.getText();
         String b = txtB.getText();
@@ -258,12 +267,14 @@ public class Interface extends javax.swing.JFrame {
                 while((line=reader.readLine()) != null){
                     output+=line+"\n";
                 }
+                if(new File("log.txt").exists()){
+                    Path p = Paths.get("log.txt");
+                    Files.delete(p);
+                }
                 File file = new File("log.txt");
-                file.delete();
-                file = new File("log.txt");
                 FileWriter fw = new FileWriter(file);
             	PrintWriter pw = new PrintWriter(fw);
-                pw.write(output + "\n" + "\r\n");
+                pw.write(modoLento+ output + "\n" + "\r\n");
 	    	pw.close();
                 //javax.swing.JOptionPane.showMessageDialog(null, output, "Processors results", javax.swing.JOptionPane.INFORMATION_MESSAGE, null);
                 new Results().setVisible(true);
@@ -297,6 +308,13 @@ public class Interface extends javax.swing.JFrame {
         }
         radioModoRapido.setSelected(false);
     }//GEN-LAST:event_radioModoLentoActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnEjecutarHilosActionPerformed(null);
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     
     

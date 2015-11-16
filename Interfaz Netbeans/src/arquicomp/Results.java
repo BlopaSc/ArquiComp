@@ -5,6 +5,7 @@
  */
 package arquicomp;
 
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +25,7 @@ public class Results extends javax.swing.JFrame {
     
     String [] ciclos;
     int ciclo;
+    boolean modoLento = false;
     
     
     public Results() {
@@ -48,8 +50,14 @@ public class Results extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        txtboxLog.setEditable(false);
         txtboxLog.setColumns(20);
         txtboxLog.setRows(5);
+        txtboxLog.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtboxLogKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtboxLog);
 
         btnCerrar.setText("Cerrar");
@@ -64,6 +72,11 @@ public class Results extends javax.swing.JFrame {
         btnSiguienteCiclo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteCicloActionPerformed(evt);
+            }
+        });
+        btnSiguienteCiclo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSiguienteCicloKeyPressed(evt);
             }
         });
 
@@ -103,11 +116,31 @@ public class Results extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnSiguienteCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteCicloActionPerformed
-        ciclo++;
-        txtboxLog.setText(ciclos[ciclo]);
+        updateLog();
     }//GEN-LAST:event_btnSiguienteCicloActionPerformed
 
+    private void txtboxLogKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtboxLogKeyPressed
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            updateLog();
+        }
+    }//GEN-LAST:event_txtboxLogKeyPressed
+
+    private void btnSiguienteCicloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSiguienteCicloKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            updateLog();
+        }
+    }//GEN-LAST:event_btnSiguienteCicloKeyPressed
+
+    private void updateLog(){
+        ciclo++;
+        String line = "Ciclo --" + ciclos[ciclo];
+        txtboxLog.setText(line);
+    }
+    
     public void setLog(){
+        txtboxLog.setText("");
         String fileName = "log.txt";
         String tmp = "";
         String line = "";
@@ -116,19 +149,24 @@ public class Results extends javax.swing.JFrame {
             File log = new File (fileName);
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
             while((tmp = bufferedReader.readLine()) != null) {
                 line += tmp + "\n";
             }
             bufferedReader.close(); 
-            ciclos = line.split("\n");
-            int i=0;
-            while(!ciclos[i].contains("Ciclo --")){
-                i++;
+            fileReader.close();
+            line = line.replace("\t","\n");
+            String modoLento = line.substring(0,5);
+            line = line.replace(line.substring(0,5), "");
+            if(modoLento.equals("frlse")){
+                this.modoLento=true;
+                ciclos = line.split("Ciclo --");
+                ciclo=1;
+                txtboxLog.setText("Ciclo --" + ciclos[ciclo]);
+                btnSiguienteCiclo.setEnabled(true);
             }
-            ciclo=i;
-            txtboxLog.setText(ciclos[i]);
-            btnSiguienteCiclo.setEnabled(true);
+            else{
+                txtboxLog.setText(line);
+            }
         }
         catch(Exception e) {
             e.printStackTrace();
