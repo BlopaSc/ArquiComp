@@ -159,7 +159,7 @@ class Instructions{
         // SC : Igual a SW pero solo ejecuta el save si RL == n+(Ry), sino Rx = 0
         void SC(State * state,Cache * cacheData,int rx,int n,int ry){
              if(state->rl==(n + state->registers[ry])){
-                 sw(state,cacheData,rx,n,ry);
+                 SW(state,cacheData,rx,n,ry);
              }else{
                  state->registers[rx]=0;
              }
