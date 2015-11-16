@@ -1,5 +1,7 @@
 #ifndef INSTRUCTIONS_CPP
 #define INSTRUCTIONS_CPP
+#define DATA_OFFSET 640
+#define WORD_SIZE 4
 #include "State.cpp"
 #include "Cache.cpp"
 #include <stdio.h>
@@ -85,7 +87,7 @@ class Instructions{
                 pthread_mutex_lock(&(cacheData->cacheLock));
                 cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
-                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
                     if(verbose){printf("R%i <- M(%i+R%i) = %i\n",rx,n,ry,state->registers[rx]);}
                 }else{
@@ -113,7 +115,7 @@ class Instructions{
                 // Revisa si el bloque esta en memoria o lo carga si no lo esta
                 bool success = cacheData->getData(&data,(state->registers[ry]+n));
                 if(success){
-                    success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n));
+                    success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                     if(success){
                         if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
                     }else{
@@ -141,7 +143,7 @@ class Instructions{
                 pthread_mutex_lock(&(cacheData->cacheLock));
                 cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
-                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
                     state->rl = n + state->registers[ry];
                     if(verbose){printf("R%i <- M(%i+R%i) = %i, RL = %i\n",rx,n,ry,state->registers[rx],state->rl);}
