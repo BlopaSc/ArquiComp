@@ -128,5 +128,39 @@ class Instructions{
                 pthread_mutex_unlock(&(cacheData->cacheLock));
             }
         }
+        
+        // LL : Igual a LW pero ademas RL =  n + (Ry) 
+        void LL(State * state,Cache * cacheData,int rx,int n,int ry){
+             pthread_mutex_lock(&(cacheData->noDeadLock));
+            if(cacheData->cacheTaken){
+                if(verbose){printf("Load failed, busy cache\n");}
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                state->pc -= 0x4;
+                state->counter--;
+            }else{
+                pthread_mutex_lock(&(cacheData->cacheLock));
+                cacheData->cacheTaken=true;
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
+                bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n));
+                if(success){
+                    state->rl = n + state->registers[ry];
+                    if(verbose){printf("R%i <- M(%i+R%i) = %i, RL = %i\n",rx,n,ry,state->registers[rx],state->rl);}
+                }else{
+                    if(verbose){printf("Load failed, busy bus\n");}
+                    state->pc -= 0x4; state->counter--;
+                }
+                cacheData->cacheTaken=false;
+                pthread_mutex_unlock(&(cacheData->cacheLock));
+            }
+        }
+        
+        // SC : Igual a SW pero solo ejecuta el save si RL == n+(Ry), sino Rx = 0
+        void SC(State * state,Cache * cacheData,int rx,int n,int ry){
+             if(state->rl==(n + state->registers[ry])){
+                 sw(state,cacheData,rx,n,ry);
+             }else{
+                 state->registers[rx]=0;
+             }
+        }
 };
 #endif

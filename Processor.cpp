@@ -87,11 +87,11 @@ class Processor{
                case 43:
                     instr->SW(state,cacheData,p2,p3,p1);
                     break;
-               case 50: // LL
-                    
+               case 50:
+                    instr->LL(state,cacheData,p2,p3,p1);
                     break;
-               case 51: // SC
-                    
+               case 51:
+                    instr->SC(state,cacheData,p2,p3,p1);
                     break;
              }
         }
