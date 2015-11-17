@@ -11,13 +11,7 @@ extern bool verbose;
 void Cache::writeback(unsigned block){
             int wait = WORDS_PER_BLOCK*(b+m+b);
             for(int copy = 0;copy<wait;copy++){
-                if(verbose){
-                    if(copy){
-                        printf("Proc %i: Saving data to memory\n",idProcessor);
-                    }else{
-                        printf("Saving data to memory\n");
-                    }
-                }
+                if(verbose){printf("Proc %i: Saving data to memory\n",idProcessor);}
                 pthread_barrier_wait (&synchroBarrier);
                 pthread_barrier_wait (&synchroBarrier);
             }
@@ -106,13 +100,7 @@ bool Cache::getData(int *data,int pos){
                         // Espera
                         wait = WORDS_PER_BLOCK*(b+m+b);
                         for(copy=0;copy<wait;copy++){
-                            if(verbose){
-                                if(copy || multi>1){
-                                    printf("Proc %i: Getting data to cache\n",idProcessor);
-                                }else{
-                                    printf("Getting data to cache\n",idProcessor);
-                                }
-                            }
+                            if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
                             pthread_barrier_wait (&synchroBarrier);
                             pthread_barrier_wait (&synchroBarrier);
                         }
@@ -166,13 +154,7 @@ void Cache::requestWriteback(unsigned blockNumber,int idCaller){
     if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
         int wait = WORDS_PER_BLOCK*(b+m+b);
         for(int copy = 0;copy<wait;copy++){
-            if(verbose){
-                if(copy){
-                    printf("Proc %i: Saving data to memory\n",idCaller);
-                }else{
-                    printf("Saving data to memory\n");
-                }
-            }
+            if(verbose){printf("Proc %i: Saving data to memory\n",idCaller);}
             pthread_barrier_wait (&synchroBarrier);
             pthread_barrier_wait (&synchroBarrier);
         }

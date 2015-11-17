@@ -78,7 +78,7 @@ class Processor{
                     instr->JR(state,p1);
                     break;
                case 63:
-                    if(verbose){printf("\n");}
+                    if(verbose){printf("%sTHREAD ENDED\n",instr->printCache);}
                     flags|=0x1;
                     break;
                case 35:
@@ -114,7 +114,8 @@ class Processor{
                         success = cacheInstr->getData(instruction,state->pc);
                         if(success){
                             // Si logra traerla ejecuta la instruccion
-                            if(verbose){printf("Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                            // if(verbose){printf("Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                            if(verbose){sprintf(instr->printCache,"Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                             state->pc += 0x4;
                             state->counter++;
                             ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);

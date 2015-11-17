@@ -9,41 +9,44 @@ extern bool verbose;
 // Clase encargada de las instrucciones MIPS
 class Instructions{
     public:
+        char* printCache;
         // Constructor
         Instructions(){
+            if(verbose){printCache = new char[4096];}
         }
         // Destructor
         ~Instructions(){
+            if(verbose){delete[] printCache;}
         }
         
         //Metodo DADDI
         void DADDI(State * state, int rx, int ry, int n){
              state->registers[rx] = state->registers[ry] + n;
-             if(verbose){printf("R%i = R%i+%i = %i\n",rx,ry,n,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i+%i = %i\n",printCache,rx,ry,n,state->registers[rx]);}
         }
         
         //Metodo DADD
         void DADD(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] + state->registers[rz];
-             if(verbose){printf("R%i = R%i+R%i = %i\n",rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i+R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
         }
         
         //DSUB
         void DSUB(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] - state->registers[rz];
-             if(verbose){printf("R%i = R%i-R%i = %i\n",rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i-R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
         }
         
         //DMUL
         void DMUL(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] * state->registers[rz];
-             if(verbose){printf("R%i = R%i*R%i = %i\n",rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i*R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
         }
         
         //DDIV
         void DDIV(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] / state->registers[rz];
-             if(verbose){printf("R%i = R%i/R%i = %i\n",rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i/R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
         }
         
         //BEQZ
@@ -51,7 +54,7 @@ class Instructions{
              if(!state->registers[rx]){
                   state->pc+=0x4*etiq;
              }
-             if(verbose){printf("if R%i = 0 JMP %i\n",rx,etiq);}
+             if(verbose){printf("%sif R%i = 0 JMP %i\n",printCache,rx,etiq);}
         }
         
         //BNEZ
@@ -59,27 +62,27 @@ class Instructions{
              if(state->registers[rx]){
                   state->pc+=0x4*etiq;
              }
-             if(verbose){printf("if R%i != 0 JMP %i\n",rx,etiq);}
+             if(verbose){printf("%sif R%i != 0 JMP %i\n",printCache,rx,etiq);}
         }
         
         //JAL
         void JAL(State * state, int n){
              state->registers[31]=state->pc;
              state->pc=state->pc+n;
-             if(verbose){printf("R31 = PC ; PC += %i\n",n);}
+             if(verbose){printf("%sR31 = PC ; PC += %i\n",printCache,n);}
         }
         
         //JR
         void JR(State * state, int rx){
              state->pc=state->registers[rx];
-             if(verbose){printf("JMP R%i\n",rx);}
+             if(verbose){printf("%sJMP R%i\n",printCache,rx);}
         }
         
         // LW
         void LW(State * state,Cache * cacheData,int rx,int n,int ry){
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("Load failed, busy cache\n");}
+                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -89,9 +92,9 @@ class Instructions{
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
-                    if(verbose){printf("R%i <- M(%i+R%i) = %i\n",rx,n,ry,state->registers[rx]);}
+                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i\n",printCache,rx,n,ry,state->registers[rx]);}
                 }else{
-                    if(verbose){printf("Load failed, busy bus\n");}
+                    if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
@@ -104,7 +107,7 @@ class Instructions{
             pthread_mutex_lock(&(cacheData->noDeadLock));
             int data;
             if(cacheData->cacheTaken){
-                if(verbose){printf("Load failed, busy cache\n");}
+                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -117,13 +120,13 @@ class Instructions{
                 if(success){
                     success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                     if(success){
-                        if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
+                        if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n",printCache,n,ry,rx,state->registers[rx]);}
                     }else{
-                        if(verbose){printf("Save failed, wadafak\n");}
+                        if(verbose){printf("%sSave failed, wadafak\n",printCache);}
                         state->pc -= 0x4; state->counter--;
                     }
                 }else{
-                    if(verbose){printf("Save failed, busy bus\n");}
+                    if(verbose){printf("%sSave failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
                 }
                 /*if(cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE)){
@@ -140,7 +143,7 @@ class Instructions{
         void LL(State * state,Cache * cacheData,int rx,int n,int ry){
              pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("Load failed, busy cache\n");}
+                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -151,9 +154,9 @@ class Instructions{
                 bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
                     state->rl = n + state->registers[ry];
-                    if(verbose){printf("R%i <- M(%i+R%i) = %i, RL = %i\n",rx,n,ry,state->registers[rx],state->rl);}
+                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i, RL = %i\n",printCache,rx,n,ry,state->registers[rx],state->rl);}
                 }else{
-                    if(verbose){printf("Load failed, busy bus\n");}
+                    if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
