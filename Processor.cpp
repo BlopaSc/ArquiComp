@@ -96,7 +96,6 @@ class Processor{
              }
         }
         
-        
         // Es la señal que ocasiona la ejecucion de un nuevo ciclo de reloj
         void execute(){
              if(state){
@@ -114,7 +113,6 @@ class Processor{
                         success = cacheInstr->getData(instruction,state->pc);
                         if(success){
                             // Si logra traerla ejecuta la instruccion
-                            // if(verbose){printf("Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                             if(verbose){sprintf(instr->printCache,"Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                             state->pc += 0x4;
                             state->counter++;

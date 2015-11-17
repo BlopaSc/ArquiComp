@@ -12,7 +12,7 @@ class Instructions{
         char* printCache;
         // Constructor
         Instructions(){
-            if(verbose){printCache = new char[4096];}
+            if(verbose){printCache = new char[0x100];}
         }
         // Destructor
         ~Instructions(){
@@ -104,19 +104,19 @@ class Instructions{
         
         // SW
         void SW(State * state,Cache * cacheData,int rx,int n,int ry){
-            pthread_mutex_lock(&(cacheData->noDeadLock));
             int data;
+            pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
                 if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
-                pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
             }else{
                 pthread_mutex_lock(&(cacheData->cacheLock));
                 cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 // Revisa si el bloque esta en memoria o lo carga si no lo esta
-                bool success = cacheData->getData(&data,(state->registers[ry]+n));
+                bool success = cacheData->getData(&data,(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
                     success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                     if(success){
@@ -129,11 +129,6 @@ class Instructions{
                     if(verbose){printf("%sSave failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
                 }
-                /*if(cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE)){
-                    if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
-                }else{
-                    state->pc -= 0x4; state->counter--;
-                }*/
                 cacheData->cacheTaken=false;
                 pthread_mutex_unlock(&(cacheData->cacheLock));
             }

@@ -31,6 +31,7 @@ class Bus{
         // Destructor
         ~Bus(){
             pthread_mutex_destroy(&lock);
+            pthread_mutex_destroy(&lockDeadlock);
             delete[] cache;
         }
         // Retorna la data de la posicion de memoria
@@ -38,7 +39,7 @@ class Bus{
             return &mem[pos];
         }
         // Escribe la data en memoria
-        unsigned *writeData(unsigned* data,unsigned pos,unsigned size){
+        void writeData(unsigned* data,unsigned pos,unsigned size){
             for(unsigned i=0;i<size;i++){
                 mem[pos+i]=data[i];
             }
@@ -65,7 +66,23 @@ class Bus{
             }
             return isModified;
         }
-        // Solicita un writeback
+        // Bloquea el cache del cual se necesita un bloque
+        void blockCache(int idProcessor){
+            pthread_mutex_lock(&(cache[idProcessor]->noDeadLock));
+            cache[idProcessor]->cacheTaken=true;
+            pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
+        }
+        // Ejecuta un writeback
+        void orderWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){
+            pthread_mutex_lock(&(cache[idProcessor]->cacheLock));
+            cache[idProcessor]->requestWriteback(blockNumber,idProcessorCaller);
+            cache[idProcessor]->cacheTaken=false;
+            pthread_mutex_unlock(&(cache[idProcessor]->cacheLock));
+        }
+};
+#endif
+
+        /*// Solicita un writeback   DEPRACATED
         bool requestWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){
             bool success=false;
             pthread_mutex_lock(&(cache[idProcessor]->noDeadLock));
@@ -81,6 +98,4 @@ class Bus{
                 pthread_mutex_unlock(&(cache[idProcessor]->cacheLock));
             }
             return success;
-        } 
-};
-#endif
+        }*/

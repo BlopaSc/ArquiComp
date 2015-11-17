@@ -74,6 +74,7 @@ void *threadProcessor(void *paramPtr){
          pthread_barrier_wait (&synchroBarrier);
          if(idThread){proc->execute();}
       }
+      pthread_barrier_wait (&synchroBarrier);
       if(idThread){
           printf("Fin Processor No.%i\n",idThread);
           delete proc;
@@ -129,6 +130,7 @@ void loadFile(char * filename){
 void displayMemory(){
      printf("Despliegue de memoria: \n");
      for(int i=0;i<instructionsProcessed;i++){
+        if(!(i&0xF)){printf("Bloque %i:\t",i/16);}
          printf("%d ",mainMemory->ramInstructions[i]);
          if((i&0xF) == 15){
             printf("\n");
@@ -204,6 +206,7 @@ int main(int argc,char *argv[]){
         delete results[i];
     }
     
+    pthread_mutex_destroy(&lockQueue);
     delete[] results;
     delete[] thread;
     delete dataBus;

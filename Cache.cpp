@@ -50,6 +50,8 @@ Cache::~Cache(){
                 delete[] cache[i];
             }
             delete[] cache;
+            pthread_mutex_destroy(&cacheLock);
+            pthread_mutex_destroy(&noDeadLock);
 }
 // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
 bool Cache::getData(int *data,int pos){
@@ -83,23 +85,26 @@ bool Cache::getData(int *data,int pos){
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
                     if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
                     pthread_barrier_wait (&synchroBarrier);
+                    success = bus->checkModified(blockNumber,idProcMod);
+                    if(success){
+                        // Tomar cache
+                        bus->blockCache(idProcMod);
+                    }
                     pthread_barrier_wait (&synchroBarrier);
                     // Revisa si se encuentra modificado en algun otro lugar
-                    if(bus->checkModified(blockNumber,idProcMod)){
+                    if(success){
                         // Solicita writeback
-                        success = bus->requestWriteback(blockNumber,idProcMod,idProcessor);
-                        if(success){
-                            // Tranfiere datos
-                            transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
-                            for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
-                                cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
-                            }
+                        bus->orderWriteback(blockNumber,idProcMod,idProcessor);
+                        // Tranfiere datos
+                        transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                        for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                            cache[blockNumber%BLOCKS_PER_CACHE][copy] = transfer[copy];
                         }
                     }else{
                         // Sino, tranfiere datos desde memoria
                         transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                         for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
-                            cache[blockNumber%BLOCKS_PER_CACHE][(pos%WORDS_PER_BLOCK)+copy] = transfer[copy];
+                            cache[blockNumber%BLOCKS_PER_CACHE][copy] = transfer[copy];
                         }
                         // Espera
                         wait = WORDS_PER_BLOCK*(b+m+b);
@@ -108,17 +113,17 @@ bool Cache::getData(int *data,int pos){
                             pthread_barrier_wait (&synchroBarrier);
                             pthread_barrier_wait (&synchroBarrier);
                         }
-                        bus->busTaken=false;
                         missCounter++;
                         tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
                         status[blockNumber%BLOCKS_PER_CACHE]='C';
-                        // Libera el bus
-                        pthread_mutex_unlock(&(bus->lock));
                         for(copy=0;copy<multi;copy++){
                             data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
                         }
                         success=true;
                     }
+                    // Libera el bus
+                    bus->busTaken=false;
+                    pthread_mutex_unlock(&(bus->lock));
                 }
             }
             return success;
