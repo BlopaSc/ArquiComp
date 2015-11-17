@@ -80,6 +80,10 @@ bool Cache::getData(int *data,int pos){
                     if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
+                    // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
+                    if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
+                    pthread_barrier_wait (&synchroBarrier);
+                    pthread_barrier_wait (&synchroBarrier);
                     // Revisa si se encuentra modificado en algun otro lugar
                     if(bus->checkModified(blockNumber,idProcMod)){
                         // Solicita writeback
