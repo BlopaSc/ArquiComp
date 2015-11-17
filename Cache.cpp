@@ -67,6 +67,7 @@ bool Cache::getData(int *data,int pos){
             unsigned *transfer,copy;
             int wait;
             if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+                // Si esta en cache y es valido
                 hitCounter++;
                 for(copy=0;copy<multi;copy++){
                     data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
@@ -106,10 +107,10 @@ bool Cache::getData(int *data,int pos){
                         wait = WORDS_PER_BLOCK*(b+m+b);
                         for(copy=0;copy<wait;copy++){
                             if(verbose){
-                                if(copy){
+                                if(copy || multi>1){
                                     printf("Proc %i: Getting data to cache\n",idProcessor);
                                 }else{
-                                    printf("Proc %i: Getting data to cache\n",idProcessor);
+                                    printf("Getting data to cache\n",idProcessor);
                                 }
                             }
                             pthread_barrier_wait (&synchroBarrier);

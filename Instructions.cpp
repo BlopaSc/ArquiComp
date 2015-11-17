@@ -126,6 +126,11 @@ class Instructions{
                     if(verbose){printf("Save failed, busy bus\n");}
                     state->pc -= 0x4; state->counter--;
                 }
+                /*if(cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE)){
+                    if(verbose){printf("M(%i+R%i) <- R%i = %i\n",n,ry,rx,state->registers[rx]);}
+                }else{
+                    state->pc -= 0x4; state->counter--;
+                }*/
                 cacheData->cacheTaken=false;
                 pthread_mutex_unlock(&(cacheData->cacheLock));
             }
