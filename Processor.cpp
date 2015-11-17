@@ -101,15 +101,29 @@ class Processor{
         void execute(){
              if(state){
                     // Si se tiene cargado un estado ejecuta
-                    success = cacheInstr->getData(instruction,state->pc);
-                    if(success){
-                        if(verbose){printf("Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
-                        state->pc += 0x4;
-                        state->counter++;
-                        ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
-                        cycles++;
+                    // Revisa que el cache no se encuentre ocupado
+                    pthread_mutex_lock(&(cacheInstr->noDeadLock));
+                    if(cacheInstr->cacheTaken){
+                        if(verbose){printf("Proc %i: Cache busy, couldn't get instruction\n");}
+                        pthread_mutex_unlock(&(cacheInstr->noDeadLock));
                     }else{
-                        if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
+                        // Si esta libre intenta traer la instruccion
+                        pthread_mutex_lock(&(cacheInstr->cacheLock));
+                        cacheInstr->cacheTaken=true;
+                        pthread_mutex_unlock(&(cacheInstr->noDeadLock));
+                        success = cacheInstr->getData(instruction,state->pc);
+                        if(success){
+                            // Si logra traerla ejecuta la instruccion
+                            if(verbose){printf("Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                            state->pc += 0x4;
+                            state->counter++;
+                            ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
+                            cycles++;
+                        }else{
+                            if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
+                        }
+                        cacheInstr->cacheTaken=false;
+                        pthread_mutex_unlock(&(cacheInstr->cacheLock));
                     }
              }else{
                     if(verbose){printf("Proc %i: No-op\n",idProcessor);}
