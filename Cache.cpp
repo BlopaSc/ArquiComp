@@ -44,6 +44,13 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
 }
 // Destructor
 Cache::~Cache(){
+            for(int i=0;i<BLOCKS_PER_CACHE;i++){
+                // Si hay data modificada, guardela
+                if(status[i]=='M'){
+                    bus->writeData(cache[i],tag[i]*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
+                    status[i]='C';
+                }
+            }
             delete[] tag;
             delete[] status;
             for(int i=0;i<BLOCKS_PER_CACHE;i++){
