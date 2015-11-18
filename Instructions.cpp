@@ -103,8 +103,8 @@ class Instructions{
         }
         
         // SW
-        void SW(State * state,Cache * cacheData,int rx,int n,int ry){
-            int data;
+        bool SW(State * state,Cache * cacheData,int rx,int n,int ry){
+            bool success = false;
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
                 if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
@@ -115,16 +115,9 @@ class Instructions{
                 pthread_mutex_lock(&(cacheData->cacheLock));
                 cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
-                // Revisa si el bloque esta en memoria o lo carga si no lo esta
-                bool success = cacheData->getData(&data,(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
-                if(success){
-                    success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
-                    if(success){
-                        if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n",printCache,n,ry,rx,state->registers[rx]);}
-                    }else{
-                        if(verbose){printf("%sSave failed, wadafak\n",printCache);}
-                        state->pc -= 0x4; state->counter--;
-                    }
+                if(success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE)){
+                    if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n",printCache,n,ry,rx,state->registers[rx]);}
+                    cacheData->signalInvalidate();
                 }else{
                     if(verbose){printf("%sSave failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
@@ -132,6 +125,7 @@ class Instructions{
                 cacheData->cacheTaken=false;
                 pthread_mutex_unlock(&(cacheData->cacheLock));
             }
+            return success;
         }
         
         // LL : Igual a LW pero ademas RL =  n + (Ry) 

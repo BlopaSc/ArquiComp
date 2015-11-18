@@ -56,25 +56,24 @@ Cache::~Cache(){
 // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
 bool Cache::getData(int *data,int pos){
             int idProcMod;
-            bool success = false;
-            bool isModified;
+            bool success;
             // Calcula su numero de bloque
             unsigned blockNumber = pos/(WORDS_PER_BLOCK*multi);
             unsigned *transfer,copy;
             int wait;
-            if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+            if(success = (blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I')){
                 // Si esta en cache y es valido
                 hitCounter++;
                 for(copy=0;copy<multi;copy++){
                     data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
                 }
-                success=true;
             }else{
                 // Seguro que evita deadlock en agarre de bus
                 pthread_mutex_lock(&(bus->lockDeadlock));
                 if(bus->busTaken){
                     pthread_mutex_unlock(&(bus->lockDeadlock));
                 }else{
+                    // Toma el bus
                     pthread_mutex_lock(&(bus->lock));
                     bus->busTaken=true;
                     pthread_mutex_unlock(&(bus->lockDeadlock));
@@ -85,13 +84,12 @@ bool Cache::getData(int *data,int pos){
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
                     if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
                     pthread_barrier_wait (&synchroBarrier);
-                    success = bus->checkModified(blockNumber,idProcMod);
-                    if(success){
+                    if(success = bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
                         bus->blockCache(idProcMod);
                     }
                     pthread_barrier_wait (&synchroBarrier);
-                    // Revisa si se encuentra modificado en algun otro lugar
+                    // Si se encuentra modificado en algun otro lugar
                     if(success){
                         // Solicita writeback
                         bus->orderWriteback(blockNumber,idProcMod,idProcessor);
@@ -99,6 +97,13 @@ bool Cache::getData(int *data,int pos){
                         transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                         for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
                             cache[blockNumber%BLOCKS_PER_CACHE][copy] = transfer[copy];
+                        }
+                        // Retorna los datos obtenidos y actualiza su informacion
+                        missCounter++;
+                        tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                        status[blockNumber%BLOCKS_PER_CACHE]='C';
+                        for(copy=0;copy<multi;copy++){
+                            data[copy] = cache[blockNumber%BLOCKS_PER_CACHE][(pos%(WORDS_PER_BLOCK*multi))+copy];
                         }
                     }else{
                         // Sino, tranfiere datos desde memoria
@@ -113,6 +118,7 @@ bool Cache::getData(int *data,int pos){
                             pthread_barrier_wait (&synchroBarrier);
                             pthread_barrier_wait (&synchroBarrier);
                         }
+                        // Retorna los datos obtenidos y actualiza su informacion
                         missCounter++;
                         tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
                         status[blockNumber%BLOCKS_PER_CACHE]='C';
@@ -130,14 +136,74 @@ bool Cache::getData(int *data,int pos){
 }
 // Se encarga de almacenar un dato en una posicion de memoria
 bool Cache::saveData(int data,int pos){
-            bool success=false;
             // Calcula su numero de bloque
             int blockNumber = pos/(WORDS_PER_BLOCK*multi);
-            if(blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I'){
+            int idProcMod,wait;
+            unsigned *transfer,copy;
+            bool success=false;
+            // Intenta tomar el bus
+            pthread_mutex_lock(&(bus->lockDeadlock));
+            if(bus->busTaken){
+                pthread_mutex_unlock(&(bus->lockDeadlock));
+            }else{
+                // Toma el bus
+                pthread_mutex_lock(&(bus->lock));
+                bus->busTaken=true;
+                pthread_mutex_unlock(&(bus->lockDeadlock));
+                // Revisa si contiene el bloque y no esta invalido
+                success = (blockNumber==tag[blockNumber%BLOCKS_PER_CACHE] && status[blockNumber%BLOCKS_PER_CACHE]!='I');
+                if(!success){
+                    // Si no lo tiene o esta invalido
+                    // Si el valor de los datos previos ha sido modificado, los guarda
+                    if(status[blockNumber%BLOCKS_PER_CACHE]=='M'){
+                        writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
+                    }
+                    // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
+                    if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
+                    pthread_barrier_wait (&synchroBarrier);
+                    if(success = bus->checkModified(blockNumber,idProcMod)){
+                        // Tomar cache
+                        bus->blockCache(idProcMod);
+                    }
+                    pthread_barrier_wait (&synchroBarrier);
+                    // Si se encuentra modificado en algun otro lugar
+                    if(success){
+                        // Solicita writeback
+                        bus->orderWriteback(blockNumber,idProcMod,idProcessor);
+                        // Tranfiere datos
+                        transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                        for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                            cache[blockNumber%BLOCKS_PER_CACHE][copy] = transfer[copy];
+                        }
+                        // Actualiza la informacion
+                        missCounter++;
+                        tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                        status[blockNumber%BLOCKS_PER_CACHE]='C';
+                    }else{
+                        // Sino, tranfiere datos desde memoria
+                        transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
+                        for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
+                            cache[blockNumber%BLOCKS_PER_CACHE][copy] = transfer[copy];
+                        }
+                        // Espera
+                        wait = WORDS_PER_BLOCK*(b+m+b);
+                        for(copy=0;copy<wait;copy++){
+                            if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
+                            pthread_barrier_wait (&synchroBarrier);
+                            pthread_barrier_wait (&synchroBarrier);
+                        }
+                        // Actualiza la informacion
+                        missCounter++;
+                        tag[blockNumber%BLOCKS_PER_CACHE]=blockNumber;
+                        status[blockNumber%BLOCKS_PER_CACHE]='C';
+                    }
+                    
+                }
+                // Ya se tiene la data
                 cache[blockNumber%BLOCKS_PER_CACHE][pos%(WORDS_PER_BLOCK*multi)] = data;
                 status[blockNumber%BLOCKS_PER_CACHE]='M';
-                blockInvalidate=blockNumber;
-                success = true;
+                success=true;
+                blockInvalidate = blockNumber;
             }
             return success;
 }
@@ -149,10 +215,12 @@ void Cache::invalidateBlock(unsigned blockNumber){
 }
 // Se encarga de enviar cualquier señal de invalidacion que haga falta
 void Cache::signalInvalidate(){
-            if(blockInvalidate!=-1){
-                bus->invalidateBlock(blockInvalidate,idProcessor);
-                blockInvalidate=-1;
-            }
+            // Espera a final de ciclo
+            pthread_barrier_wait (&synchroBarrier);
+            bus->invalidateBlock(blockInvalidate,idProcessor);
+            // Libera el bus
+            bus->busTaken=false;
+            pthread_mutex_unlock(&(bus->lock));
 }
 // Recibe solicitud para ver si bloque esta modificado
 bool Cache::checkModified(unsigned blockNumber){

@@ -14,11 +14,13 @@ class Processor{
         int idProcessor;
         bool success;
     public:
-           State* state;
-           Instructions* instr;
-           Cache *cacheData,*cacheInstr;
+        bool endOfCycle;
+        State* state;
+        Instructions* instr;
+        Cache *cacheData,*cacheInstr;
         // Constructor
         Processor(Bus *instrBus,Bus *dataBus,int id){
+            endOfCycle=true;
             cycles=1;
             flags=0x0;
             state = 0;
@@ -85,7 +87,8 @@ class Processor{
                     instr->LW(state,cacheData,p2,p3,p1);
                     break;
                case 43:
-                    instr->SW(state,cacheData,p2,p3,p1);
+                    // Si se realiza con exito el SW, ya paso el final de ciclo: endOfCycle = false
+                    endOfCycle = !instr->SW(state,cacheData,p2,p3,p1);
                     break;
                case 50:
                     instr->LL(state,cacheData,p2,p3,p1);
@@ -98,6 +101,7 @@ class Processor{
         
         // Es la señal que ocasiona la ejecucion de un nuevo ciclo de reloj
         void execute(){
+             endOfCycle=true;
              if(state){
                     // Si se tiene cargado un estado ejecuta
                     // Revisa que el cache no se encuentre ocupado
@@ -134,11 +138,6 @@ class Processor{
              cycles=1;
              state=0;
              flags=0x0;
-        }
-        // Revisa si hay que invalidar algo al finalizar el ciclo
-        void signalInvalidate(){
-            cacheInstr->signalInvalidate();
-            cacheData->signalInvalidate();
         }
 };
 #endif
