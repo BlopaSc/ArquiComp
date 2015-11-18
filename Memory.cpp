@@ -25,5 +25,13 @@ class Memory{
             delete[] ramInstructions;
             delete[] ramData;
         }
+        // Revisa si hay algun dato modificado (no default) en la memoria de datos
+        bool modifiedData(){
+            bool notModified=true;
+            for(int i=0;i<BLOCKS_DATA*WORDS_PER_BLOCK && notModified;i++){
+                notModified = ramData[i]==DEFAULT_MEMORY_START;
+            }
+            return !notModified;
+        }
 };
 #endif

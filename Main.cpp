@@ -140,6 +140,21 @@ void displayMemory(){
      }
      printf("\n");
 }
+void displayDataMemory(){
+    if(mainMemory->modifiedData()){
+        printf("Despliegue de memoria de datos: \n");
+        for(int i=0;i<BLOCKS_DATA*WORDS_PER_BLOCK;i++){
+            if(!(i&0xF)){printf("Bloque %i:\t",(i/4)+40);}
+             printf("%d ",mainMemory->ramData[i]);
+             if((i&0xF) == 15){
+                printf("\n");
+             }else{
+                if((i&0x3) == 3){printf("\t");}
+             }
+         }
+         printf("\n");
+    }
+}
 
 
 int main(int argc,char *argv[]){
@@ -205,6 +220,7 @@ int main(int argc,char *argv[]){
         results[i]->printState();
         delete results[i];
     }
+    displayDataMemory();
     
     pthread_mutex_destroy(&lockQueue);
     delete[] results;
