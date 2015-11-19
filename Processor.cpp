@@ -117,7 +117,7 @@ class Processor{
                         success = cacheInstr->getData(instruction,state->pc);
                         if(success){
                             // Si logra traerla ejecuta la instruccion
-                            if(verbose){sprintf(instr->printCache,"Proc %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                            if(verbose){sprintf(instr->printCache,"Proc %i, Thread %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->id,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                             state->pc += 0x4;
                             state->counter++;
                             ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
