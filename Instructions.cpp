@@ -110,9 +110,9 @@ class Instructions{
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
                 if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
+                pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
-                pthread_mutex_unlock(&(cacheData->noDeadLock));
             }else{
                 pthread_mutex_lock(&(cacheData->cacheLock));
                 cacheData->cacheTaken=true;

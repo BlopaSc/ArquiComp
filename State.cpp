@@ -31,6 +31,7 @@ class State{
                     printf("R%i = %i, ",i,registers[i]);
                 }
             }
+            printf("RL = %i",rl);
             printf("\n");
         }
 };
