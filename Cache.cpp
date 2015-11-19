@@ -220,8 +220,10 @@ bool Cache::saveData(int data,int pos){
                         success=true;
                     }
                 }
-                bus->busTaken=false;
-                pthread_mutex_unlock(&(bus->lock));
+                if(!success){
+                    bus->busTaken=false;
+                    pthread_mutex_unlock(&(bus->lock));
+                }
             }
             return success;
 }
