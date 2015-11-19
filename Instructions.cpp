@@ -9,10 +9,12 @@ extern bool verbose;
 // Clase encargada de las instrucciones MIPS
 class Instructions{
     public:
+        Cache* cacheData;
         char* printCache;
         // Constructor
-        Instructions(){
+        Instructions(Cache* cache){
             if(verbose){printCache = new char[0x100];}
+            cacheData = cache;
         }
         // Destructor
         ~Instructions(){
@@ -79,7 +81,7 @@ class Instructions{
         }
         
         // LW
-        void LW(State * state,Cache * cacheData,int rx,int n,int ry){
+        void LW(State * state,int rx,int n,int ry){
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
                 if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
@@ -92,7 +94,7 @@ class Instructions{
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
-                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i\n",printCache,rx,n,ry,state->registers[rx]);}
+                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i\n%s",printCache,rx,n,ry,state->registers[rx],cacheData->getDataPrint());}
                 }else{
                     if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
@@ -103,7 +105,7 @@ class Instructions{
         }
         
         // SW
-        bool SW(State * state,Cache * cacheData,int rx,int n,int ry){
+        bool SW(State * state,int rx,int n,int ry){
             bool success = false;
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
@@ -116,7 +118,7 @@ class Instructions{
                 cacheData->cacheTaken=true;
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 if(success = cacheData->saveData(state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE)){
-                    if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n",printCache,n,ry,rx,state->registers[rx]);}
+                    if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n%s",printCache,n,ry,rx,state->registers[rx],cacheData->getDataPrint());}
                     cacheData->signalInvalidate();
                 }else{
                     if(verbose){printf("%sSave failed, busy bus\n",printCache);}
@@ -129,7 +131,7 @@ class Instructions{
         }
         
         // LL : Igual a LW pero ademas RL =  n + (Ry) 
-        void LL(State * state,Cache * cacheData,int rx,int n,int ry){
+        void LL(State * state,int rx,int n,int ry){
              pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
                 if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
@@ -143,7 +145,7 @@ class Instructions{
                 bool success = cacheData->getData(&state->registers[rx],(state->registers[ry]+n-DATA_OFFSET)/WORD_SIZE);
                 if(success){
                     state->rl = n + state->registers[ry];
-                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i, RL = %i\n",printCache,rx,n,ry,state->registers[rx],state->rl);}
+                    if(verbose){printf("%sR%i <- M(%i+R%i) = %i, RL = %i\n%s",printCache,rx,n,ry,state->registers[rx],state->rl,cacheData->getDataPrint());}
                 }else{
                     if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
                     state->pc -= 0x4; state->counter--;
@@ -154,9 +156,9 @@ class Instructions{
         }
         
         // SC : Igual a SW pero solo ejecuta el save si RL == n+(Ry), sino Rx = 0
-        void SC(State * state,Cache * cacheData,int rx,int n,int ry){
+        void SC(State * state,int rx,int n,int ry){
              if(state->rl==(n + state->registers[ry])){
-                 SW(state,cacheData,rx,n,ry);
+                 SW(state,rx,n,ry);
              }else{
                  state->registers[rx]=0;
              }

@@ -25,11 +25,11 @@ class Processor{
             flags=0x0;
             state = 0;
             idProcessor=id;
-            instr = new Instructions();
             cacheInstr = new Cache(instrBus,0x4,id);
             instrBus->setCacheLink(cacheInstr,idProcessor);
             cacheData = new Cache(dataBus,0x1,id);
             dataBus->setCacheLink(cacheData,idProcessor);
+            instr = new Instructions(cacheData);
             instruction = new unsigned[4];
         }
         // Destructor
@@ -88,17 +88,17 @@ class Processor{
                     flags|=0x1;
                     break;
                case 35:
-                    instr->LW(state,cacheData,p2,p3,p1);
+                    instr->LW(state,p2,p3,p1);
                     break;
                case 43:
                     // Si se realiza con exito el SW, ya paso el final de ciclo: endOfCycle = false
-                    endOfCycle = !instr->SW(state,cacheData,p2,p3,p1);
+                    endOfCycle = !instr->SW(state,p2,p3,p1);
                     break;
                case 50:
-                    instr->LL(state,cacheData,p2,p3,p1);
+                    instr->LL(state,p2,p3,p1);
                     break;
                case 51:
-                    instr->SC(state,cacheData,p2,p3,p1);
+                    instr->SC(state,p2,p3,p1);
                     break;
              }
         }

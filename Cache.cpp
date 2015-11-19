@@ -26,6 +26,7 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
             cache = new unsigned*[BLOCKS_PER_CACHE];
             for(int i=0;i<BLOCKS_PER_CACHE;i++){
                 cache[i]=new unsigned[WORDS_PER_BLOCK*multiplier];
+                for(int j=0;j<WORDS_PER_BLOCK*multiplier;j++){cache[i][j]=0;}
             }
             bus = b;
             hitCounter=0;
@@ -40,7 +41,7 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
             if (pthread_mutex_init(&noDeadLock, NULL)){
                 printf("\nAlgo salio mal creando el deadlock-mutex del cache\n");
             }
-            if(verbose){printCache = new char[0x100];}
+            if(verbose){printCache = new char[0x100];printData = new char[0x400];}
             cacheTaken=false;
 }
 // Destructor
@@ -60,7 +61,7 @@ Cache::~Cache(){
             delete[] cache;
             pthread_mutex_destroy(&cacheLock);
             pthread_mutex_destroy(&noDeadLock);
-            if(verbose){delete[] printCache;}
+            if(verbose){delete[] printCache;delete[] printData;}
 }
 // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
 bool Cache::getData(int *data,int pos){
@@ -91,7 +92,7 @@ bool Cache::getData(int *data,int pos){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
-                    if(verbose){printf("%sWaiting for cycle end to check caches\n",printCache);}
+                    if(verbose){printf("%sWaiting for cycle end to check caches - load\n",printCache);}
                     pthread_barrier_wait (&synchroBarrier);
                     if(success = bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
@@ -168,7 +169,7 @@ bool Cache::saveData(int data,int pos){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
-                    if(verbose){printf("%sWaiting for cycle end to check caches\n",printCache);}
+                    if(verbose){printf("%sWaiting for cycle end to check caches - save\n",printCache);}
                     pthread_barrier_wait (&synchroBarrier);
                     if(success = bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
@@ -247,6 +248,21 @@ void Cache::requestWriteback(unsigned blockNumber,char* printInfo){
         bus->writeData(cache[blockNumber%BLOCKS_PER_CACHE],blockNumber*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
         status[blockNumber%BLOCKS_PER_CACHE]='C';
     }
+}
+// Retorna la data del cache a modo de string
+char* Cache::getDataPrint(){
+    sprintf(printData,"Cache:");
+    for(int i=0;i<BLOCKS_PER_CACHE;i++){
+        sprintf(nullPos()," %i,%c: %i,%i,%i,%i",tag[i],status[i],cache[i][0],cache[i][1],cache[i][2],cache[i][3]);
+    }
+    sprintf(nullPos(),"\n");
+    return printData;
+}
+// Retorna la posicion del '\0' en la cadena printData
+char* Cache::nullPos(){
+    char* tmp = printData;
+    while(*tmp){tmp++;}
+    return tmp;
 }
 #endif
 

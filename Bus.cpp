@@ -69,12 +69,12 @@ class Bus{
         // Bloquea el cache del cual se necesita un bloque
         void blockCache(int idProcessor){
             pthread_mutex_lock(&(cache[idProcessor]->noDeadLock));
-            cache[idProcessor]->cacheTaken=true;
-            pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
         }
         // Ejecuta un writeback
         void orderWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){
             pthread_mutex_lock(&(cache[idProcessor]->cacheLock));
+            cache[idProcessor]->cacheTaken=true;
+            pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
             cache[idProcessor]->requestWriteback(blockNumber,cache[idProcessorCaller-1]->printCache);
             cache[idProcessor]->cacheTaken=false;
             pthread_mutex_unlock(&(cache[idProcessor]->cacheLock));

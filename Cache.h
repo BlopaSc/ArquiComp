@@ -15,11 +15,13 @@ class Cache{
         int idProcessor,blockInvalidate;
         // Se encarga de realizar un writeback de un bloque
         void writeback(unsigned block);
+        // Retorna la posicion del '\0' en la cadena printData
+        char* nullPos();
     public: 
         // Locks del cache
         pthread_mutex_t cacheLock;
         pthread_mutex_t noDeadLock; // Mutex que sirve para evitar deadlock en cache
-        char* printCache;
+        char *printCache,*printData;
         bool cacheTaken;
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
         Cache(Bus* b,unsigned multiplier,int id);
@@ -37,5 +39,7 @@ class Cache{
         bool checkModified(unsigned blockNumber);
         // Recibe una solicitud de writeback
         void requestWriteback(unsigned blockNumber,char* printInfo);
+        // Retorna la data del cache a modo de string
+        char *getDataPrint();
 };
 #endif
