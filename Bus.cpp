@@ -61,8 +61,9 @@ class Bus{
         // Consulta si alguno de los caches contiene el bloque solicitado como modificado
         bool checkModified(unsigned blockNumber,int &idTargetProcessor){
             bool isModified=false;
-            for(idTargetProcessor=0;idTargetProcessor<numProcs && !isModified;idTargetProcessor++){
-                isModified = cache[idTargetProcessor]->checkModified(blockNumber);
+            for(int i=0;i<numProcs && !isModified;i++){
+                isModified = cache[i]->checkModified(blockNumber);
+                if(isModified){idTargetProcessor=i;}
             }
             return isModified;
         }
