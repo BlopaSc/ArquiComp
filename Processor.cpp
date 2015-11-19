@@ -48,7 +48,11 @@ class Processor{
         inline long long getCycle(){return cycles;}
         // Retorna el estado actual del procesador para almacenarlo
         inline State* getState(){return state;}
-        inline void setState(State* s){state=s;}
+        inline void setState(State* s){
+            state=s;
+            sprintf(cacheData->printCache,"Proc %i Thread %i: ",idProcessor,state->id);
+            sprintf(cacheInstr->printCache,"Proc %i Thread %i: ",idProcessor,state->id);
+        }
         //Switch de las instrucciones MIPS
         void ejecutarMIPS(int codigo, int p1,int p2, int p3){
              switch(codigo){
@@ -107,7 +111,7 @@ class Processor{
                     // Revisa que el cache no se encuentre ocupado
                     pthread_mutex_lock(&(cacheInstr->noDeadLock));
                     if(cacheInstr->cacheTaken){
-                        if(verbose){printf("Proc %i: Cache busy, couldn't get instruction\n");}
+                        if(verbose){printf("Proc %i Thread %i: Cache busy, couldn't get instruction\n",idProcessor,state->id);}
                         pthread_mutex_unlock(&(cacheInstr->noDeadLock));
                     }else{
                         // Si esta libre intenta traer la instruccion
@@ -117,13 +121,13 @@ class Processor{
                         success = cacheInstr->getData(instruction,state->pc);
                         if(success){
                             // Si logra traerla ejecuta la instruccion
-                            if(verbose){sprintf(instr->printCache,"Proc %i, Thread %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->id,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
+                            if(verbose){sprintf(instr->printCache,"Proc %i Thread %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->id,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
                             state->pc += 0x4;
                             state->counter++;
                             ejecutarMIPS(instruction[0],instruction[1],instruction[2],instruction[3]);
                             cycles++;
                         }else{
-                            if(verbose){printf("Proc %i: Waiting for bus\n",idProcessor);}
+                            if(verbose){printf("Proc %i Thread %i: Waiting for bus\n",idProcessor,state->id);}
                         }
                         cacheInstr->cacheTaken=false;
                         pthread_mutex_unlock(&(cacheInstr->cacheLock));

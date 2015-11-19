@@ -75,7 +75,7 @@ class Bus{
         // Ejecuta un writeback
         void orderWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){
             pthread_mutex_lock(&(cache[idProcessor]->cacheLock));
-            cache[idProcessor]->requestWriteback(blockNumber,idProcessorCaller);
+            cache[idProcessor]->requestWriteback(blockNumber,cache[idProcessorCaller-1]->printCache);
             cache[idProcessor]->cacheTaken=false;
             pthread_mutex_unlock(&(cache[idProcessor]->cacheLock));
         }

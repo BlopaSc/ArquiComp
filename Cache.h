@@ -19,6 +19,7 @@ class Cache{
         // Locks del cache
         pthread_mutex_t cacheLock;
         pthread_mutex_t noDeadLock; // Mutex que sirve para evitar deadlock en cache
+        char* printCache;
         bool cacheTaken;
         // Constructor : multiplier se utiliza para la cache de instrucciones que la estamos trabajando como extendida
         Cache(Bus* b,unsigned multiplier,int id);
@@ -35,6 +36,6 @@ class Cache{
         // Recibe solicitud para ver si bloque esta modificado
         bool checkModified(unsigned blockNumber);
         // Recibe una solicitud de writeback
-        void requestWriteback(unsigned blockNumber,int idCaller);
+        void requestWriteback(unsigned blockNumber,char* printInfo);
 };
 #endif

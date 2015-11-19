@@ -11,7 +11,7 @@ extern bool verbose;
 void Cache::writeback(unsigned block){
             int wait = WORDS_PER_BLOCK*(b+m+b);
             for(int copy = 0;copy<wait;copy++){
-                if(verbose){printf("Proc %i: Saving data to memory\n",idProcessor);}
+                if(verbose){printf("%sSaving data to memory\n",printCache);}
                 pthread_barrier_wait (&synchroBarrier);
                 pthread_barrier_wait (&synchroBarrier);
             }
@@ -40,6 +40,7 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
             if (pthread_mutex_init(&noDeadLock, NULL)){
                 printf("\nAlgo salio mal creando el deadlock-mutex del cache\n");
             }
+            if(verbose){printCache = new char[0x100];}
             cacheTaken=false;
 }
 // Destructor
@@ -59,6 +60,7 @@ Cache::~Cache(){
             delete[] cache;
             pthread_mutex_destroy(&cacheLock);
             pthread_mutex_destroy(&noDeadLock);
+            if(verbose){delete[] printCache;}
 }
 // Revisa si la data se encuentra disponible, de no ser asi la trae de memoria y la devuelve
 bool Cache::getData(int *data,int pos){
@@ -89,7 +91,7 @@ bool Cache::getData(int *data,int pos){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
-                    if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
+                    if(verbose){printf("%sWaiting for cycle end to check caches\n",printCache);}
                     pthread_barrier_wait (&synchroBarrier);
                     if(success = bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
@@ -121,7 +123,7 @@ bool Cache::getData(int *data,int pos){
                         // Espera
                         wait = WORDS_PER_BLOCK*(b+m+b);
                         for(copy=0;copy<wait;copy++){
-                            if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
+                            if(verbose){printf("%sGetting data to cache\n",printCache);}
                             pthread_barrier_wait (&synchroBarrier);
                             pthread_barrier_wait (&synchroBarrier);
                         }
@@ -166,7 +168,7 @@ bool Cache::saveData(int data,int pos){
                         writeback(tag[blockNumber%BLOCKS_PER_CACHE]);
                     }
                     // Espera a fin de ciclo para revisar si el bloque se encuentra modificado en otros lugares
-                    if(verbose){printf("Proc %i: Waiting for cycle end to check caches\n",idProcessor);}
+                    if(verbose){printf("%sWaiting for cycle end to check caches\n",printCache);}
                     pthread_barrier_wait (&synchroBarrier);
                     if(success = bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
@@ -195,7 +197,7 @@ bool Cache::saveData(int data,int pos){
                         // Espera
                         wait = WORDS_PER_BLOCK*(b+m+b);
                         for(copy=0;copy<wait;copy++){
-                            if(verbose){printf("Proc %i: Getting data to cache\n",idProcessor);}
+                            if(verbose){printf("%sGetting data to cache\n",printCache);}
                             pthread_barrier_wait (&synchroBarrier);
                             pthread_barrier_wait (&synchroBarrier);
                         }
@@ -234,11 +236,11 @@ bool Cache::checkModified(unsigned blockNumber){
     return (tag[blockNumber%BLOCKS_PER_CACHE]==blockNumber)&&(status[blockNumber%BLOCKS_PER_CACHE]=='M');
 }
 // Recibe una solicitud de writeback
-void Cache::requestWriteback(unsigned blockNumber,int idCaller){
+void Cache::requestWriteback(unsigned blockNumber,char* printInfo){
     if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
         int wait = WORDS_PER_BLOCK*(b+m+b);
         for(int copy = 0;copy<wait;copy++){
-            if(verbose){printf("Proc %i: Saving data to memory\n",idCaller);}
+            if(verbose){printf("%sSaving data to memory\n",printInfo);}
             pthread_barrier_wait (&synchroBarrier);
             pthread_barrier_wait (&synchroBarrier);
         }
