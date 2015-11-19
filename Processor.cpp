@@ -119,6 +119,8 @@ class Processor{
                         cacheInstr->cacheTaken=true;
                         pthread_mutex_unlock(&(cacheInstr->noDeadLock));
                         success = cacheInstr->getData(instruction,state->pc);
+                        cacheInstr->cacheTaken=false;
+                        pthread_mutex_unlock(&(cacheInstr->cacheLock));
                         if(success){
                             // Si logra traerla ejecuta la instruccion
                             if(verbose){sprintf(instr->printCache,"Proc %i Thread %i: PC: %i, Instr: %i %i %i %i \t",idProcessor,state->id,state->pc,instruction[0],instruction[1],instruction[2],instruction[3]);}
@@ -129,8 +131,6 @@ class Processor{
                         }else{
                             if(verbose){printf("Proc %i Thread %i: Waiting for bus\n",idProcessor,state->id);}
                         }
-                        cacheInstr->cacheTaken=false;
-                        pthread_mutex_unlock(&(cacheInstr->cacheLock));
                     }
              }else{
                     if(verbose){printf("Proc %i: No-op\n",idProcessor);}

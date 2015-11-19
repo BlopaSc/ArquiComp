@@ -67,15 +67,15 @@ class Bus{
             return isModified;
         }
         // Bloquea el cache del cual se necesita un bloque
-        void blockCache(int idProcessor){
+        bool blockCache(int idProcessor){
+            bool success=!cache[idProcessor]->cacheTaken;
             pthread_mutex_lock(&(cache[idProcessor]->noDeadLock));
-            if(cache[idProcessor]->cacheTaken){
-                printf("Unknown error, check consistency\n");
-            }else{
+            if(success){
                 pthread_mutex_lock(&(cache[idProcessor]->cacheLock));
                 cache[idProcessor]->cacheTaken=true;
-                pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
             }
+            pthread_mutex_unlock(&(cache[idProcessor]->noDeadLock));
+            return success;
         }
         // Ejecuta un writeback
         void orderWriteback(unsigned blockNumber,int idProcessor,int idProcessorCaller){

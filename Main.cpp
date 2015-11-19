@@ -54,12 +54,12 @@ void *threadProcessor(void *paramPtr){
                  }
                  pthread_mutex_unlock(&lockQueue);
              }else{
-                    pthread_mutex_lock(&lockQueue);
-                    if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
-                        threadManager->returnThread(proc->getState());
-                        proc->setState(threadManager->getNext());
-                    }
-                    pthread_mutex_unlock(&lockQueue);
+                pthread_mutex_lock(&lockQueue);
+                if(!(proc->getCycle()%quantum) && threadManager->getLeftUntaken()){
+                    threadManager->returnThread(proc->getState());
+                    proc->setState(threadManager->getNext());
+                }
+                pthread_mutex_unlock(&lockQueue);
              }
          }else{
              clockCounter++;
