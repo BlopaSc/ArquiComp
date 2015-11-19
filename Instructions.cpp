@@ -109,7 +109,7 @@ class Instructions{
             bool success = false;
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
+                if(verbose){printf("%sSave failed, busy cache\n",printCache);}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
