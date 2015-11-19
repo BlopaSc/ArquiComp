@@ -179,12 +179,16 @@ bool Cache::saveData(int data,int pos){
                     pthread_barrier_wait (&synchroBarrier);
                     if(bus->checkModified(blockNumber,idProcMod)){
                         // Tomar cache
+                        printf("MASSIVE ERROR SPOTTED 1");
                         success = bus->blockCache(idProcMod);
+                        printf("MASSIVE ERROR SPOTTED 2");
                         pthread_barrier_wait (&synchroBarrier);
                         // Si se encuentra modificado en algun otro lugar
                         if(success){
                             // Solicita writeback
+                            printf("MASSIVE ERROR SPOTTED 3");
                             bus->orderWriteback(blockNumber,idProcMod,idProcessor);
+                            printf("MASSIVE ERROR SPOTTED 4");
                             // Tranfiere datos
                             transfer = bus->getData(blockNumber*multi*WORDS_PER_BLOCK);
                             for(copy=0;copy<multi*WORDS_PER_BLOCK;copy++){
