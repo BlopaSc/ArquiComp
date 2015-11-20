@@ -1,2 +1,2 @@
-Main.exe tr 30 1 0 Hilos/1.txt Hilos/2.txt Hilos/3.txt Hilos/4.txt Hilos/5.txt Hilos/6.txt
+Main.exe tr 30 1 0 Hilos2/hilo1.txt Hilos2/hilo2.txt Hilos2/hilo3.txt Hilos2/hilo4.txt Hilos2/hilo5.txt Hilos2/hilo6.txt Hilos2/hilo-pr.txt
 PAUSE

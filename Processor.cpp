@@ -50,6 +50,8 @@ class Processor{
         inline State* getState(){return state;}
         inline void setState(State* s){
             state=s;
+            state->rl=-1;
+            cacheData->currentState = state;
             sprintf(cacheData->printCache,"Proc %i Thread %i: ",idProcessor,state->id);
             sprintf(cacheInstr->printCache,"Proc %i Thread %i: ",idProcessor,state->id);
         }

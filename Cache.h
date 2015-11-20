@@ -1,6 +1,7 @@
 #ifndef CACHE_H
 #define CACHE_H
 #include <pthread.h>
+#include "State.cpp"
 class Bus;
 class Cache{
     private:
@@ -20,6 +21,8 @@ class Cache{
         // Almacena si se ha realizado alguna modificacion en el cache
         bool isModified;
     public: 
+        // Estado en caso de que sea necesario modificar el rl
+        State *currentState;
         // Locks del cache
         pthread_mutex_t cacheLock;
         pthread_mutex_t noDeadLock; // Mutex que sirve para evitar deadlock en cache

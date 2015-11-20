@@ -237,6 +237,7 @@ bool Cache::saveData(int data,int pos){
 // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
 void Cache::invalidateBlock(unsigned blockNumber){
             if(blockNumber == tag[blockNumber%BLOCKS_PER_CACHE]){
+                currentState->rl = -1;
                 status[blockNumber%BLOCKS_PER_CACHE]='I';
             }
 }
