@@ -43,6 +43,7 @@ Cache::Cache(Bus* b,unsigned multiplier,int id){
             }
             if(verbose){printCache = new char[0x100];printData = new char[0x400];}
             cacheTaken=false;
+            isModified=false;
 }
 // Destructor
 Cache::~Cache(){
@@ -140,6 +141,9 @@ bool Cache::getData(int *data,int pos){
                     // Libera el bus
                     bus->busTaken=false;
                     pthread_mutex_unlock(&(bus->lock));
+                    if(success){
+                        isModified=true;
+                    }
                 }
             }
             return success;
@@ -225,6 +229,9 @@ bool Cache::saveData(int data,int pos){
                     pthread_mutex_unlock(&(bus->lock));
                 }
             }
+            if(success){
+                isModified=true;
+            }
             return success;
 }
 // Se encarga de invalidar un bloque cuando recibe la notificacion del bus
@@ -257,15 +264,21 @@ void Cache::requestWriteback(unsigned blockNumber,char* printInfo){
         }
         bus->writeData(cache[blockNumber%BLOCKS_PER_CACHE],blockNumber*WORDS_PER_BLOCK*multi,WORDS_PER_BLOCK*multi);
         status[blockNumber%BLOCKS_PER_CACHE]='C';
+        isModified=true;
     }
 }
 // Retorna la data del cache a modo de string
 char* Cache::getDataPrint(){
-    sprintf(printData,"Cache:");
-    for(int i=0;i<BLOCKS_PER_CACHE;i++){
-        sprintf(nullPos()," %i,%c: %i,%i,%i,%i",tag[i],status[i],cache[i][0],cache[i][1],cache[i][2],cache[i][3]);
+    if(isModified){
+        sprintf(printData,"Cache:");
+        for(int i=0;i<BLOCKS_PER_CACHE;i++){
+            sprintf(nullPos()," %i,%c: %i,%i,%i,%i",tag[i],status[i],cache[i][0],cache[i][1],cache[i][2],cache[i][3]);
+        }
+        sprintf(nullPos(),"\n");
+        isModified=false;
+    }else{
+        printData[0]='\0';
     }
-    sprintf(nullPos(),"\n");
     return printData;
 }
 // Retorna la posicion del '\0' en la cadena printData

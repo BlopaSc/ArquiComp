@@ -17,6 +17,8 @@ class Cache{
         void writeback(unsigned block);
         // Retorna la posicion del '\0' en la cadena printData
         char* nullPos();
+        // Almacena si se ha realizado alguna modificacion en el cache
+        bool isModified;
     public: 
         // Locks del cache
         pthread_mutex_t cacheLock;

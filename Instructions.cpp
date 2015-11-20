@@ -24,31 +24,31 @@ class Instructions{
         //Metodo DADDI
         void DADDI(State * state, int rx, int ry, int n){
              state->registers[rx] = state->registers[ry] + n;
-             if(verbose){printf("%sR%i = R%i+%i = %i\n",printCache,rx,ry,n,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i+%i = %i\n%s",printCache,rx,ry,n,state->registers[rx],cacheData->getDataPrint());}
         }
         
         //Metodo DADD
         void DADD(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] + state->registers[rz];
-             if(verbose){printf("%sR%i = R%i+R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i+R%i = %i\n%s",printCache,rx,ry,rz,state->registers[rx],cacheData->getDataPrint());}
         }
         
         //DSUB
         void DSUB(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] - state->registers[rz];
-             if(verbose){printf("%sR%i = R%i-R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i-R%i = %i\n%s",printCache,rx,ry,rz,state->registers[rx],cacheData->getDataPrint());}
         }
         
         //DMUL
         void DMUL(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] * state->registers[rz];
-             if(verbose){printf("%sR%i = R%i*R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i*R%i = %i\n%s",printCache,rx,ry,rz,state->registers[rx],cacheData->getDataPrint());}
         }
         
         //DDIV
         void DDIV(State * state, int rx, int ry, int rz){
              state->registers[rx] = state->registers[ry] / state->registers[rz];
-             if(verbose){printf("%sR%i = R%i/R%i = %i\n",printCache,rx,ry,rz,state->registers[rx]);}
+             if(verbose){printf("%sR%i = R%i/R%i = %i\n%s",printCache,rx,ry,rz,state->registers[rx],cacheData->getDataPrint());}
         }
         
         //BEQZ
@@ -56,7 +56,7 @@ class Instructions{
              if(!state->registers[rx]){
                   state->pc+=0x4*etiq;
              }
-             if(verbose){printf("%sif R%i = 0 JMP %i\n",printCache,rx,etiq);}
+             if(verbose){printf("%sif R%i = 0 JMP %i\n%s",printCache,rx,etiq,cacheData->getDataPrint());}
         }
         
         //BNEZ
@@ -64,27 +64,27 @@ class Instructions{
              if(state->registers[rx]){
                   state->pc+=0x4*etiq;
              }
-             if(verbose){printf("%sif R%i != 0 JMP %i\n",printCache,rx,etiq);}
+             if(verbose){printf("%sif R%i != 0 JMP %i\n%s",printCache,rx,etiq,cacheData->getDataPrint());}
         }
         
         //JAL
         void JAL(State * state, int n){
              state->registers[31]=state->pc;
              state->pc=state->pc+n;
-             if(verbose){printf("%sR31 = PC ; PC += %i\n",printCache,n);}
+             if(verbose){printf("%sR31 = PC ; PC += %i\n%s",printCache,n,cacheData->getDataPrint());}
         }
         
         //JR
         void JR(State * state, int rx){
              state->pc=state->registers[rx];
-             if(verbose){printf("%sJMP R%i\n",printCache,rx);}
+             if(verbose){printf("%sJMP R%i\n%s",printCache,rx,cacheData->getDataPrint());}
         }
         
         // LW
         void LW(State * state,int rx,int n,int ry){
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
+                if(verbose){printf("%sLoad failed, busy cache\n%s",printCache,cacheData->getDataPrint());}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -96,7 +96,7 @@ class Instructions{
                 if(success){
                     if(verbose){printf("%sR%i <- M(%i+R%i) = %i\n%s",printCache,rx,n,ry,state->registers[rx],cacheData->getDataPrint());}
                 }else{
-                    if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
+                    if(verbose){printf("%sLoad failed, busy bus\n%s",printCache,cacheData->getDataPrint());}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
@@ -109,7 +109,7 @@ class Instructions{
             bool success = false;
             pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("%sSave failed, busy cache\n",printCache);}
+                if(verbose){printf("%sSave failed, busy cache\n%s",printCache,cacheData->getDataPrint());}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -121,7 +121,7 @@ class Instructions{
                     if(verbose){printf("%sM(%i+R%i) <- R%i = %i\n%s",printCache,n,ry,rx,state->registers[rx],cacheData->getDataPrint());}
                     cacheData->signalInvalidate();
                 }else{
-                    if(verbose){printf("%sSave failed, busy bus\n",printCache);}
+                    if(verbose){printf("%sSave failed, busy bus\n%s",printCache,cacheData->getDataPrint());}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
@@ -134,7 +134,7 @@ class Instructions{
         void LL(State * state,int rx,int n,int ry){
              pthread_mutex_lock(&(cacheData->noDeadLock));
             if(cacheData->cacheTaken){
-                if(verbose){printf("%sLoad failed, busy cache\n",printCache);}
+                if(verbose){printf("%sLoad failed, busy cache\n%s",printCache,cacheData->getDataPrint());}
                 pthread_mutex_unlock(&(cacheData->noDeadLock));
                 state->pc -= 0x4;
                 state->counter--;
@@ -147,7 +147,7 @@ class Instructions{
                     state->rl = n + state->registers[ry];
                     if(verbose){printf("%sR%i <- M(%i+R%i) = %i, RL = %i\n%s",printCache,rx,n,ry,state->registers[rx],state->rl,cacheData->getDataPrint());}
                 }else{
-                    if(verbose){printf("%sLoad failed, busy bus\n",printCache);}
+                    if(verbose){printf("%sLoad failed, busy bus\n%s",printCache,cacheData->getDataPrint());}
                     state->pc -= 0x4; state->counter--;
                 }
                 cacheData->cacheTaken=false;
