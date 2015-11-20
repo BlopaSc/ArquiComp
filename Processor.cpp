@@ -100,14 +100,13 @@ class Processor{
                     instr->LL(state,p2,p3,p1);
                     break;
                case 51:
-                    instr->SC(state,p2,p3,p1);
+                    endOfCycle = !instr->SC(state,p2,p3,p1);
                     break;
              }
         }
         
         // Es la señal que ocasiona la ejecucion de un nuevo ciclo de reloj
         void execute(){
-             endOfCycle=true;
              if(state){
                     // Si se tiene cargado un estado ejecuta
                     // Revisa que el cache no se encuentre ocupado

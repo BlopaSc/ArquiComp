@@ -37,11 +37,13 @@ void *threadProcessor(void *paramPtr){
       pthread_barrier_wait (&synchroBarrier);
       // Mientras quede algun hilillo por ejecutar
       while(threadManager->getSize()){
-         // Sincronizacion previa al inicio de ciclo
-         if(!idThread || proc->endOfCycle){
-            pthread_barrier_wait (&synchroBarrier);
-         }
          if(idThread){
+            // Sincronizacion previa al inicio de ciclo
+            if(proc->endOfCycle){
+                pthread_barrier_wait (&synchroBarrier);
+            }else{
+                proc->endOfCycle = true;
+            }
              // Si se excede el quantum o llega al fin del hilillo, y quedan mas hilos disponibles
              if(proc->getFin()){
                  // Acabo hilo
@@ -62,6 +64,8 @@ void *threadProcessor(void *paramPtr){
                 pthread_mutex_unlock(&lockQueue);
              }
          }else{
+             // Sincronizacion previa al inicio de ciclo
+             pthread_barrier_wait (&synchroBarrier);
              clockCounter++;
              if(verbose){
                  printf("Ciclo -- %i",clockCounter);

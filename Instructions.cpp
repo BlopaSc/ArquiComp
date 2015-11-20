@@ -156,12 +156,14 @@ class Instructions{
         }
         
         // SC : Igual a SW pero solo ejecuta el save si RL == n+(Ry), sino Rx = 0
-        void SC(State * state,int rx,int n,int ry){
-             if(state->rl==(n + state->registers[ry])){
-                 SW(state,rx,n,ry);
-             }else{
-                 state->registers[rx]=0;
-             }
+        bool SC(State * state,int rx,int n,int ry){
+            bool success;
+            if(success = (state->rl==(n + state->registers[ry]))){
+                success = SW(state,rx,n,ry);
+            }else{
+                state->registers[rx]=0;
+            }
+            return success;
         }
 };
 #endif
