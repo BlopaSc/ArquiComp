@@ -181,7 +181,7 @@ public class Results extends javax.swing.JFrame {
             String [] subtokens = line.split("\n");
             for(int i=1;i<subtokens.length;i++){
                 if(subtokens[i].contains("Cache: ")){
-                    cachePreviousLine=i-2;
+                    cachePreviousLine= i-2;
                 }
             }
             String cacheLine = line.substring(cacheStart, line.indexOf("\n", cacheStart));

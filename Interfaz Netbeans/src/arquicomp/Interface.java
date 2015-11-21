@@ -238,7 +238,7 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
         String modoLento="false";
         if(radioModoLento.isSelected()){
-            modoLento="frlse";
+             modoLento="frlse";
         }
         output = "";
         String quantum=txtQuantum.getText();
