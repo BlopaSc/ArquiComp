@@ -46,9 +46,12 @@ public class Results extends javax.swing.JFrame {
         txtboxLog = new javax.swing.JTextArea();
         btnCerrar = new javax.swing.JButton();
         btnSiguienteCiclo = new javax.swing.JButton();
-        lblCache = new javax.swing.JLabel();
+        lblCache1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtCache = new javax.swing.JTextArea();
+        txtCache2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtCache1 = new javax.swing.JTextArea();
+        lblCache2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -83,12 +86,19 @@ public class Results extends javax.swing.JFrame {
             }
         });
 
-        lblCache.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblCache.setText("Caché");
+        lblCache1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCache1.setText("Caché 1");
 
-        txtCache.setColumns(20);
-        txtCache.setRows(5);
-        jScrollPane2.setViewportView(txtCache);
+        txtCache2.setColumns(20);
+        txtCache2.setRows(5);
+        jScrollPane2.setViewportView(txtCache2);
+
+        txtCache1.setColumns(20);
+        txtCache1.setRows(5);
+        jScrollPane3.setViewportView(txtCache1);
+
+        lblCache2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCache2.setText("Caché 2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,34 +107,44 @@ public class Results extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCache)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCache1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(btnCerrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnSiguienteCiclo)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCache2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCache)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2)))
-                .addGap(18, 18, 18)
+                        .addGap(0, 27, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCache1)
+                            .addComponent(lblCache2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane3))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar)
                     .addComponent(btnSiguienteCiclo))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -157,6 +177,13 @@ public class Results extends javax.swing.JFrame {
         String line = "Ciclo --" + ciclos[ciclo];
         int cacheStart = line.indexOf("Cache:");
         if(cacheStart!=-1){
+            int cachePreviousLine = -1;
+            String [] subtokens = line.split("\n");
+            for(int i=1;i<subtokens.length;i++){
+                if(subtokens[i].contains("Cache: ")){
+                    cachePreviousLine=i-2;
+                }
+            }
             String cacheLine = line.substring(cacheStart, line.indexOf("\n", cacheStart));
             cacheLine = cacheLine.replace("Cache: ","");
             String [] tokens = cacheLine.split(" ");
@@ -164,8 +191,15 @@ public class Results extends javax.swing.JFrame {
             for(int i=0;i<tokens.length;i++){
                 arrangedCache += tokens[i] + "\n";
             }
-            txtCache.setText(arrangedCache);
-            txtCache.setCaretPosition(0);
+            if(subtokens[cachePreviousLine].charAt(5)=='1'){
+                txtCache1.setText(arrangedCache);
+                txtCache1.setCaretPosition(0);
+            }
+            else{
+                txtCache2.setText(arrangedCache);
+                txtCache2.setCaretPosition(0);
+            }
+            
         }
         txtboxLog.setText(line);
         
@@ -191,7 +225,8 @@ public class Results extends javax.swing.JFrame {
             line = line.replace(line.substring(0,5), "");
             if(modoLento.equals("frlse")){
                 this.modoLento=true;
-                txtCache.setText("Caché en estado inicial.\nNo hay cambios.");
+                txtCache1.setText("Caché en estado inicial.\nNo hay cambios.");
+                txtCache2.setText("Caché en estado inicial.\nNo hay cambios.");
                 ciclos = line.split("Ciclo --");
                 ciclo=1;
                 txtboxLog.setText("Ciclo --" + ciclos[ciclo]);
@@ -248,8 +283,11 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JButton btnSiguienteCiclo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblCache;
-    private javax.swing.JTextArea txtCache;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblCache1;
+    private javax.swing.JLabel lblCache2;
+    private javax.swing.JTextArea txtCache1;
+    private javax.swing.JTextArea txtCache2;
     private javax.swing.JTextArea txtboxLog;
     // End of variables declaration//GEN-END:variables
 }
