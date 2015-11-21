@@ -1,52 +1,2565 @@
-falseOpening file: C:\Users\B25201\Documents\1.txt
+frlseOpening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\1.txt
 Position in memory: 0 -- Thread no: 1
-Opening file: C:\Users\B25201\Documents\2.txt
-Position in memory: 64 -- Thread no: 2
-Opening file: C:\Users\B25201\Documents\3.txt
-Position in memory: 140 -- Thread no: 3
-Opening file: C:\Users\B25201\Documents\4.txt
+Read: 8 0 1 1 
+Read: 8 0 20 2 
+Read: 8 0 3 5 
+Read: 8 0 8 8 
+Read: 8 0 4 840 
+Read: 34 3 1 3 
+Read: 43 4 20 0 
+Read: 43 4 20 4 
+Read: 32 4 8 4 
+Read: 5 3 0 -5 
+Read: 43 0 0 1988 
+Read: 63 0 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\2.txt
+Position in memory: 48 -- Thread no: 2
+Read: 8 0 1 1 
+Read: 8 0 4 10 
+Read: 34 5 5 5 
+Read: 8 4 4 -1 
+Read: 32 5 4 5 
+Read: 5 4 0 -3 
+Read: 3 0 0 16 
+Read: 12 22 2 22 
+Read: 43 0 5 640 
+Read: 43 0 22 644 
+Read: 63 0 0 0 
+Read: 8 0 21 12 
+Read: 34 22 22 22 
+Read: 8 0 2 2 
+Read: 14 21 2 23 
+Read: 8 21 21 -2 
+Read: 32 22 23 22 
+Read: 5 21 0 -4 
+Read: 2 31 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\3.txt
+Position in memory: 124 -- Thread no: 3
+Read: 8 0 1 1 
+Read: 8 0 3 5 
+Read: 8 0 13 3 
+Read: 34 12 12 12 
+Read: 8 0 8 8 
+Read: 8 0 4 840 
+Read: 34 3 1 3 
+Read: 35 4 10 0 
+Read: 35 4 11 4 
+Read: 32 12 10 12 
+Read: 32 4 8 4 
+Read: 32 12 11 12 
+Read: 5 3 0 -7 
+Read: 12 12 13 14 
+Read: 43 0 14 836 
+Read: 63 0 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\4.txt
 Position in memory: 188 -- Thread no: 4
-Opening file: C:\Users\B25201\Documents\5.txt
-Position in memory: 252 -- Thread no: 5
-Opening file: C:\Users\B25201\Documents\6.txt
-Position in memory: 300 -- Thread no: 6
+Read: 8 0 1 1 
+Read: 8 0 14 4 
+Read: 8 0 3 11 
+Read: 8 0 8 8 
+Read: 8 0 4 960 
+Read: 34 3 1 3 
+Read: 43 4 14 0 
+Read: 43 4 14 4 
+Read: 32 4 8 4 
+Read: 5 3 0 -5 
+Read: 43 0 0 1476 
+Read: 43 0 0 1480 
+Read: 63 0 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\5.txt
+Position in memory: 240 -- Thread no: 5
+Read: 8 0 1 1 
+Read: 8 0 14 5 
+Read: 8 0 3 11 
+Read: 8 0 8 8 
+Read: 8 0 4 960 
+Read: 34 3 1 3 
+Read: 43 4 14 0 
+Read: 43 4 14 4 
+Read: 32 4 8 4 
+Read: 5 3 0 -5 
+Read: 43 0 0 1476 
+Read: 43 0 0 1480 
+Read: 63 0 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\6.txt
+Position in memory: 292 -- Thread no: 6
+Read: 8 0 1 1 
+Read: 8 0 3 11 
+Read: 34 12 12 12 
+Read: 8 0 8 8 
+Read: 8 0 4 960 
+Read: 8 0 15 -1 
+Read: 34 3 1 3 
+Read: 35 4 10 0 
+Read: 35 4 11 4 
+Read: 32 12 10 12 
+Read: 32 4 8 4 
+Read: 32 12 11 12 
+Read: 5 3 0 -7 
+Read: 12 12 15 14 
+Read: 43 0 14 896 
+Read: 63 0 0 0 
+Opening file: C:\Documents and Settings\zayda\Desktop\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\ArquiComp-570e3b856761d78cae5cd43eb62b2f481006c38a\Hilos3\pr.txt
+Position in memory: 356 -- Thread no: 7
+Read: 43 0 0 1476 
+Read: 43 0 0 768 
+Read: 43 0 0 772 
+Read: 43 0 0 776 
+Read: 43 0 0 780 
+Read: 43 0 0 784 
+Read: 43 0 0 788 
+Read: 63 0 0 0 
 Despliegue de memoria: 
-8 0 1 1 	8 0 20 8 	8 0 3 100 	8 0 8 2 
-8 0 4 -300 	34 3 1 3 	32 4 8 4 	5 3 0 -3 
-12 4 8 6 	32 6 0 25 	3 0 0 8 	14 31 1 30 
-63 0 0 0 	8 25 25 1 	5 25 0 -2 	2 31 0 0 
-8 0 1 21 	8 0 4 1200 	34 5 5 5 	8 4 4 -1 
-32 5 4 5 	5 4 0 -3 	3 0 0 8 	12 1 22 1 
-63 0 0 0 	8 0 21 12 	34 22 22 22 	8 0 2 2 
-14 21 2 23 	8 21 21 -2 	32 22 23 22 	5 21 0 -4 
-4 21 0 1 	2 0 0 0 	2 31 0 0 	8 0 1 1 
-8 0 3 5 	8 0 13 3 	34 12 12 12 	8 0 8 8 
-8 0 4 840 	34 3 1 3 	32 12 4 12 	32 4 8 4 
-32 12 4 12 	12 12 13 14 	63 0 0 0 	8 0 1 1 
-8 0 20 8 	8 0 3 100 	8 0 8 2 	8 0 4 -300 
-34 3 1 3 	32 4 8 4 	5 3 0 -3 	12 4 8 6 
-32 6 0 25 	3 0 0 8 	14 31 1 30 	63 0 0 0 
-8 25 25 1 	5 25 0 -2 	2 31 0 0 	8 0 1 1 
-8 0 3 5 	8 0 13 3 	34 12 12 12 	8 0 8 8 
-8 0 4 840 	34 3 1 3 	32 12 4 12 	32 4 8 4 
-32 12 4 12 	12 12 13 14 	63 0 0 0 	8 0 1 1 
-8 0 14 5 	8 0 3 1000 	8 0 8 8 	8 0 4 60 
-34 3 1 3 	32 4 8 4 	5 3 0 -3 	63 0 0 0 
-
+Bloque 0:	8 0 1 1 	8 0 20 2 	8 0 3 5 	8 0 8 8 
+Bloque 1:	8 0 4 840 	34 3 1 3 	43 4 20 0 	43 4 20 4 
+Bloque 2:	32 4 8 4 	5 3 0 -5 	43 0 0 1988 	63 0 0 0 
+Bloque 3:	8 0 1 1 	8 0 4 10 	34 5 5 5 	8 4 4 -1 
+Bloque 4:	32 5 4 5 	5 4 0 -3 	3 0 0 16 	12 22 2 22 
+Bloque 5:	43 0 5 640 	43 0 22 644 	63 0 0 0 	8 0 21 12 
+Bloque 6:	34 22 22 22 	8 0 2 2 	14 21 2 23 	8 21 21 -2 
+Bloque 7:	32 22 23 22 	5 21 0 -4 	2 31 0 0 	8 0 1 1 
+Bloque 8:	8 0 3 5 	8 0 13 3 	34 12 12 12 	8 0 8 8 
+Bloque 9:	8 0 4 840 	34 3 1 3 	35 4 10 0 	35 4 11 4 
+Bloque 10:	32 12 10 12 	32 4 8 4 	32 12 11 12 	5 3 0 -7 
+Bloque 11:	12 12 13 14 	43 0 14 836 	63 0 0 0 	8 0 1 1 
+Bloque 12:	8 0 14 4 	8 0 3 11 	8 0 8 8 	8 0 4 960 
+Bloque 13:	34 3 1 3 	43 4 14 0 	43 4 14 4 	32 4 8 4 
+Bloque 14:	5 3 0 -5 	43 0 0 1476 	43 0 0 1480 	63 0 0 0 
+Bloque 15:	8 0 1 1 	8 0 14 5 	8 0 3 11 	8 0 8 8 
+Bloque 16:	8 0 4 960 	34 3 1 3 	43 4 14 0 	43 4 14 4 
+Bloque 17:	32 4 8 4 	5 3 0 -5 	43 0 0 1476 	43 0 0 1480 
+Bloque 18:	63 0 0 0 	8 0 1 1 	8 0 3 11 	34 12 12 12 
+Bloque 19:	8 0 8 8 	8 0 4 960 	8 0 15 -1 	34 3 1 3 
+Bloque 20:	35 4 10 0 	35 4 11 4 	32 12 10 12 	32 4 8 4 
+Bloque 21:	32 12 11 12 	5 3 0 -7 	12 12 15 14 	43 0 14 896 
+Bloque 22:	63 0 0 0 	43 0 0 1476 	43 0 0 768 	43 0 0 772 
+Bloque 23:	43 0 0 776 	43 0 0 780 	43 0 0 784 	43 0 0 788 
+Bloque 24:	63 0 0 0 	
 Hilo root ejecutandose
 Emulacion iniciando
-Procesador No.1
 Procesador No.2
-Fin Processor No.1
+Procesador No.1
+Ciclo -- 1
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 2
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 3
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 4
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 5
+Proc 2 Thread 7: Waiting for bus
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 6
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 7
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 8
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 9
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 10
+Proc 2 Thread 7: Waiting for bus
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 11
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 12
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 13
+Proc 2 Thread 7: Waiting for bus
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 14
+Proc 2 Thread 7: Waiting for bus
+Proc 1 Thread 6: PC: 292, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Ciclo -- 15
+Proc 2 Thread 7: Waiting for cycle end to check caches - load
+Proc 1 Thread 6: PC: 296, Instr: 8 0 3 11 	R3 = R0+11 = 11
+Ciclo -- 16
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: PC: 300, Instr: 34 12 12 12 	R12 = R12-R12 = 0
+Ciclo -- 17
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 18
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 19
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 20
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 21
+Proc 1 Thread 6: Waiting for bus
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 22
+Proc 1 Thread 6: Waiting for bus
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 23
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 24
+Proc 1 Thread 6: Waiting for bus
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 25
+Proc 1 Thread 6: Waiting for bus
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 26
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 27
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 28
+Proc 2 Thread 7: Waiting for cycle end to check caches - save
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Ciclo -- 29
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 30
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 31
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 32
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 33
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 34
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 35
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 36
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 37
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 38
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 39
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 40
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 41
+Proc 2 Thread 7: PC: 356, Instr: 43 0 0 1476 	M(1476+R0) <- R0 = 0
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 6: PC: 304, Instr: 8 0 8 8 	R8 = R0+8 = 8
+Ciclo -- 42
+Proc 1 Thread 6: PC: 308, Instr: 8 0 4 960 	R4 = R0+960 = 960
+Proc 2 Thread 7: Waiting for cycle end to check caches - save
+Ciclo -- 43
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: PC: 312, Instr: 8 0 15 -1 	R15 = R0+-1 = -1
+Ciclo -- 44
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 10
+Ciclo -- 45
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Ciclo -- 46
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 47
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 48
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 49
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 50
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 51
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 52
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 53
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 54
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 55
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: PC: 360, Instr: 43 0 0 768 	M(768+R0) <- R0 = 0
+Cache: 8,M: 0,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 56
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: PC: 364, Instr: 43 0 0 772 	M(772+R0) <- R0 = 0
+Cache: 8,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 57
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Waiting for bus
+Ciclo -- 58
+Proc 2 Thread 7: Waiting for bus
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Ciclo -- 59
+Proc 2 Thread 7: Waiting for cycle end to check caches - load
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 60
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 61
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 62
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 63
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 64
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 65
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 66
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 67
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 68
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 69
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 70
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 71
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 72
+Proc 1 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 2 Thread 7: PC: 368, Instr: 43 0 0 776 	M(776+R0) <- R0 = 0
+Cache: 8,M: 0,0,0,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 73
+Proc 2 Thread 7: PC: 372, Instr: 43 0 0 780 	M(780+R0) <- R0 = 0
+Cache: 8,M: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 1
+Ciclo -- 74
+Proc 1 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 968
+Proc 2 Thread 7: Waiting for cycle end to check caches - save
+Ciclo -- 75
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Ciclo -- 76
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 77
+Proc 2 Thread 7: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 78
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 79
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 80
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 81
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 82
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 83
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 84
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 85
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 86
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 87
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: PC: 376, Instr: 43 0 0 784 	M(784+R0) <- R0 = 0
+Cache: 8,M: 0,0,0,0 9,M: 0,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 88
+Proc 1 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 2
+Proc 2 Thread 7: PC: 380, Instr: 43 0 0 788 	M(788+R0) <- R0 = 0
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 89
+Proc 1 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 2 Thread 7: Waiting for cycle end to check caches - load
+Ciclo -- 90
+Proc 1 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 9
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 91
+Proc 1 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 92
+Proc 1 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 93
+Proc 1 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 3
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 94
+Proc 1 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 976
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 95
+Proc 1 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 4
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 96
+Proc 1 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 97
+Proc 1 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 8
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 98
+Proc 1 Thread 6: Waiting for cycle end to check caches - load
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 99
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 100
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 101
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: Getting data to cache
+Ciclo -- 102
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 7: PC: 384, Instr: 63 0 0 0 	THREAD ENDED
+Ciclo -- 103
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Waiting for cycle end to check caches - load
+Ciclo -- 104
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 105
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 106
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 107
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 108
+Proc 1 Thread 6: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 109
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 110
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 6: Getting data to cache
+Ciclo -- 111
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,C: 1,1,1,1 21,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 112
+Proc 1 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 113
+Proc 1 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 5
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 114
+Proc 1 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 984
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 115
+Proc 1 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 6
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 116
+Proc 1 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 2 Thread 5: PC: 240, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Ciclo -- 117
+Proc 1 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 7
+Proc 2 Thread 5: PC: 244, Instr: 8 0 14 5 	R14 = R0+5 = 5
+Ciclo -- 118
+Proc 1 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Proc 2 Thread 5: PC: 248, Instr: 8 0 3 11 	R3 = R0+11 = 11
+Ciclo -- 119
+Proc 1 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 2 Thread 5: PC: 252, Instr: 8 0 8 8 	R8 = R0+8 = 8
+Ciclo -- 120
+Proc 1 Thread 4: Waiting for cycle end to check caches - load
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 121
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 122
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 123
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 124
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 125
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 126
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 127
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 128
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 129
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 130
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 131
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 132
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Waiting for bus
+Ciclo -- 133
+Proc 1 Thread 4: PC: 188, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Proc 2 Thread 5: Waiting for cycle end to check caches - load
+Ciclo -- 134
+Proc 1 Thread 4: Waiting for bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 135
+Proc 1 Thread 4: Waiting for bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 136
+Proc 1 Thread 4: Waiting for bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 137
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 138
+Proc 1 Thread 4: Waiting for bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 139
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 140
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 141
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 142
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 143
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 144
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 145
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Waiting for bus
+Ciclo -- 146
+Proc 2 Thread 5: PC: 256, Instr: 8 0 4 960 	R4 = R0+960 = 960
+Proc 1 Thread 4: Waiting for cycle end to check caches - load
+Ciclo -- 147
+Proc 2 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 10
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 148
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 149
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 150
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 151
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 152
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 153
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 154
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 155
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Saving data to memory
+Ciclo -- 156
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Saving data to memory
+Ciclo -- 157
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Saving data to memory
+Ciclo -- 158
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Saving data to memory
+Ciclo -- 159
+Proc 1 Thread 4: PC: 192, Instr: 8 0 14 4 	R14 = R0+4 = 4
+Proc 2 Thread 5: Saving data to memory
+Ciclo -- 160
+Proc 1 Thread 4: PC: 196, Instr: 8 0 3 11 	R3 = R0+11 = 11
+Proc 2 Thread 5: Waiting for cycle end to check caches - save
+Ciclo -- 161
+Proc 1 Thread 4: PC: 200, Instr: 8 0 8 8 	R8 = R0+8 = 8
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 162
+Proc 1 Thread 4: PC: 204, Instr: 8 0 4 960 	R4 = R0+960 = 960
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 163
+Proc 1 Thread 4: Waiting for cycle end to check caches - load
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 164
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 165
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 166
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 167
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 168
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 169
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 170
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 171
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 172
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 173
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 5,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 174
+Proc 2 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 5,5,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 175
+Proc 2 Thread 5: Waiting for bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 176
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 10
+Proc 2 Thread 5: Waiting for cycle end to check caches - load
+Ciclo -- 177
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 178
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 179
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 180
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 181
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 182
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 183
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 184
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 185
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 186
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 187
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 188
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 189
+Proc 2 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 968
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 190
+Proc 2 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,5,1,1 21,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 191
+Proc 2 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 9
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,I: 5,5,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,1,1 21,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 192
+Proc 2 Thread 5: Waiting for cycle end to check caches - save
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 968
+Ciclo -- 193
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Waiting for cycle end to check caches - load
+Ciclo -- 194
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 195
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 196
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 197
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 198
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 199
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 200
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 201
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 202
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 203
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 204
+Proc 2 Thread 5: Saving data to memory
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 205
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,5,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 206
+Proc 2 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,5,5 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,I: 4,4,1,1 21,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 207
+Proc 2 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 976
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 9
+Ciclo -- 208
+Proc 2 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 209
+Proc 2 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 8
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 210
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 211
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 212
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 213
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 214
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 215
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 216
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 217
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 218
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 219
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 220
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 221
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,5 21,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 222
+Proc 2 Thread 5: Waiting for cycle end to check caches - save
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 223
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 224
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 225
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 226
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 227
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 228
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 229
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 230
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 231
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 232
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 233
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 5: Getting data to cache
+Ciclo -- 234
+Proc 2 Thread 5: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 235
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,I: 4,4,5,5 21,M: 5,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 236
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,I: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 2 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 237
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 976
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Ciclo -- 238
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 239
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 8
+Ciclo -- 240
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 241
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 242
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 243
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 244
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 245
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 246
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 247
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 248
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 249
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 250
+Proc 2 Thread 3: PC: 124, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 251
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 252
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Saving data to memory
+Ciclo -- 253
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 254
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: Waiting for bus
+Ciclo -- 255
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 1: Waiting for bus
+Ciclo -- 256
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 257
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 5: Waiting for bus
+Ciclo -- 258
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 259
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 984
+Ciclo -- 260
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 261
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 7
+Ciclo -- 262
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 263
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 264
+Proc 2 Thread 3: PC: 128, Instr: 8 0 3 5 	R3 = R0+5 = 5
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,I: 4,4,5,5 21,I: 5,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 992
+Ciclo -- 265
+Proc 2 Thread 3: PC: 132, Instr: 8 0 13 3 	R13 = R0+3 = 3
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 266
+Proc 2 Thread 3: PC: 136, Instr: 34 12 12 12 	R12 = R12-R12 = 0
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 6
+Ciclo -- 267
+Proc 2 Thread 3: PC: 140, Instr: 8 0 8 8 	R8 = R0+8 = 8
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 268
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Ciclo -- 269
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 270
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 271
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 272
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 273
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 274
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 275
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 276
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 277
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 278
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 279
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 280
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,1,1,1 -1,I: 0,0,0,0
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 281
+Proc 2 Thread 3: PC: 144, Instr: 8 0 4 840 	R4 = R0+840 = 840
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,1,1 -1,I: 0,0,0,0
+Ciclo -- 282
+Proc 2 Thread 3: PC: 148, Instr: 34 3 1 3 	R3 = R3-R1 = 4
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1000
+Ciclo -- 283
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 284
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 5
+Ciclo -- 285
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 286
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 287
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 288
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 289
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 290
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 291
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 292
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 293
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 294
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 295
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 296
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,C: 1,1,1,1 21,I: 5,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Ciclo -- 297
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,1 -1,I: 0,0,0,0
+Proc 2 Thread 3: PC: 156, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Ciclo -- 298
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 -1,I: 0,0,0,0
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Ciclo -- 299
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1008
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 300
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 301
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 4
+Ciclo -- 302
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: Waiting for bus
+Ciclo -- 303
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 1: Waiting for bus
+Ciclo -- 304
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 305
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 5: Waiting for bus
+Ciclo -- 306
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 307
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 308
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 309
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 310
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 311
+Proc 2 Thread 3: PC: 160, Instr: 32 12 10 12 	R12 = R12+R10 = 1
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 312
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 164, Instr: 32 4 8 4 	R4 = R4+R8 = 848
+Ciclo -- 313
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 168, Instr: 32 12 11 12 	R12 = R12+R11 = 2
+Ciclo -- 314
+Proc 2 Thread 3: PC: 172, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 315
+Proc 2 Thread 3: PC: 148, Instr: 34 3 1 3 	R3 = R3-R1 = 3
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 316
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 317
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 318
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 319
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,1,1,1
+Ciclo -- 320
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 321
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 322
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 323
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 324
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 325
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 326
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 327
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 328
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 329
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 330
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 331
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 332
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 333
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,C: 1,1,1,1 13,C: 1,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,1,1
+Ciclo -- 334
+Proc 2 Thread 3: PC: 156, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1016
+Ciclo -- 335
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2 Thread 3: PC: 160, Instr: 32 12 10 12 	R12 = R12+R10 = 3
+Ciclo -- 336
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 3
+Proc 2 Thread 3: PC: 164, Instr: 32 4 8 4 	R4 = R4+R8 = 856
+Ciclo -- 337
+Proc 2 Thread 3: PC: 168, Instr: 32 12 11 12 	R12 = R12+R11 = 4
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,1
+Ciclo -- 338
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 3: PC: 172, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Ciclo -- 339
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1024
+Proc 2 Thread 3: PC: 148, Instr: 34 3 1 3 	R3 = R3-R1 = 2
+Ciclo -- 340
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 341
+Proc 2 Thread 3: PC: 156, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 2
+Ciclo -- 342
+Proc 2 Thread 3: PC: 160, Instr: 32 12 10 12 	R12 = R12+R10 = 5
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 343
+Proc 2 Thread 3: PC: 164, Instr: 32 4 8 4 	R4 = R4+R8 = 864
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 344
+Proc 2 Thread 3: PC: 168, Instr: 32 12 11 12 	R12 = R12+R11 = 6
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 345
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 172, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Ciclo -- 346
+Proc 2 Thread 3: PC: 148, Instr: 34 3 1 3 	R3 = R3-R1 = 1
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 347
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 348
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 349
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 350
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Ciclo -- 351
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Ciclo -- 352
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Ciclo -- 353
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Ciclo -- 354
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 355
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: 24,M: 4,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Ciclo -- 356
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 357
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 358
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 359
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 360
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 361
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 362
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 363
+Proc 1 Thread 2: Waiting for cycle end to check caches - load
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 364
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 365
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 366
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 367
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 368
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 369
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,C: 1,1,1,1 13,C: 1,1,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 370
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 156, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Ciclo -- 371
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 160, Instr: 32 12 10 12 	R12 = R12+R10 = 7
+Ciclo -- 372
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 164, Instr: 32 4 8 4 	R4 = R4+R8 = 872
+Ciclo -- 373
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 168, Instr: 32 12 11 12 	R12 = R12+R11 = 8
+Ciclo -- 374
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 172, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Ciclo -- 375
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: PC: 148, Instr: 34 3 1 3 	R3 = R3-R1 = 0
+Ciclo -- 376
+Proc 1 Thread 2: PC: 48, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Proc 2 Thread 3: PC: 152, Instr: 35 4 10 0 	R10 <- M(0+R4) = 1
+Ciclo -- 377
+Proc 1 Thread 2: PC: 52, Instr: 8 0 4 10 	R4 = R0+10 = 10
+Proc 2 Thread 3: PC: 156, Instr: 35 4 11 4 	R11 <- M(4+R4) = 1
+Ciclo -- 378
+Proc 1 Thread 2: PC: 56, Instr: 34 5 5 5 	R5 = R5-R5 = 0
+Proc 2 Thread 3: PC: 160, Instr: 32 12 10 12 	R12 = R12+R10 = 9
+Ciclo -- 379
+Proc 2 Thread 3: PC: 164, Instr: 32 4 8 4 	R4 = R4+R8 = 880
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 9
+Ciclo -- 380
+Proc 1 Thread 2: Waiting for cycle end to check caches - load
+Proc 2 Thread 3: PC: 168, Instr: 32 12 11 12 	R12 = R12+R11 = 10
+Ciclo -- 381
+Proc 2 Thread 3: PC: 172, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 382
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Waiting for bus
+Ciclo -- 383
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Waiting for bus
+Ciclo -- 384
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 385
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Waiting for bus
+Ciclo -- 386
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 3: Waiting for bus
+Ciclo -- 387
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 388
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 389
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 390
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 391
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 392
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 393
+Proc 2 Thread 3: Waiting for bus
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 9
+Ciclo -- 394
+Proc 2 Thread 3: Waiting for cycle end to check caches - load
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 395
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 8
+Ciclo -- 396
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 17
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 397
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 398
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 7
+Ciclo -- 399
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 24
+Ciclo -- 400
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 401
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 6
+Ciclo -- 402
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 30
+Proc 2 Thread 3: Getting data to cache
+Ciclo -- 403
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 404
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 5
+Ciclo -- 405
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 35
+Ciclo -- 406
+Proc 2 Thread 3: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 407
+Proc 2 Thread 3: PC: 176, Instr: 12 12 13 14 	R14 = R12*R13 = 30
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 4
+Ciclo -- 408
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 39
+Proc 2 Thread 3: PC: 180, Instr: 43 0 14 836 	M(836+R0) <- R14 = 30
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,1,1 13,C: 1,1,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 409
+Proc 2 Thread 3: PC: 184, Instr: 63 0 0 0 	THREAD ENDED
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 410
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 3
+Proc 2 Thread 1: Waiting for cycle end to check caches - load
+Ciclo -- 411
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 42
+Ciclo -- 412
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 413
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 2
+Ciclo -- 414
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 44
+Ciclo -- 415
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 416
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 1
+Ciclo -- 417
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 45
+Ciclo -- 418
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Ciclo -- 419
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 60, Instr: 8 4 4 -1 	R4 = R4+-1 = 0
+Ciclo -- 420
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 6: Waiting for bus
+Ciclo -- 421
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 5: Waiting for bus
+Ciclo -- 422
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: 24,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Ciclo -- 423
+Proc 2 Thread 1: PC: 0, Instr: 8 0 1 1 	R1 = R0+1 = 1
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1032
+Ciclo -- 424
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2 Thread 1: PC: 4, Instr: 8 0 20 2 	R20 = R0+2 = 2
+Ciclo -- 425
+Proc 2 Thread 1: PC: 8, Instr: 8 0 3 5 	R3 = R0+5 = 5
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 1
+Ciclo -- 426
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: 24,M: 4,4,4,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 1: PC: 12, Instr: 8 0 8 8 	R8 = R0+8 = 8
+Ciclo -- 427
+Proc 2 Thread 1: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: 24,M: 4,4,4,4 -1,I: 0,0,0,0 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Ciclo -- 428
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1040
+Ciclo -- 429
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 430
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: PC: 208, Instr: 34 3 1 3 	R3 = R3-R1 = 0
+Ciclo -- 431
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Ciclo -- 432
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 433
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 434
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 435
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 436
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 437
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 438
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 439
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 440
+Proc 2 Thread 1: PC: 16, Instr: 8 0 4 840 	R4 = R0+840 = 840
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 441
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 20, Instr: 34 3 1 3 	R3 = R3-R1 = 4
+Ciclo -- 442
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 443
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 444
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Proc 1 Thread 4: PC: 212, Instr: 43 4 14 0 	M(0+R4) <- R14 = 4
+Cache: 24,M: 4,4,4,4 25,M: 4,1,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Ciclo -- 445
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	M(0+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,1 13,C: 1,1,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	Save failed, busy bus
+Ciclo -- 446
+Proc 1 Thread 4: PC: 216, Instr: 43 4 14 4 	M(4+R4) <- R14 = 4
+Cache: 24,M: 4,4,4,4 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 20,M: 4,4,4,4 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	Save failed, busy bus
+Ciclo -- 447
+Proc 1 Thread 4: PC: 220, Instr: 32 4 8 4 	R4 = R4+R8 = 1048
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	M(4+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,C: 1,1,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 448
+Proc 2 Thread 1: Waiting for cycle end to check caches - load
+Proc 1 Thread 4: PC: 224, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 449
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 450
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 451
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 452
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 453
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 454
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 455
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 456
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 457
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 458
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 459
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 460
+Proc 1 Thread 4: Saving data to memory
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 461
+Proc 1 Thread 4: Waiting for cycle end to check caches - save
+Proc 2 Thread 1: PC: 32, Instr: 32 4 8 4 	R4 = R4+R8 = 848
+Ciclo -- 462
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 36, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 463
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 20, Instr: 34 3 1 3 	R3 = R3-R1 = 3
+Ciclo -- 464
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 465
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 466
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 467
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 468
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 469
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Proc 1 Thread 4: Getting data to cache
+Ciclo -- 470
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 471
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 472
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 473
+Proc 1 Thread 4: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 474
+Proc 1 Thread 4: PC: 228, Instr: 43 0 0 1476 	M(1476+R0) <- R0 = 0
+Cache: 24,M: 4,4,4,4 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,1,1 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 475
+Proc 1 Thread 4: PC: 232, Instr: 43 0 0 1480 	M(1480+R0) <- R0 = 0
+Cache: 24,M: 4,4,4,4 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	Save failed, busy bus
+Ciclo -- 476
+Proc 1 Thread 4: PC: 236, Instr: 63 0 0 0 	THREAD ENDED
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	M(0+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,1,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 477
+Proc 1 Thread 2: PC: 64, Instr: 32 5 4 5 	R5 = R5+R4 = 45
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	M(4+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,1,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 478
+Proc 1 Thread 2: PC: 68, Instr: 5 4 0 -3 	if R4 != 0 JMP -3
+Proc 2 Thread 1: PC: 32, Instr: 32 4 8 4 	R4 = R4+R8 = 856
+Ciclo -- 479
+Proc 1 Thread 2: PC: 72, Instr: 3 0 0 16 	R31 = PC ; PC += 16
+Proc 2 Thread 1: PC: 36, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 480
+Proc 1 Thread 2: Waiting for cycle end to check caches - load
+Proc 2 Thread 1: PC: 20, Instr: 34 3 1 3 	R3 = R3-R1 = 2
+Ciclo -- 481
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	M(0+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,1 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 482
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	M(4+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,2 14,C: 1,1,1,1 -1,I: 0,0,0,0
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 483
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 32, Instr: 32 4 8 4 	R4 = R4+R8 = 864
+Ciclo -- 484
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 36, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 485
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 20, Instr: 34 3 1 3 	R3 = R3-R1 = 1
+Ciclo -- 486
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	M(0+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,2 14,M: 2,1,1,1 -1,I: 0,0,0,0
+Ciclo -- 487
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	M(4+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,2 14,M: 2,2,1,1 -1,I: 0,0,0,0
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 488
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 32, Instr: 32 4 8 4 	R4 = R4+R8 = 872
+Ciclo -- 489
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 36, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 490
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 20, Instr: 34 3 1 3 	R3 = R3-R1 = 0
+Ciclo -- 491
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: PC: 24, Instr: 43 4 20 0 	M(0+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,2 14,M: 2,2,2,1 -1,I: 0,0,0,0
+Ciclo -- 492
+Proc 2 Thread 1: PC: 28, Instr: 43 4 20 4 	M(4+R4) <- R20 = 2
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 12,M: 1,30,2,2 13,M: 2,2,2,2 14,M: 2,2,2,2 -1,I: 0,0,0,0
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 493
+Proc 2 Thread 1: PC: 32, Instr: 32 4 8 4 	R4 = R4+R8 = 880
+Proc 1 Thread 2: PC: 92, Instr: 8 0 21 12 	R21 = R0+12 = 12
+Ciclo -- 494
+Proc 2 Thread 1: PC: 36, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 1 Thread 2: Waiting for cycle end to check caches - load
+Ciclo -- 495
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 496
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 497
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 498
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 499
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 500
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 501
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 502
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 503
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: Saving data to memory
+Ciclo -- 504
+Proc 2 Thread 1: Saving data to memory
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 505
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: Saving data to memory
+Ciclo -- 506
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: Saving data to memory
+Ciclo -- 507
+Proc 1 Thread 2: PC: 96, Instr: 34 22 22 22 	R22 = R22-R22 = 0
+Proc 2 Thread 1: Waiting for cycle end to check caches - save
+Ciclo -- 508
+Proc 1 Thread 2: PC: 100, Instr: 8 0 2 2 	R2 = R0+2 = 2
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 509
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 6
+Ciclo -- 510
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 10
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 511
+Proc 1 Thread 2: Waiting for cycle end to check caches - load
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 512
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 513
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 514
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 1: Getting data to cache
+Ciclo -- 515
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 516
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 517
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 518
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 519
+Proc 2 Thread 1: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 520
+Proc 2 Thread 1: PC: 40, Instr: 43 0 0 1988 	M(1988+R0) <- R0 = 0
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 14,M: 2,2,2,2 -1,I: 0,0,0,0
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 521
+Proc 2 Thread 1: PC: 44, Instr: 63 0 0 0 	THREAD ENDED
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 522
+Proc 2 Thread 6: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 523
+Proc 2 Thread 6: Waiting for bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 524
+Proc 2 Thread 6: Waiting for bus
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 6
+Ciclo -- 525
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Ciclo -- 526
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 5
+Ciclo -- 527
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 8
+Ciclo -- 528
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 11
+Ciclo -- 529
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Ciclo -- 530
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 4
+Ciclo -- 531
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 6
+Ciclo -- 532
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 15
+Ciclo -- 533
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Ciclo -- 534
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 3
+Ciclo -- 535
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 4
+Ciclo -- 536
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 18
+Ciclo -- 537
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Ciclo -- 538
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 7
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 2
+Ciclo -- 539
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 992
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 2
+Ciclo -- 540
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 20
+Ciclo -- 541
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Ciclo -- 542
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 104, Instr: 14 21 2 23 	R23 = R21/R2 = 1
+Ciclo -- 543
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: PC: 108, Instr: 8 21 21 -2 	R21 = R21+-2 = 0
+Ciclo -- 544
+Proc 1 Thread 2: PC: 112, Instr: 32 22 23 22 	R22 = R22+R23 = 21
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 545
+Proc 1 Thread 2: PC: 116, Instr: 5 21 0 -4 	if R21 != 0 JMP -4
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 546
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: Waiting for bus
+Ciclo -- 547
+Proc 1 Thread 2: PC: 120, Instr: 2 31 0 0 	JMP R31
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 548
+Proc 1 Thread 2: PC: 76, Instr: 12 22 2 22 	R22 = R22*R2 = 42
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 549
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 550
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 551
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 552
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 553
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 8
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 554
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 555
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 556
+Proc 1 Thread 2: Saving data to memory
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 557
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 558
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 559
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 560
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Saving data to memory
+Ciclo -- 561
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Waiting for cycle end to check caches - save
+Ciclo -- 562
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 563
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 564
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 565
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 566
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 567
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 568
+Proc 1 Thread 2: Getting data to cache
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 6
+Ciclo -- 569
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 570
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 571
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 572
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 573
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Proc 1 Thread 2: Getting data to cache
+Ciclo -- 574
+Proc 1 Thread 2: PC: 80, Instr: 43 0 5 640 	M(640+R0) <- R5 = 45
+Cache: 0,M: 45,1,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,4,4,4 22,M: 4,4,4,4 23,M: 4,4,4,4
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	Load failed, busy bus
+Ciclo -- 575
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 576
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 577
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 578
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 579
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 580
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 581
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 582
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 583
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 584
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 585
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 586
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 587
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy bus
+Ciclo -- 588
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 589
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 590
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 591
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 592
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 593
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 594
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 595
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 596
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 597
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 598
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 599
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	Save failed, busy cache
+Ciclo -- 600
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 22,C: 4,4,4,4 -1,I: 0,0,0,0
+Proc 1 Thread 2: PC: 84, Instr: 43 0 22 644 	M(644+R0) <- R22 = 42
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,4,4,4 22,C: 4,4,4,4 23,M: 4,4,4,4
+Ciclo -- 601
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 2: PC: 88, Instr: 63 0 0 0 	THREAD ENDED
+Ciclo -- 602
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 12
+Proc 1 Thread 5: Waiting for cycle end to check caches - load
+Ciclo -- 603
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1000
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 604
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 16
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 605
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 606
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 5
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 607
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 608
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 609
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 20
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 610
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1008
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 611
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 24
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 612
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 613
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 4
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 614
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 615
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 616
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 617
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 618
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 619
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 620
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 621
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 622
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 623
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 624
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Ciclo -- 625
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 626
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 627
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Cache: 8,M: 0,0,0,0 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 22,C: 4,4,4,4 23,C: 4,4,4,4
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,4,4 22,C: 4,4,4,4 23,C: 4,4,4,4
+Ciclo -- 628
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 5: Waiting for cycle end to check caches - load
+Ciclo -- 629
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 28
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 630
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1016
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 631
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 32
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 632
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 633
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 3
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 634
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 635
+Proc 1 Thread 5: Getting data to cache
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Ciclo -- 636
+Proc 1 Thread 5: Getting data to cache
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 36
+Ciclo -- 637
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1024
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 638
+Proc 1 Thread 5: Getting data to cache
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 40
+Ciclo -- 639
+Proc 1 Thread 5: Getting data to cache
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Ciclo -- 640
+Proc 1 Thread 5: Getting data to cache
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 2
+Ciclo -- 641
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 984
+Ciclo -- 642
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 643
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 7
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 644
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 645
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 646
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 647
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 648
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 649
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 650
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 651
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 652
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 653
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 654
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 655
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 656
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 657
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 658
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 659
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 660
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 661
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 662
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 663
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 664
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 665
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 666
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Cache: 24,C: 4,4,4,4 9,M: 0,0,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 22,C: 4,4,4,4 23,C: 4,4,4,4
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,4 22,C: 4,4,4,4 23,C: 4,4,4,4
+Ciclo -- 667
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,C: 4,4,4,4 23,C: 4,4,4,4
+Ciclo -- 668
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 44
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 992
+Ciclo -- 669
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1032
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 670
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 48
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 6
+Ciclo -- 671
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,4,4,4 23,C: 4,4,4,4
+Ciclo -- 672
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,4,4 23,C: 4,4,4,4
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 1
+Ciclo -- 673
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1000
+Ciclo -- 674
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 675
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 52
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 5
+Ciclo -- 676
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1040
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,4 23,C: 4,4,4,4
+Ciclo -- 677
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 56
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,M: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,C: 4,4,4,4
+Ciclo -- 678
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1008
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Ciclo -- 679
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2 Thread 6: PC: 316, Instr: 34 3 1 3 	R3 = R3-R1 = 0
+Ciclo -- 680
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 4
+Ciclo -- 681
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 682
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 683
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 684
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 685
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 686
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 687
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 688
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 689
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 690
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 691
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 692
+Proc 2 Thread 6: Waiting for cycle end to check caches - load
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 693
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 694
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 695
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 696
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 697
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 698
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 699
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Proc 2 Thread 6: Saving data to memory
+Ciclo -- 700
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 701
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 702
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 703
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 704
+Proc 2 Thread 6: Saving data to memory
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy cache
+Ciclo -- 705
+Proc 2 Thread 6: PC: 320, Instr: 35 4 10 0 	R10 <- M(0+R4) = 4
+Cache: 24,C: 4,4,4,4 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 22,I: 4,4,4,4 23,C: 4,4,4,4
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,4,4,4
+Ciclo -- 706
+Proc 2 Thread 6: PC: 324, Instr: 35 4 11 4 	R11 <- M(4+R4) = 4
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,4,4
+Ciclo -- 707
+Proc 2 Thread 6: PC: 328, Instr: 32 12 10 12 	R12 = R12+R10 = 60
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1016
+Ciclo -- 708
+Proc 2 Thread 6: PC: 332, Instr: 32 4 8 4 	R4 = R4+R8 = 1048
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 709
+Proc 2 Thread 6: PC: 336, Instr: 32 12 11 12 	R12 = R12+R11 = 64
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 3
+Ciclo -- 710
+Proc 2 Thread 6: PC: 340, Instr: 5 3 0 -7 	if R3 != 0 JMP -7
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,4
+Ciclo -- 711
+Proc 2 Thread 6: PC: 344, Instr: 12 12 15 14 	R14 = R12*R15 = -64
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 0,M: 45,42,1,1 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Ciclo -- 712
+Proc 2 Thread 6: Waiting for cycle end to check caches - save
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1024
+Ciclo -- 713
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 714
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 2
+Ciclo -- 715
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 716
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 717
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 718
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 719
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: Getting data to cache
+Ciclo -- 720
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 721
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 722
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 723
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 724
+Proc 2 Thread 6: Getting data to cache
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Ciclo -- 725
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	Save failed, busy bus
+Proc 2 Thread 6: PC: 348, Instr: 43 0 14 896 	M(896+R0) <- R14 = -64
+Cache: 16,M: -64,1,1,1 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 84,M: 1,0,1,1 13,M: 2,2,2,2 22,I: 4,4,4,4 23,I: 4,4,4,4
+Ciclo -- 726
+Proc 2 Thread 6: PC: 352, Instr: 63 0 0 0 	THREAD ENDED
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 727
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 728
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 729
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 730
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 731
+Proc 1 Thread 5: Saving data to memory
+Proc 2: No-op
+Ciclo -- 732
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 733
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 734
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 735
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 736
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 737
+Proc 2: No-op
+Proc 1 Thread 5: Saving data to memory
+Ciclo -- 738
+Proc 2: No-op
+Proc 1 Thread 5: Waiting for cycle end to check caches - save
+Ciclo -- 739
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 740
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 741
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 742
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 743
+Proc 1 Thread 5: Getting data to cache
+Proc 2: No-op
+Ciclo -- 744
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 745
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 746
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 747
+Proc 1 Thread 5: Getting data to cache
+Proc 2: No-op
+Ciclo -- 748
+Proc 1 Thread 5: Getting data to cache
+Proc 2: No-op
+Ciclo -- 749
+Proc 2: No-op
+Proc 1 Thread 5: Getting data to cache
+Ciclo -- 750
+Proc 1 Thread 5: Getting data to cache
+Proc 2: No-op
+Ciclo -- 751
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 24,M: 5,4,4,4 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Proc 2: No-op
+Ciclo -- 752
+Proc 2: No-op
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 24,M: 5,5,4,4 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Ciclo -- 753
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1032
+Proc 2: No-op
+Ciclo -- 754
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2: No-op
+Ciclo -- 755
+Proc 2: No-op
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 1
+Ciclo -- 756
+Proc 2: No-op
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 24,M: 5,5,5,4 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Ciclo -- 757
+Proc 2: No-op
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 24,M: 5,5,5,5 25,C: 4,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Ciclo -- 758
+Proc 2: No-op
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1040
+Ciclo -- 759
+Proc 2: No-op
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Ciclo -- 760
+Proc 2: No-op
+Proc 1 Thread 5: PC: 260, Instr: 34 3 1 3 	R3 = R3-R1 = 0
+Ciclo -- 761
+Proc 2: No-op
+Proc 1 Thread 5: PC: 264, Instr: 43 4 14 0 	M(0+R4) <- R14 = 5
+Cache: 24,M: 5,5,5,5 25,M: 5,4,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Ciclo -- 762
+Proc 1 Thread 5: PC: 268, Instr: 43 4 14 4 	M(4+R4) <- R14 = 5
+Cache: 24,M: 5,5,5,5 25,M: 5,5,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Proc 2: No-op
+Ciclo -- 763
+Proc 1 Thread 5: PC: 272, Instr: 32 4 8 4 	R4 = R4+R8 = 1048
+Proc 2: No-op
+Ciclo -- 764
+Proc 1 Thread 5: PC: 276, Instr: 5 3 0 -5 	if R3 != 0 JMP -5
+Proc 2: No-op
+Ciclo -- 765
+Proc 1 Thread 5: PC: 280, Instr: 43 0 0 1476 	M(1476+R0) <- R0 = 0
+Cache: 24,M: 5,5,5,5 25,M: 5,5,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Proc 2: No-op
+Ciclo -- 766
+Proc 1 Thread 5: PC: 284, Instr: 43 0 0 1480 	M(1480+R0) <- R0 = 0
+Cache: 24,M: 5,5,5,5 25,M: 5,5,1,1 -1,I: 0,0,0,0 -1,I: 0,0,0,0 52,M: 1,0,0,1 21,M: 4,5,5,5 22,M: 5,5,5,5 23,M: 5,5,5,5
+Proc 2: No-op
+Ciclo -- 767
+Proc 1 Thread 5: PC: 288, Instr: 63 0 0 0 	THREAD ENDED
+Proc 2: No-op
+Ciclo -- 768
+Proc 1: No-op
+Proc 2: No-op
 Fin Processor No.2
-Ciclos realizados: 4803
+Fin Processor No.1
+Ciclos realizados: 768
 Emulacion finalizada
 Resultados de los hilos:
-Process 1 - 711 cycles: R1 = 1, R4 = -100, R6 = -200, R8 = 2, R20 = 8, R30 = 44, R31 = 44, 
-Process 2 - 3635 cycles: R1 = 441, R2 = 2, R5 = 719400, R22 = 21, R23 = 1, R31 = 92, 
-Process 3 - 12 cycles: R1 = 1, R3 = 4, R4 = 848, R8 = 8, R12 = 1688, R13 = 3, R14 = 5064, 
-Process 4 - 711 cycles: R1 = 1, R4 = -100, R6 = -200, R8 = 2, R20 = 8, R30 = 232, R31 = 232, 
-Process 5 - 12 cycles: R1 = 1, R3 = 4, R4 = 848, R8 = 8, R12 = 1688, R13 = 3, R14 = 5064, 
-Process 6 - 3006 cycles: R1 = 1, R4 = 8060, R8 = 8, R14 = 5, 
+Process 1 - 32 cycles: R1 = 1, R4 = 880, R8 = 8, R20 = 2, RL = -1
+Process 2 - 66 cycles: R1 = 1, R2 = 2, R5 = 45, R22 = 42, R23 = 1, R31 = 76, RL = -1
+Process 3 - 44 cycles: R1 = 1, R4 = 880, R8 = 8, R10 = 1, R11 = 1, R12 = 10, R13 = 3, R14 = 30, RL = -1
+Process 4 - 63 cycles: R1 = 1, R4 = 1048, R8 = 8, R14 = 4, RL = -1
+Process 5 - 63 cycles: R1 = 1, R4 = 1048, R8 = 8, R14 = 5, RL = -1
+Process 6 - 86 cycles: R1 = 1, R4 = 1048, R8 = 8, R10 = 4, R11 = 4, R12 = 64, R14 = -64, R15 = -1, RL = -1
+Process 7 - 8 cycles: RL = -1
+Despliegue de memoria de datos: 
+Bloque 40:	45 42 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 44:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 48:	0 0 0 0 	0 0 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 52:	1 30 2 2 	2 2 2 2 	2 2 2 2 	1 1 1 1 
+Bloque 56:	-64 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 60:	4 4 4 4 	4 5 5 5 	5 5 5 5 	5 5 5 5 
+Bloque 64:	5 5 5 5 	5 5 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 68:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 72:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 76:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 80:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 84:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 88:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 92:	1 0 0 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 96:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 100:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 104:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 108:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 112:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 116:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 120:	1 1 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+Bloque 124:	1 0 1 1 	1 1 1 1 	1 1 1 1 	1 1 1 1 
+
 
 
